@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans
+	xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:p="http://www.springframework.org/schema/p"
+	xmlns:mvc="http://www.springframework.org/schema/mvc"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:util="http://www.springframework.org/schema/util"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.0.xsd">
+
+	<bean
+		class="org.springframework.web.servlet.view.InternalResourceViewResolver" p:prefix="/" p:suffix=".jsp">
+		<property name="viewClass" value="org.springframework.web.servlet.view.JstlView" />
+	</bean>
+
+    <bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">  
+	    <property name="driverClassName">
+	        <value>org.gjt.mm.mysql.Driver</value>
+	    </property>
+	    <property name="url">
+	        <value>jdbc:mysql://127.0.0.1:3306/jxc?characterEncoding=UTF-8</value>
+	    </property>
+	    <property name="username">
+	        <value>root</value>
+	    </property>
+	    <property name="password">
+	        <value>root</value>
+	    </property>
+	</bean>
+	
+    <bean id="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+     	<property name="dataSource" ref="dataSource" />
+    </bean>
+	
+	<bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
+    	<property name="dataSource" ref="dataSource"/>
+    	<property name="configLocation" value="classpath:Configuration.xml" />
+    	<property name="mapperLocations" value="classpath:com/friday/mapper/*.xml" />
+  	</bean>
+  
+	<bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
+     	<property name="basePackage" value="com.friday.inter" />
+  	</bean>
+
+	<!-- Spring MVC mapping -->
+
+	<bean id="adminController" class="com.friday.controller.AdminController" />
+	
+	<bean id="urlMapping" class="org.springframework.web.servlet.handler.SimpleUrlHandlerMapping">
+		<property name="mappings">
+			<props>
+				<prop key="/addadmin.do">adminController</prop>
+			</props>
+		</property>
+	</bean>
+
+</beans>
