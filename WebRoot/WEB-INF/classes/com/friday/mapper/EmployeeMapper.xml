@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.friday.inter.EmployeeMapper" >
+  <resultMap id="BaseResultMap" type="com.friday.model.Employee" >
+    <id column="e_id" property="eId" jdbcType="VARCHAR" />
+    <result column="e_name" property="eName" jdbcType="VARCHAR" />
+    <result column="e_sex" property="eSex" jdbcType="VARCHAR" />
+    <result column="e_phone" property="ePhone" jdbcType="VARCHAR" />
+    <result column="e_address" property="eAddress" jdbcType="VARCHAR" />
+    <result column="e_date" property="eDate" jdbcType="TIMESTAMP" />
+    <result column="e_price" property="ePrice" jdbcType="REAL" />
+    <result column="e_bz" property="eBz" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    e_id, e_name, e_sex, e_phone, e_address, e_date, e_price, e_bz
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from employees
+    where e_id = #{eId,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from employees
+    where e_id = #{eId,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.friday.model.Employee" >
+    insert into employees (e_id, e_name, e_sex, 
+      e_phone, e_address, e_date, 
+      e_price, e_bz)
+    values (#{eId,jdbcType=VARCHAR}, #{eName,jdbcType=VARCHAR}, #{eSex,jdbcType=VARCHAR}, 
+      #{ePhone,jdbcType=VARCHAR}, #{eAddress,jdbcType=VARCHAR}, #{eDate,jdbcType=TIMESTAMP}, 
+      #{ePrice,jdbcType=REAL}, #{eBz,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.friday.model.Employee" >
+    insert into employees
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="eId != null" >
+        e_id,
+      </if>
+      <if test="eName != null" >
+        e_name,
+      </if>
+      <if test="eSex != null" >
+        e_sex,
+      </if>
+      <if test="ePhone != null" >
+        e_phone,
+      </if>
+      <if test="eAddress != null" >
+        e_address,
+      </if>
+      <if test="eDate != null" >
+        e_date,
+      </if>
+      <if test="ePrice != null" >
+        e_price,
+      </if>
+      <if test="eBz != null" >
+        e_bz,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="eId != null" >
+        #{eId,jdbcType=VARCHAR},
+      </if>
+      <if test="eName != null" >
+        #{eName,jdbcType=VARCHAR},
+      </if>
+      <if test="eSex != null" >
+        #{eSex,jdbcType=VARCHAR},
+      </if>
+      <if test="ePhone != null" >
+        #{ePhone,jdbcType=VARCHAR},
+      </if>
+      <if test="eAddress != null" >
+        #{eAddress,jdbcType=VARCHAR},
+      </if>
+      <if test="eDate != null" >
+        #{eDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="ePrice != null" >
+        #{ePrice,jdbcType=REAL},
+      </if>
+      <if test="eBz != null" >
+        #{eBz,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.friday.model.Employee" >
+    update employees
+    <set >
+      <if test="eName != null" >
+        e_name = #{eName,jdbcType=VARCHAR},
+      </if>
+      <if test="eSex != null" >
+        e_sex = #{eSex,jdbcType=VARCHAR},
+      </if>
+      <if test="ePhone != null" >
+        e_phone = #{ePhone,jdbcType=VARCHAR},
+      </if>
+      <if test="eAddress != null" >
+        e_address = #{eAddress,jdbcType=VARCHAR},
+      </if>
+      <if test="eDate != null" >
+        e_date = #{eDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="ePrice != null" >
+        e_price = #{ePrice,jdbcType=REAL},
+      </if>
+      <if test="eBz != null" >
+        e_bz = #{eBz,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where e_id = #{eId,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.friday.model.Employee" >
+    update employees
+    set e_name = #{eName,jdbcType=VARCHAR},
+      e_sex = #{eSex,jdbcType=VARCHAR},
+      e_phone = #{ePhone,jdbcType=VARCHAR},
+      e_address = #{eAddress,jdbcType=VARCHAR},
+      e_date = #{eDate,jdbcType=TIMESTAMP},
+      e_price = #{ePrice,jdbcType=REAL},
+      e_bz = #{eBz,jdbcType=VARCHAR}
+    where e_id = #{eId,jdbcType=VARCHAR}
+  </update>
+</mapper>

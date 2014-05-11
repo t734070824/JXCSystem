@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.friday.inter.InStockMapper" >
+  <resultMap id="BaseResultMap" type="com.friday.model.InStock" >
+    <id column="i_id" property="iId" jdbcType="VARCHAR" />
+    <result column="u_id" property="uId" jdbcType="VARCHAR" />
+    <result column="o_id" property="oId" jdbcType="VARCHAR" />
+    <result column="i_date" property="iDate" jdbcType="TIMESTAMP" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    i_id, u_id, o_id, i_date
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from instock
+    where i_id = #{iId,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from instock
+    where i_id = #{iId,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.friday.model.InStock" >
+    insert into instock (i_id, u_id, o_id, 
+      i_date)
+    values (#{iId,jdbcType=VARCHAR}, #{uId,jdbcType=VARCHAR}, #{oId,jdbcType=VARCHAR}, 
+      #{iDate,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="com.friday.model.InStock" >
+    insert into instock
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="iId != null" >
+        i_id,
+      </if>
+      <if test="uId != null" >
+        u_id,
+      </if>
+      <if test="oId != null" >
+        o_id,
+      </if>
+      <if test="iDate != null" >
+        i_date,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="iId != null" >
+        #{iId,jdbcType=VARCHAR},
+      </if>
+      <if test="uId != null" >
+        #{uId,jdbcType=VARCHAR},
+      </if>
+      <if test="oId != null" >
+        #{oId,jdbcType=VARCHAR},
+      </if>
+      <if test="iDate != null" >
+        #{iDate,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.friday.model.InStock" >
+    update instock
+    <set >
+      <if test="uId != null" >
+        u_id = #{uId,jdbcType=VARCHAR},
+      </if>
+      <if test="oId != null" >
+        o_id = #{oId,jdbcType=VARCHAR},
+      </if>
+      <if test="iDate != null" >
+        i_date = #{iDate,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where i_id = #{iId,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.friday.model.InStock" >
+    update instock
+    set u_id = #{uId,jdbcType=VARCHAR},
+      o_id = #{oId,jdbcType=VARCHAR},
+      i_date = #{iDate,jdbcType=TIMESTAMP}
+    where i_id = #{iId,jdbcType=VARCHAR}
+  </update>
+</mapper>

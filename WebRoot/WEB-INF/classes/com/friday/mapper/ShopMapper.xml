@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.friday.inter.ShopMapper" >
+  <resultMap id="BaseResultMap" type="com.friday.model.Shop" >
+    <id column="s_id" property="sId" jdbcType="INTEGER" />
+    <result column="s_name" property="sName" jdbcType="VARCHAR" />
+    <result column="s_bz" property="sBz" jdbcType="VARCHAR" />
+    <result column="s_address" property="sAddress" jdbcType="CHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    s_id, s_name, s_bz, s_address
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from shops
+    where s_id = #{sId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from shops
+    where s_id = #{sId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.friday.model.Shop" >
+    insert into shops (s_id, s_name, s_bz, 
+      s_address)
+    values (#{sId,jdbcType=INTEGER}, #{sName,jdbcType=VARCHAR}, #{sBz,jdbcType=VARCHAR}, 
+      #{sAddress,jdbcType=CHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.friday.model.Shop" >
+    insert into shops
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="sId != null" >
+        s_id,
+      </if>
+      <if test="sName != null" >
+        s_name,
+      </if>
+      <if test="sBz != null" >
+        s_bz,
+      </if>
+      <if test="sAddress != null" >
+        s_address,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="sId != null" >
+        #{sId,jdbcType=INTEGER},
+      </if>
+      <if test="sName != null" >
+        #{sName,jdbcType=VARCHAR},
+      </if>
+      <if test="sBz != null" >
+        #{sBz,jdbcType=VARCHAR},
+      </if>
+      <if test="sAddress != null" >
+        #{sAddress,jdbcType=CHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.friday.model.Shop" >
+    update shops
+    <set >
+      <if test="sName != null" >
+        s_name = #{sName,jdbcType=VARCHAR},
+      </if>
+      <if test="sBz != null" >
+        s_bz = #{sBz,jdbcType=VARCHAR},
+      </if>
+      <if test="sAddress != null" >
+        s_address = #{sAddress,jdbcType=CHAR},
+      </if>
+    </set>
+    where s_id = #{sId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.friday.model.Shop" >
+    update shops
+    set s_name = #{sName,jdbcType=VARCHAR},
+      s_bz = #{sBz,jdbcType=VARCHAR},
+      s_address = #{sAddress,jdbcType=CHAR}
+    where s_id = #{sId,jdbcType=INTEGER}
+  </update>
+</mapper>

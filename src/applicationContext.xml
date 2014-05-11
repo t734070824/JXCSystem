@@ -44,14 +44,13 @@
 
 	<!-- Spring MVC mapping -->
 
-	<bean id="adminController" class="com.friday.controller.AdminController" />
+	<!-- <bean id="adminController" class="com.friday.controller.AdminController" /> -->
 	
 	<bean id="urlMapping" class="org.springframework.web.servlet.handler.SimpleUrlHandlerMapping">
 		<property name="mappings">
 			<props>
-				<prop key="/addadmin.do">adminController</prop>
+				<!-- <prop key="/addadmin.do">adminController</prop> -->
 			</props>
 		</property>
 	</bean>
-
 </beans>

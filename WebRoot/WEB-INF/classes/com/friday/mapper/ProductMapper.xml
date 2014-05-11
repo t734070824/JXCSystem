@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.friday.inter.ProductMapper" >
+  <resultMap id="BaseResultMap" type="com.friday.model.Product" >
+    <id column="p_id" property="pId" jdbcType="INTEGER" />
+    <result column="p_name" property="pName" jdbcType="VARCHAR" />
+    <result column="t_id" property="tId" jdbcType="INTEGER" />
+    <result column="p_style" property="pStyle" jdbcType="VARCHAR" />
+    <result column="p_price" property="pPrice" jdbcType="REAL" />
+    <result column="p_zt" property="pZt" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    p_id, p_name, t_id, p_style, p_price, p_zt
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from products
+    where p_id = #{pId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from products
+    where p_id = #{pId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.friday.model.Product" >
+    insert into products (p_id, p_name, t_id, 
+      p_style, p_price, p_zt)
+    values (#{pId,jdbcType=INTEGER}, #{pName,jdbcType=VARCHAR}, #{tId,jdbcType=INTEGER}, 
+      #{pStyle,jdbcType=VARCHAR}, #{pPrice,jdbcType=REAL}, #{pZt,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.friday.model.Product" >
+    insert into products
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="pId != null" >
+        p_id,
+      </if>
+      <if test="pName != null" >
+        p_name,
+      </if>
+      <if test="tId != null" >
+        t_id,
+      </if>
+      <if test="pStyle != null" >
+        p_style,
+      </if>
+      <if test="pPrice != null" >
+        p_price,
+      </if>
+      <if test="pZt != null" >
+        p_zt,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="pId != null" >
+        #{pId,jdbcType=INTEGER},
+      </if>
+      <if test="pName != null" >
+        #{pName,jdbcType=VARCHAR},
+      </if>
+      <if test="tId != null" >
+        #{tId,jdbcType=INTEGER},
+      </if>
+      <if test="pStyle != null" >
+        #{pStyle,jdbcType=VARCHAR},
+      </if>
+      <if test="pPrice != null" >
+        #{pPrice,jdbcType=REAL},
+      </if>
+      <if test="pZt != null" >
+        #{pZt,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.friday.model.Product" >
+    update products
+    <set >
+      <if test="pName != null" >
+        p_name = #{pName,jdbcType=VARCHAR},
+      </if>
+      <if test="tId != null" >
+        t_id = #{tId,jdbcType=INTEGER},
+      </if>
+      <if test="pStyle != null" >
+        p_style = #{pStyle,jdbcType=VARCHAR},
+      </if>
+      <if test="pPrice != null" >
+        p_price = #{pPrice,jdbcType=REAL},
+      </if>
+      <if test="pZt != null" >
+        p_zt = #{pZt,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where p_id = #{pId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.friday.model.Product" >
+    update products
+    set p_name = #{pName,jdbcType=VARCHAR},
+      t_id = #{tId,jdbcType=INTEGER},
+      p_style = #{pStyle,jdbcType=VARCHAR},
+      p_price = #{pPrice,jdbcType=REAL},
+      p_zt = #{pZt,jdbcType=VARCHAR}
+    where p_id = #{pId,jdbcType=INTEGER}
+  </update>
+</mapper>

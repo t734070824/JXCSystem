@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.friday.inter.InStockDetailMapper" >
+  <resultMap id="BaseResultMap" type="com.friday.model.InStockDetail" >
+    <id column="i_id" property="iId" jdbcType="INTEGER" />
+    <result column="inStock_id" property="instockId" jdbcType="VARCHAR" />
+    <result column="p_id" property="pId" jdbcType="INTEGER" />
+    <result column="i_num" property="iNum" jdbcType="INTEGER" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    i_id, inStock_id, p_id, i_num
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from instockdetails
+    where i_id = #{iId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from instockdetails
+    where i_id = #{iId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.friday.model.InStockDetail" >
+    insert into instockdetails (i_id, inStock_id, p_id, 
+      i_num)
+    values (#{iId,jdbcType=INTEGER}, #{instockId,jdbcType=VARCHAR}, #{pId,jdbcType=INTEGER}, 
+      #{iNum,jdbcType=INTEGER})
+  </insert>
+  <insert id="insertSelective" parameterType="com.friday.model.InStockDetail" >
+    insert into instockdetails
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="iId != null" >
+        i_id,
+      </if>
+      <if test="instockId != null" >
+        inStock_id,
+      </if>
+      <if test="pId != null" >
+        p_id,
+      </if>
+      <if test="iNum != null" >
+        i_num,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="iId != null" >
+        #{iId,jdbcType=INTEGER},
+      </if>
+      <if test="instockId != null" >
+        #{instockId,jdbcType=VARCHAR},
+      </if>
+      <if test="pId != null" >
+        #{pId,jdbcType=INTEGER},
+      </if>
+      <if test="iNum != null" >
+        #{iNum,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.friday.model.InStockDetail" >
+    update instockdetails
+    <set >
+      <if test="instockId != null" >
+        inStock_id = #{instockId,jdbcType=VARCHAR},
+      </if>
+      <if test="pId != null" >
+        p_id = #{pId,jdbcType=INTEGER},
+      </if>
+      <if test="iNum != null" >
+        i_num = #{iNum,jdbcType=INTEGER},
+      </if>
+    </set>
+    where i_id = #{iId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.friday.model.InStockDetail" >
+    update instockdetails
+    set inStock_id = #{instockId,jdbcType=VARCHAR},
+      p_id = #{pId,jdbcType=INTEGER},
+      i_num = #{iNum,jdbcType=INTEGER}
+    where i_id = #{iId,jdbcType=INTEGER}
+  </update>
+</mapper>

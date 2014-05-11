@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.friday.inter.StockMapper" >
+  <resultMap id="BaseResultMap" type="com.friday.model.Stock" >
+    <id column="s_id" property="sId" jdbcType="INTEGER" />
+    <result column="shop_id" property="shopId" jdbcType="INTEGER" />
+    <result column="p_id" property="pId" jdbcType="INTEGER" />
+    <result column="s_num" property="sNum" jdbcType="INTEGER" />
+    <result column="s_maxNum" property="sMaxnum" jdbcType="INTEGER" />
+    <result column="s_minNum" property="sMinnum" jdbcType="INTEGER" />
+    <result column="s_price" property="sPrice" jdbcType="REAL" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    s_id, shop_id, p_id, s_num, s_maxNum, s_minNum, s_price
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from stocks
+    where s_id = #{sId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from stocks
+    where s_id = #{sId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.friday.model.Stock" >
+    insert into stocks (s_id, shop_id, p_id, 
+      s_num, s_maxNum, s_minNum, 
+      s_price)
+    values (#{sId,jdbcType=INTEGER}, #{shopId,jdbcType=INTEGER}, #{pId,jdbcType=INTEGER}, 
+      #{sNum,jdbcType=INTEGER}, #{sMaxnum,jdbcType=INTEGER}, #{sMinnum,jdbcType=INTEGER}, 
+      #{sPrice,jdbcType=REAL})
+  </insert>
+  <insert id="insertSelective" parameterType="com.friday.model.Stock" >
+    insert into stocks
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="sId != null" >
+        s_id,
+      </if>
+      <if test="shopId != null" >
+        shop_id,
+      </if>
+      <if test="pId != null" >
+        p_id,
+      </if>
+      <if test="sNum != null" >
+        s_num,
+      </if>
+      <if test="sMaxnum != null" >
+        s_maxNum,
+      </if>
+      <if test="sMinnum != null" >
+        s_minNum,
+      </if>
+      <if test="sPrice != null" >
+        s_price,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="sId != null" >
+        #{sId,jdbcType=INTEGER},
+      </if>
+      <if test="shopId != null" >
+        #{shopId,jdbcType=INTEGER},
+      </if>
+      <if test="pId != null" >
+        #{pId,jdbcType=INTEGER},
+      </if>
+      <if test="sNum != null" >
+        #{sNum,jdbcType=INTEGER},
+      </if>
+      <if test="sMaxnum != null" >
+        #{sMaxnum,jdbcType=INTEGER},
+      </if>
+      <if test="sMinnum != null" >
+        #{sMinnum,jdbcType=INTEGER},
+      </if>
+      <if test="sPrice != null" >
+        #{sPrice,jdbcType=REAL},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.friday.model.Stock" >
+    update stocks
+    <set >
+      <if test="shopId != null" >
+        shop_id = #{shopId,jdbcType=INTEGER},
+      </if>
+      <if test="pId != null" >
+        p_id = #{pId,jdbcType=INTEGER},
+      </if>
+      <if test="sNum != null" >
+        s_num = #{sNum,jdbcType=INTEGER},
+      </if>
+      <if test="sMaxnum != null" >
+        s_maxNum = #{sMaxnum,jdbcType=INTEGER},
+      </if>
+      <if test="sMinnum != null" >
+        s_minNum = #{sMinnum,jdbcType=INTEGER},
+      </if>
+      <if test="sPrice != null" >
+        s_price = #{sPrice,jdbcType=REAL},
+      </if>
+    </set>
+    where s_id = #{sId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.friday.model.Stock" >
+    update stocks
+    set shop_id = #{shopId,jdbcType=INTEGER},
+      p_id = #{pId,jdbcType=INTEGER},
+      s_num = #{sNum,jdbcType=INTEGER},
+      s_maxNum = #{sMaxnum,jdbcType=INTEGER},
+      s_minNum = #{sMinnum,jdbcType=INTEGER},
+      s_price = #{sPrice,jdbcType=REAL}
+    where s_id = #{sId,jdbcType=INTEGER}
+  </update>
+</mapper>

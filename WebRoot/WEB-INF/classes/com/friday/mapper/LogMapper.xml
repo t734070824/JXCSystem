@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.friday.inter.LogMapper" >
+  <resultMap id="BaseResultMap" type="com.friday.model.Log" >
+    <id column="l_id" property="lId" jdbcType="INTEGER" />
+    <result column="l_msg" property="lMsg" jdbcType="VARCHAR" />
+    <result column="l_date" property="lDate" jdbcType="TIMESTAMP" />
+    <result column="u_id" property="uId" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    l_id, l_msg, l_date, u_id
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from logs
+    where l_id = #{lId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from logs
+    where l_id = #{lId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.friday.model.Log" >
+    insert into logs (l_id, l_msg, l_date, 
+      u_id)
+    values (#{lId,jdbcType=INTEGER}, #{lMsg,jdbcType=VARCHAR}, #{lDate,jdbcType=TIMESTAMP}, 
+      #{uId,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.friday.model.Log" >
+    insert into logs
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="lId != null" >
+        l_id,
+      </if>
+      <if test="lMsg != null" >
+        l_msg,
+      </if>
+      <if test="lDate != null" >
+        l_date,
+      </if>
+      <if test="uId != null" >
+        u_id,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="lId != null" >
+        #{lId,jdbcType=INTEGER},
+      </if>
+      <if test="lMsg != null" >
+        #{lMsg,jdbcType=VARCHAR},
+      </if>
+      <if test="lDate != null" >
+        #{lDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="uId != null" >
+        #{uId,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.friday.model.Log" >
+    update logs
+    <set >
+      <if test="lMsg != null" >
+        l_msg = #{lMsg,jdbcType=VARCHAR},
+      </if>
+      <if test="lDate != null" >
+        l_date = #{lDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="uId != null" >
+        u_id = #{uId,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where l_id = #{lId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.friday.model.Log" >
+    update logs
+    set l_msg = #{lMsg,jdbcType=VARCHAR},
+      l_date = #{lDate,jdbcType=TIMESTAMP},
+      u_id = #{uId,jdbcType=VARCHAR}
+    where l_id = #{lId,jdbcType=INTEGER}
+  </update>
+</mapper>

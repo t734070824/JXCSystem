@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.friday.inter.CustomerMapper" >
+  <resultMap id="BaseResultMap" type="com.friday.model.Customer" >
+    <id column="c_id" property="cId" jdbcType="INTEGER" />
+    <result column="c_name" property="cName" jdbcType="VARCHAR" />
+    <result column="c_phone" property="cPhone" jdbcType="VARCHAR" />
+    <result column="c_address" property="cAddress" jdbcType="VARCHAR" />
+    <result column="c_note" property="cNote" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    c_id, c_name, c_phone, c_address, c_note
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from customerinfo
+    where c_id = #{cId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from customerinfo
+    where c_id = #{cId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.friday.model.Customer" >
+    insert into customerinfo (c_id, c_name, c_phone, 
+      c_address, c_note)
+    values (#{cId,jdbcType=INTEGER}, #{cName,jdbcType=VARCHAR}, #{cPhone,jdbcType=VARCHAR}, 
+      #{cAddress,jdbcType=VARCHAR}, #{cNote,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.friday.model.Customer" >
+    insert into customerinfo
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="cId != null" >
+        c_id,
+      </if>
+      <if test="cName != null" >
+        c_name,
+      </if>
+      <if test="cPhone != null" >
+        c_phone,
+      </if>
+      <if test="cAddress != null" >
+        c_address,
+      </if>
+      <if test="cNote != null" >
+        c_note,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="cId != null" >
+        #{cId,jdbcType=INTEGER},
+      </if>
+      <if test="cName != null" >
+        #{cName,jdbcType=VARCHAR},
+      </if>
+      <if test="cPhone != null" >
+        #{cPhone,jdbcType=VARCHAR},
+      </if>
+      <if test="cAddress != null" >
+        #{cAddress,jdbcType=VARCHAR},
+      </if>
+      <if test="cNote != null" >
+        #{cNote,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.friday.model.Customer" >
+    update customerinfo
+    <set >
+      <if test="cName != null" >
+        c_name = #{cName,jdbcType=VARCHAR},
+      </if>
+      <if test="cPhone != null" >
+        c_phone = #{cPhone,jdbcType=VARCHAR},
+      </if>
+      <if test="cAddress != null" >
+        c_address = #{cAddress,jdbcType=VARCHAR},
+      </if>
+      <if test="cNote != null" >
+        c_note = #{cNote,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where c_id = #{cId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.friday.model.Customer" >
+    update customerinfo
+    set c_name = #{cName,jdbcType=VARCHAR},
+      c_phone = #{cPhone,jdbcType=VARCHAR},
+      c_address = #{cAddress,jdbcType=VARCHAR},
+      c_note = #{cNote,jdbcType=VARCHAR}
+    where c_id = #{cId,jdbcType=INTEGER}
+  </update>
+</mapper>

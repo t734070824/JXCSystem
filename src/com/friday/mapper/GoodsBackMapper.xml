@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.friday.inter.GoodsBackMapper" >
+  <resultMap id="BaseResultMap" type="com.friday.model.GoodsBack" >
+    <id column="g_id" property="gId" jdbcType="INTEGER" />
+    <result column="g_date" property="gDate" jdbcType="TIMESTAMP" />
+    <result column="u_id" property="uId" jdbcType="VARCHAR" />
+    <result column="g_price" property="gPrice" jdbcType="REAL" />
+    <result column="g_backPrice" property="gBackprice" jdbcType="REAL" />
+    <result column="g_bz" property="gBz" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    g_id, g_date, u_id, g_price, g_backPrice, g_bz
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from goodsback
+    where g_id = #{gId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from goodsback
+    where g_id = #{gId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.friday.model.GoodsBack" >
+    insert into goodsback (g_id, g_date, u_id, 
+      g_price, g_backPrice, g_bz)
+    values (#{gId,jdbcType=INTEGER}, #{gDate,jdbcType=TIMESTAMP}, #{uId,jdbcType=VARCHAR}, 
+      #{gPrice,jdbcType=REAL}, #{gBackprice,jdbcType=REAL}, #{gBz,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.friday.model.GoodsBack" >
+    insert into goodsback
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="gId != null" >
+        g_id,
+      </if>
+      <if test="gDate != null" >
+        g_date,
+      </if>
+      <if test="uId != null" >
+        u_id,
+      </if>
+      <if test="gPrice != null" >
+        g_price,
+      </if>
+      <if test="gBackprice != null" >
+        g_backPrice,
+      </if>
+      <if test="gBz != null" >
+        g_bz,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="gId != null" >
+        #{gId,jdbcType=INTEGER},
+      </if>
+      <if test="gDate != null" >
+        #{gDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="uId != null" >
+        #{uId,jdbcType=VARCHAR},
+      </if>
+      <if test="gPrice != null" >
+        #{gPrice,jdbcType=REAL},
+      </if>
+      <if test="gBackprice != null" >
+        #{gBackprice,jdbcType=REAL},
+      </if>
+      <if test="gBz != null" >
+        #{gBz,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.friday.model.GoodsBack" >
+    update goodsback
+    <set >
+      <if test="gDate != null" >
+        g_date = #{gDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="uId != null" >
+        u_id = #{uId,jdbcType=VARCHAR},
+      </if>
+      <if test="gPrice != null" >
+        g_price = #{gPrice,jdbcType=REAL},
+      </if>
+      <if test="gBackprice != null" >
+        g_backPrice = #{gBackprice,jdbcType=REAL},
+      </if>
+      <if test="gBz != null" >
+        g_bz = #{gBz,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where g_id = #{gId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.friday.model.GoodsBack" >
+    update goodsback
+    set g_date = #{gDate,jdbcType=TIMESTAMP},
+      u_id = #{uId,jdbcType=VARCHAR},
+      g_price = #{gPrice,jdbcType=REAL},
+      g_backPrice = #{gBackprice,jdbcType=REAL},
+      g_bz = #{gBz,jdbcType=VARCHAR}
+    where g_id = #{gId,jdbcType=INTEGER}
+  </update>
+</mapper>

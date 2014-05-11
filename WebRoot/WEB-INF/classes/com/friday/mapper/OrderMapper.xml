@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.friday.inter.OrderMapper" >
+  <resultMap id="BaseResultMap" type="com.friday.model.Order" >
+    <id column="o_id" property="oId" jdbcType="VARCHAR" />
+    <result column="u_id" property="uId" jdbcType="VARCHAR" />
+    <result column="o_date" property="oDate" jdbcType="TIMESTAMP" />
+    <result column="o_bz" property="oBz" jdbcType="VARCHAR" />
+    <result column="o_style" property="oStyle" jdbcType="INTEGER" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    o_id, u_id, o_date, o_bz, o_style
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from orders
+    where o_id = #{oId,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from orders
+    where o_id = #{oId,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.friday.model.Order" >
+    insert into orders (o_id, u_id, o_date, 
+      o_bz, o_style)
+    values (#{oId,jdbcType=VARCHAR}, #{uId,jdbcType=VARCHAR}, #{oDate,jdbcType=TIMESTAMP}, 
+      #{oBz,jdbcType=VARCHAR}, #{oStyle,jdbcType=INTEGER})
+  </insert>
+  <insert id="insertSelective" parameterType="com.friday.model.Order" >
+    insert into orders
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="oId != null" >
+        o_id,
+      </if>
+      <if test="uId != null" >
+        u_id,
+      </if>
+      <if test="oDate != null" >
+        o_date,
+      </if>
+      <if test="oBz != null" >
+        o_bz,
+      </if>
+      <if test="oStyle != null" >
+        o_style,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="oId != null" >
+        #{oId,jdbcType=VARCHAR},
+      </if>
+      <if test="uId != null" >
+        #{uId,jdbcType=VARCHAR},
+      </if>
+      <if test="oDate != null" >
+        #{oDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="oBz != null" >
+        #{oBz,jdbcType=VARCHAR},
+      </if>
+      <if test="oStyle != null" >
+        #{oStyle,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.friday.model.Order" >
+    update orders
+    <set >
+      <if test="uId != null" >
+        u_id = #{uId,jdbcType=VARCHAR},
+      </if>
+      <if test="oDate != null" >
+        o_date = #{oDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="oBz != null" >
+        o_bz = #{oBz,jdbcType=VARCHAR},
+      </if>
+      <if test="oStyle != null" >
+        o_style = #{oStyle,jdbcType=INTEGER},
+      </if>
+    </set>
+    where o_id = #{oId,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.friday.model.Order" >
+    update orders
+    set u_id = #{uId,jdbcType=VARCHAR},
+      o_date = #{oDate,jdbcType=TIMESTAMP},
+      o_bz = #{oBz,jdbcType=VARCHAR},
+      o_style = #{oStyle,jdbcType=INTEGER}
+    where o_id = #{oId,jdbcType=VARCHAR}
+  </update>
+</mapper>

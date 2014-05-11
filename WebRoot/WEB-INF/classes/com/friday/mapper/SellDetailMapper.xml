@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.friday.inter.SellDetailMapper" >
+  <resultMap id="BaseResultMap" type="com.friday.model.SellDetail" >
+    <id column="s_id" property="sId" jdbcType="INTEGER" />
+    <result column="sell_id" property="sellId" jdbcType="INTEGER" />
+    <result column="p_id" property="pId" jdbcType="INTEGER" />
+    <result column="s_num" property="sNum" jdbcType="INTEGER" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    s_id, sell_id, p_id, s_num
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from selldetails
+    where s_id = #{sId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from selldetails
+    where s_id = #{sId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.friday.model.SellDetail" >
+    insert into selldetails (s_id, sell_id, p_id, 
+      s_num)
+    values (#{sId,jdbcType=INTEGER}, #{sellId,jdbcType=INTEGER}, #{pId,jdbcType=INTEGER}, 
+      #{sNum,jdbcType=INTEGER})
+  </insert>
+  <insert id="insertSelective" parameterType="com.friday.model.SellDetail" >
+    insert into selldetails
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="sId != null" >
+        s_id,
+      </if>
+      <if test="sellId != null" >
+        sell_id,
+      </if>
+      <if test="pId != null" >
+        p_id,
+      </if>
+      <if test="sNum != null" >
+        s_num,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="sId != null" >
+        #{sId,jdbcType=INTEGER},
+      </if>
+      <if test="sellId != null" >
+        #{sellId,jdbcType=INTEGER},
+      </if>
+      <if test="pId != null" >
+        #{pId,jdbcType=INTEGER},
+      </if>
+      <if test="sNum != null" >
+        #{sNum,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.friday.model.SellDetail" >
+    update selldetails
+    <set >
+      <if test="sellId != null" >
+        sell_id = #{sellId,jdbcType=INTEGER},
+      </if>
+      <if test="pId != null" >
+        p_id = #{pId,jdbcType=INTEGER},
+      </if>
+      <if test="sNum != null" >
+        s_num = #{sNum,jdbcType=INTEGER},
+      </if>
+    </set>
+    where s_id = #{sId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.friday.model.SellDetail" >
+    update selldetails
+    set sell_id = #{sellId,jdbcType=INTEGER},
+      p_id = #{pId,jdbcType=INTEGER},
+      s_num = #{sNum,jdbcType=INTEGER}
+    where s_id = #{sId,jdbcType=INTEGER}
+  </update>
+</mapper>

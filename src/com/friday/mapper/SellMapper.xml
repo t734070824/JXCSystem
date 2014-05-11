@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.friday.inter.SellMapper" >
+  <resultMap id="BaseResultMap" type="com.friday.model.Sell" >
+    <id column="s_id" property="sId" jdbcType="INTEGER" />
+    <result column="shop_id" property="shopId" jdbcType="INTEGER" />
+    <result column="u_id" property="uId" jdbcType="VARCHAR" />
+    <result column="s_date" property="sDate" jdbcType="TIMESTAMP" />
+    <result column="s_bz" property="sBz" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    s_id, shop_id, u_id, s_date, s_bz
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from sell
+    where s_id = #{sId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from sell
+    where s_id = #{sId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.friday.model.Sell" >
+    insert into sell (s_id, shop_id, u_id, 
+      s_date, s_bz)
+    values (#{sId,jdbcType=INTEGER}, #{shopId,jdbcType=INTEGER}, #{uId,jdbcType=VARCHAR}, 
+      #{sDate,jdbcType=TIMESTAMP}, #{sBz,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.friday.model.Sell" >
+    insert into sell
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="sId != null" >
+        s_id,
+      </if>
+      <if test="shopId != null" >
+        shop_id,
+      </if>
+      <if test="uId != null" >
+        u_id,
+      </if>
+      <if test="sDate != null" >
+        s_date,
+      </if>
+      <if test="sBz != null" >
+        s_bz,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="sId != null" >
+        #{sId,jdbcType=INTEGER},
+      </if>
+      <if test="shopId != null" >
+        #{shopId,jdbcType=INTEGER},
+      </if>
+      <if test="uId != null" >
+        #{uId,jdbcType=VARCHAR},
+      </if>
+      <if test="sDate != null" >
+        #{sDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="sBz != null" >
+        #{sBz,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.friday.model.Sell" >
+    update sell
+    <set >
+      <if test="shopId != null" >
+        shop_id = #{shopId,jdbcType=INTEGER},
+      </if>
+      <if test="uId != null" >
+        u_id = #{uId,jdbcType=VARCHAR},
+      </if>
+      <if test="sDate != null" >
+        s_date = #{sDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="sBz != null" >
+        s_bz = #{sBz,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where s_id = #{sId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.friday.model.Sell" >
+    update sell
+    set shop_id = #{shopId,jdbcType=INTEGER},
+      u_id = #{uId,jdbcType=VARCHAR},
+      s_date = #{sDate,jdbcType=TIMESTAMP},
+      s_bz = #{sBz,jdbcType=VARCHAR}
+    where s_id = #{sId,jdbcType=INTEGER}
+  </update>
+</mapper>
