@@ -43,13 +43,21 @@
   	</bean>
 
 	<!-- Spring MVC mapping -->
-
-	<!-- <bean id="adminController" class="com.friday.controller.AdminController" /> -->
+	<!-- DYH -->
+	<bean id="addUserController" class="com.friday.controller.AddUserController" />
+	<!-- CXW -->
+	
+	<!-- CSY -->
 	
 	<bean id="urlMapping" class="org.springframework.web.servlet.handler.SimpleUrlHandlerMapping">
 		<property name="mappings">
 			<props>
-				<!-- <prop key="/addadmin.do">adminController</prop> -->
+			<!-- DYH -->
+				<prop key="/adduser.do">addUserController</prop>
+			<!-- CXW -->
+				
+			<!-- CSY -->
+			
 			</props>
 		</property>
 	</bean>
