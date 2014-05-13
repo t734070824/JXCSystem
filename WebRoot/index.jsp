@@ -21,7 +21,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   </head>
   
   <body>
-    <form action="addadmin.do" method="post" name="loginForm">
+    <form action="adduser.do" method="post" name="loginForm">
     	account:<input type="text" name="account" />
     	<br />
     	password:<input type="text" name="password" />

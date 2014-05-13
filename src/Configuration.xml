@@ -4,7 +4,43 @@ PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
 "http://mybatis.org/dtd/mybatis-3-config.dtd">
 
 <configuration>
+	<properties resource="db-config.properties" />
+	
 	<typeAliases>
 		<package name="com.friday.model" />
 	</typeAliases>
+	
+	<environments default="development">
+		<environment id="development">
+			<transactionManager type="JDBC" />
+			<dataSource type="POOLED">
+				<property name="driver" value="${driver}" />
+				<property name="url" value="${url}" />
+				<property name="username" value="${username}" />
+				<property name="password" value="${password}" />
+			</dataSource>
+		</environment>
+	</environments>
+	
+	<mappers>
+		<mapper resource="com/friday/mapper/CustomerMapper.xml" />
+		<mapper resource="com/friday/mapper/EmployeeMapper.xml" />
+		<mapper resource="com/friday/mapper/GoodsBackMapper.xml" />
+		<mapper resource="com/friday/mapper/GoodsBackDetailMapper.xml" />
+		<mapper resource="com/friday/mapper/InStockMapper.xml" />
+		<mapper resource="com/friday/mapper/InStockDetailMapper.xml" />
+		<mapper resource="com/friday/mapper/LogMapper.xml" />
+		<mapper resource="com/friday/mapper/OrderMapper.xml" />
+		<mapper resource="com/friday/mapper/OrderDetailMapper.xml" />
+		<mapper resource="com/friday/mapper/OutStockMapper.xml" />
+		<mapper resource="com/friday/mapper/OutStockDetailMapper.xml" />
+		<mapper resource="com/friday/mapper/ProductMapper.xml" />
+		<mapper resource="com/friday/mapper/ProductTypeMapper.xml" />
+		<mapper resource="com/friday/mapper/PurchaseRecordMapper.xml" />
+		<mapper resource="com/friday/mapper/SellMapper.xml" />
+		<mapper resource="com/friday/mapper/SellDetailMapper.xml" />
+		<mapper resource="com/friday/mapper/ShopMapper.xml" />
+		<mapper resource="com/friday/mapper/StockMapper.xml" />
+		<mapper resource="com/friday/mapper/UserMapper.xml" />
+	</mappers>
 </configuration>

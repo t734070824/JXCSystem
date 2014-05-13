@@ -42,6 +42,7 @@ public class AddUserController implements Controller {
 		} catch (Exception e) {
 			
 			model.put("result", "fail");
+			e.printStackTrace();
 			return new ModelAndView("success", model);
 		}
 	}
