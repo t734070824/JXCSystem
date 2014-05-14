@@ -46,6 +46,8 @@
 	<!-- Spring MVC mapping -->
 	<!-- DYH -->
 	<bean id="addUserController" class="com.friday.controller.AddUserController" />
+	<bean id="loginController" class="com.friday.controller.LoginController" />
+	<bean id="logoutController" class="com.friday.controller.LogoutController" />
 	<!-- CXW -->
 	
 	<!-- CSY -->
@@ -55,6 +57,8 @@
 			<props>
 			<!-- DYH -->
 				<prop key="/adduser.do">addUserController</prop>
+				<prop key="/login.do">loginController</prop>
+				<prop key="/logout.do">loginController</prop>
 			<!-- CXW -->
 				
 			<!-- CSY -->

@@ -28,4 +28,22 @@ public class UserServiceImpl implements UserService {
 		}
 		return ret;
 	}
+	
+	@Override
+	public User getUser(String account) throws Exception {
+		SqlSession sqlSession = null;
+		User user = null;
+		try {
+			sqlSession = SessionUtils.getSession();
+			UserMapper userMapper = sqlSession.getMapper(UserMapper.class);
+			
+			user = userMapper.selectByPrimaryKey(account);
+		
+		} catch (Exception e) {
+			throw e;
+		} finally {
+			SessionUtils.closeSession(sqlSession);
+		}
+		return user;
+	}
 }

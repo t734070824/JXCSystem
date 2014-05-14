@@ -64,7 +64,7 @@ $(function($) {
 	<div class="header">
     <div class="logo"><a href="#"><img src="images/logo.gif" alt="" title="" border="0" /></a></div>
     
-    <div class="right_header">Welcome Admin, <a href="#">Visit site</a> | <a href="#" class="logout">Logout</a></div>
+    <div class="right_header">Welcome <%=session.getAttribute("name") %> | <a href="logout.do" class="logout">Logout</a></div>
     <div class="jclock"></div>
     </div>
     
@@ -72,13 +72,13 @@ $(function($) {
     
 		<div class="menu">
 		<ul>
-			<li><a onclick="clickA(this);" alt="order_record_query.html">订单记录查询</a></li>
-			<li><a onclick="clickA(this);" alt="product_storage.html">产品入库</a></li>
-			<li><a onclick="clickA(this);" alt="stock_query.html">库存查询</a></li>
-			<li><a onclick="clickA(this);" alt="product_sale.html">产品销售</a></li>
-			<li><a onclick="clickA(this);" alt="stock_warn.html">库存报警</a></li>
-			<li><a onclick="clickA(this);" alt="staff_management.html">员工管理</a></li>
-			<li><a onclick="clickA(this);" alt="modify_password.html">修改密码</a></li>
+			<li><a onclick="clickA(this);" alt="order_record_query.jsp">订单记录查询</a></li>
+			<li><a onclick="clickA(this);" alt="product_storage.jsp">产品入库</a></li>
+			<li><a onclick="clickA(this);" alt="stock_query.jsp">库存查询</a></li>
+			<li><a onclick="clickA(this);" alt="product_sale.jsp">产品销售</a></li>
+			<li><a onclick="clickA(this);" alt="stock_warn.jsp">库存报警</a></li>
+			<li><a onclick="clickA(this);" alt="staff_management.jsp">员工管理</a></li>
+			<li><a onclick="clickA(this);" alt="modify_password.jsp">修改密码</a></li>
 		</ul>
 		</div> 
 
@@ -90,40 +90,40 @@ $(function($) {
             <a class="menuitem submenuheader" href="">订单管理</a>
             <div class="submenu">
                     <ul>
-                    <li><a onclick="clickA(this);" alt="order_product.html">订购产品</a></li>
-                    <li><a onclick="clickA(this);" alt="order_record_query.html">订单记录查询</a></li>
+                    <li><a onclick="clickA(this);" alt="order_product.jsp">订购产品</a></li>
+                    <li><a onclick="clickA(this);" alt="order_record_query.jsp">订单记录查询</a></li>
                     </ul>
           </div>
                 <a class="menuitem submenuheader" href="" >入库管理</a>
                 <div class="submenu">
                     <ul>
-                    <li><a onclick="clickA(this);" alt="product_storage.html">产品入库</a></li>
-                    <li><a onclick="clickA(this);" alt="storage_record_query.html">入库记录查询</a></li>
-                    <li><a onclick="clickA(this);" alt="Returns_records_query.html">退货记录查询</a></li>
+                    <li><a onclick="clickA(this);" alt="product_storage.jsp">产品入库</a></li>
+                    <li><a onclick="clickA(this);" alt="storage_record_query.jsp">入库记录查询</a></li>
+                    <li><a onclick="clickA(this);" alt="Returns_records_query.jsp">退货记录查询</a></li>
                   </ul>
                 </div>
                 <a class="menuitem submenuheader" href="">库存信息</a>
                 <div class="submenu">
                     <ul>
-                    <li><a onclick="clickA(this);" alt="stock_query.html">库存查询</a></li>
-                    <li><a onclick="clickA(this);" alt="stock_warn.html">库存报警</a></li>
-                    <li><a onclick="clickA(this);" alt="shop_management.html">网点管理</a></li>
+                    <li><a onclick="clickA(this);" alt="stock_query.jsp">库存查询</a></li>
+                    <li><a onclick="clickA(this);" alt="stock_warn.jsp">库存报警</a></li>
+                    <li><a onclick="clickA(this);" alt="shop_management.jsp">网点管理</a></li>
                     </ul>
                 </div>
                <a class="menuitem submenuheader" href="">出库管理</a>
                 <div class="submenu">
                     <ul>
-                    <li><a onclick="clickA(this);" alt="product_out_storage.html">产品出库</a></li>
-                    <li><a onclick="clickA(this);" alt="warehouse_out.html">出库记录查询</a></li>
-                    <li><a onclick="clickA(this);" alt="product_sale.html">产品销售</a></li>
+                    <li><a onclick="clickA(this);" alt="product_out_storage.jsp">产品出库</a></li>
+                    <li><a onclick="clickA(this);" alt="warehouse_out.jsp">出库记录查询</a></li>
+                    <li><a onclick="clickA(this);" alt="product_sale.jsp">产品销售</a></li>
                     </ul>
                 </div>
                     <a class="menuitem submenuheader" href="">员工信息</a>
                 <div class="submenu">
                     <ul>
-                    <li><a onclick="clickA(this);" alt="staff_management.html">员工管理</a></li>
-                    <li><a onclick="clickA(this);" alt="add_staff.html">添加员工</a></li>
-                    <li><a onclick="clickA(this);" alt="staff_birthday_remind.html">员工生日提醒</a></li>
+                    <li><a onclick="clickA(this);" alt="staff_management.jsp">员工管理</a></li>
+                    <li><a onclick="clickA(this);" alt="add_staff.jsp">添加员工</a></li>
+                    <li><a onclick="clickA(this);" alt="staff_birthday_remind.jsp">员工生日提醒</a></li>
                     </ul>
                 </div>
                 <a class="menuitem submenuheader" href="">客户管理</a>
@@ -137,10 +137,10 @@ $(function($) {
                 <a class="menuitem submenuheader" href="">系统设置</a>
                 <div class="submenu">
                     <ul>
-                    <li><a onclick="clickA(this);" alt="add_manager.html">添加管理员</a></li>
-                    <li><a onclick="clickA(this);" alt="modify_password.html">修改密码</a></li>
+                    <li><a onclick="clickA(this);" alt="add_manager.jsp">添加管理员</a></li>
+                    <li><a onclick="clickA(this);" alt="modify_password.jsp">修改密码</a></li>
                     <li><a onclick="clickA(this);" alt="">产品管理</a></li>
-                    <li><a onclick="clickA(this);" alt="class_management.html">类别管理</a></li>
+                    <li><a onclick="clickA(this);" alt="class_management.jsp">类别管理</a></li>
                     </ul>
                 </div>
         </div>

@@ -64,37 +64,27 @@ ddaccordion.init({
 
      
          <div class="login_form">
+         <form action="login.do">
          <table width="550" border="0" align="center">
-                    <tr>
-                      <td width="180" height="59">&nbsp;</td>
-                      <td width="233"><h1>Admin Login</h1></td>
-                      <td width="123">&nbsp;</td>
-                    </tr>
-                    <tr>
-                      <td height="35" align="right" style="font-size:20px"><strong>用户名：</strong></td>
-                      <td><label for="textfield"></label>
-                      <input name="textfield" type="text" id="textfield" size="30" /></td>
-                      <td>&nbsp;</td>
-                    </tr>
-                    <tr>
-                      <td height="35" align="right" style="font-size:20px"><strong>密 &nbsp;&nbsp;&nbsp;码：</strong></td>
-                      <td><input name="textfield2" type="text" id="textfield2" size="30" /></td>
-                      <td><a href="#">忘记密码？</a></td>
-                    </tr>
-                    <tr>
-                      <td rowspan="2">&nbsp;</td>
-                      <td height="35" colspan="2"><input type="checkbox" name="checkbox" id="checkbox" />
-                      下次直接登陆</td>
-                    </tr>
-                    <tr>
-                      <td height="35" colspan="2"><a href="order_product.html"><input type="submit" name="button" id="button" value="登陆" style="font-size:16px" /></a>
-                      &nbsp;  &nbsp;&nbsp;&nbsp;&nbsp;
-                      <input type="reset" name="button2" id="button2" value="重置" style="font-size:16px" /></td>
-                    </tr>
-                  </table>
-         </div>  
-          
-	
+	         <tr>
+	           <td width="180" height="59">&nbsp;</td>
+	           <td width="233"><h1>Admin Login</h1></td>
+	         </tr>
+	         <tr>
+	           <td height="35" align="right" style="font-size:20px"><strong>用户名:</strong></td>
+	           <td><input name="account" type="text" size="30" /></td>
+	         </tr>
+	         <tr>
+	           <td height="35" align="right" style="font-size:20px"><strong>密 &nbsp;&nbsp;&nbsp;码:</strong></td>
+	           <td><input name="password" type="password" size="30" /></td>
+	         </tr>
+	         <tr>
+	           <td height="35" align="right"><input type="submit" value="登陆" style="font-size:16px" />
+	           <td align="center"><input type="reset" value="重置" style="font-size:16px" /></td>
+	         </tr>
+         </table>
+         </form>
+         </div>
     
     <div class="footer_login">
     
