@@ -58,7 +58,7 @@ $(function($) {
 <script language="javascript" type="text/javascript" src="JS/niceforms.js"></script>
 
 </head>
-<body>
+<body bgcolor="transparent" style='background:transparent'>
  <table id="rounded-corner" summary="2007 Major IT Companies' Profit">
 	<tr>
 		<td colspan="7" align="left"><strong>添加类别</strong></td>
@@ -77,12 +77,12 @@ $(function($) {
     <td width="339" align="left"><a href="">＊点击文本框获取时间</a></td>
   </tr>
   <tr>
-    <td align="right">经办人</td>
+    <td align="right">经&nbsp;&nbsp;办&nbsp;&nbsp;人</td>
     <td colspan="2"><input name="textfield5" type="text" id="textfield5" size="20" /></td>
   </tr>
   <tr>
-    <td align="right">备注</td>
-    <td colspan="2"><input name="textfield6" type="text" id="textfield6" size="60"/></td>
+    <td align="right">备&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;注</td>
+    <td colspan="2"><input name="textfield6" type="text" id="textfield6" size="20"/></td>
   </tr>
   <tr>
     <td colspan="3" align="left">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="submit" name="button1" id="button1" value="确认添加" />        &nbsp;&nbsp;&nbsp;&nbsp;          <input type="reset" name="button2" id="button2" value="重新填写" ></td>

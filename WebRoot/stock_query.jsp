@@ -58,7 +58,7 @@ $(function($) {
 <script language="javascript" type="text/javascript" src="JS/niceforms.js"></script>
 
 </head>
-<body>
+<body bgcolor="transparent" style='background:transparent'>
   <table id="rounded-corner" summary="2007 Major IT Companies' Profit" width="623" border="0">
   <tr>
 		<td colspan="7" align="left"><strong>库存查询</strong></td>

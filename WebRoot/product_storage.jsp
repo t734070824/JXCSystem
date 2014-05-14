@@ -64,7 +64,7 @@ $(function($) {
 <script language="javascript" type="text/javascript" src="JS/niceforms.js"></script>
 
 </head>
-<body>
+<body bgcolor="transparent" style='background:transparent'>
                   <table id="rounded-corner" summary="2007 Major IT Companies' Profit">
 				  <tr>
 					<td colspan="7" align="left"><strong>产品入库</strong></td>
@@ -89,7 +89,7 @@ $(function($) {
                     </tr>
                     <tr>
                       <td>备注</td>
-                      <td colspan="2"><input name="textfield5" type="text" id="textfield5" size="60" /></td>
+                      <td colspan="2"><input name="textfield5" type="text" id="textfield5" size="20" /></td>
                     </tr>
                     <tr>
                       <td align="left">&nbsp;</td>

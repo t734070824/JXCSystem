@@ -58,10 +58,10 @@ $(function($) {
 <script language="javascript" type="text/javascript" src="JS/niceforms.js"></script>
 
 </head>
-<body>
+<body bgcolor="transparent" style='background:transparent'>
    <table height="263" id="rounded-corner" summary="2007 Major IT Companies' Profit">
    <tr>
-		<td colspan="7" align="left"><strong>类别管理</strong></td>
+		<td colspan="8" align="left"><strong>类别管理</strong></td>
 	</tr>
   <tr>
     <td colspan="4" align="right">添加类别&nbsp;&nbsp;&nbsp;&nbsp;<a href="add_shop.html"><img src="images/action_add.png" alt="" title="" border="0" /></a></td>

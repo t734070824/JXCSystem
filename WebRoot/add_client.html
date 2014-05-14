@@ -1,19 +1,7 @@
-<%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
-<%
-String path = request.getContextPath();
-String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
-%>
-
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-<base href="<%=basePath%>">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<meta http-equiv="pragma" content="no-cache">
-<meta http-equiv="cache-control" content="no-cache">
-<meta http-equiv="expires" content="0">    
-<meta http-equiv="keywords" content="keyword1,keyword2,keyword3">
-<meta http-equiv="description" content="This is my page">
 <title>IN ADMIN PANEL | Powered by INDEZINER</title>
 <link rel="stylesheet" type="text/css" href="style.css" />
 <script type="text/javascript" src="JS/jquery.min.js"></script>
@@ -58,26 +46,34 @@ $(function($) {
 <script language="javascript" type="text/javascript" src="JS/niceforms.js"></script>
 
 </head>
-<body bgcolor="transparent" style='background:transparent'>  
+<body bgcolor="transparent" style='background:transparent'>
      <table id="rounded-corner" summary="2007 Major IT Companies' Profit">
-	   <tr>
-		<td colspan="7" align="left"><strong>修改密码</strong></td>
+	 <tr>
+		<td colspan="7" align="left"><strong>添加客户</strong></td>
 	</tr>
   <tr>
-    <td width="112" align="right">原密码：</td>
+    <td width="112" align="right">客户编号：</td>
     <td><input name="textfield1" type="text" id="textfield1" size="20" /></td>
   </tr>
   <tr>
-    <td align="right">新密码：</td>
+    <td align="right">客户姓名：</td>
     <td><input name="textfield2" type="text" id="textfield2" size="20" /></td>
   </tr>
   <tr>
-    <td align="right">确认密码：</td>
+    <td align="right">联系电话：</td>
     <td><input name="textfield3" type="text" id="textfield3" size="20" /></td>
   </tr>
   <tr>
-    <td colspan="2" align="left">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="submit" name="button1" id="button1" value="确认" />        &nbsp;&nbsp;&nbsp;&nbsp;          <input type="reset" name="button2" id="button2" value="重置" ></td>
+    <td align="right">联系地址：</td>
+    <td><input name="textfield4" type="text" id="textfield4" size="20" /></td>
+    </tr>
+  <tr>
+    <td align="right">备&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;注</td>
+    <td><input name="textfield6" type="text" id="textfield6" size="20"/></td>
   </tr>
-</table>
+  <tr>
+    <td colspan="2" align="left">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="submit" name="button1" id="button1" value="确认添加" />        &nbsp;&nbsp;&nbsp;&nbsp;          <input type="reset" name="button2" id="button2" value="重新填写" ></td>
+    </tr>
+</table>	
 </body>
 </html>

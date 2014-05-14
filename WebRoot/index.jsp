@@ -150,7 +150,7 @@ $(function($) {
     </div>  
     
     <div class="right_content">            
-    <iframe id='mainiFrame' src="order_product.html" width="100%" height=auto frameborder="0" scrolling="no"></iframe>
+    <iframe id='mainiFrame' src="order_product.html" width="100%" height=1000 frameborder="0" scrolling="no"></iframe>
     </div><!-- end of right content-->
   </div>   <!--end of center content -->               
                     

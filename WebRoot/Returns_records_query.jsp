@@ -59,11 +59,11 @@ $(function($) {
 <link rel="stylesheet" type="text/css" media="all" href="CSS/niceforms-default.css" />
 
 </head>
-<body>    
+<body bgcolor="transparent" style='background:transparent'>    
 <table id="rounded-corner" summary="2007 Major IT Companies' Profit">
     <thead>
 	<tr>
-		<td colspan="7" align="left"><strong>库存记录查询</strong></td>
+		<td colspan="8" align="left"><strong>库存记录查询</strong></td>
 	</tr>
     <tr>
         	<td colspan="8" align="right">开始时间：

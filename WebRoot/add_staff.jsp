@@ -59,7 +59,7 @@ $(function($) {
 <link rel="stylesheet" type="text/css" media="all" href="CSS/niceforms-default.css" />
 
 </head>
-<body>
+<body bgcolor="transparent" style='background:transparent'>
    <table id="rounded-corner" summary="2007 Major IT Companies' Profit">
     <tr>
 		<td colspan="7" align="left"><strong>添加员工</strong></td>

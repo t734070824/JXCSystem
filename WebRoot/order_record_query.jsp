@@ -59,14 +59,14 @@ $(function($) {
 <link rel="stylesheet" type="text/css" media="all" href="CSS/niceforms-default.css" />
 
 </head>
-<body>        
+<body bgcolor="transparent" style='background:transparent'>         
 <table id="rounded-corner" summary="2007 Major IT Companies' Profit">
     <thead>
 	<tr>
-		<td colspan="7" align="left"><strong>订单记录查询</strong></td>
+		<td colspan="9" align="left"><strong>订单记录查询</strong></td>
 	</tr>
     <tr>
-    <td align="center">&nbsp;</td>
+    <td width="51" align="center">&nbsp;</td>
         	<td colspan="8" align="right">开始时间：
         	  <label for="textfield"></label>
         	  <input name="textfield" type="text" id="textfield" size="10" />
@@ -81,14 +81,14 @@ $(function($) {
     	<tr>
         <tr>
         <td align="center">&nbsp;</td>
-        	<td align="center"><strong>订单编号</strong></td>
-            <td align="center"><strong>订购时间</strong></td>
-            <td align="center"><strong>经办人 </strong></td>
-            <td align="center"><strong>供应商 </strong></td>
-            <td align="center"><strong>合计金额</strong></td>
-            <td align="center"><strong>折后金额</strong></td>
-            <td align="center"><strong>修改</strong></td>
-            <td align="center"><strong>删除</strong></td>
+        	<td width="61" align="center"><strong>订单编号</strong></td>
+            <td width="50" align="center"><strong>订购时间</strong></td>
+            <td width="64" align="center"><strong>经办人 </strong></td>
+            <td width="161" align="center"><strong>供应商 </strong></td>
+            <td width="85" align="center"><strong>合计金额</strong></td>
+            <td width="85" align="center"><strong>折后金额</strong></td>
+            <td width="54" align="center"><strong>修&nbsp;改</strong></td>
+            <td width="43" align="center"><strong>删&nbsp;除</strong></td>
             </tr>
     </thead>
         <tfoot>
