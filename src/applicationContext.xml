@@ -53,6 +53,8 @@
 	<!-- CXW -->
 	
 	<!-- CSY -->
+	<bean id="modifyPwdController" class="com.friday.controller.ModifyPwdController" />
+	
 	
 	<bean id="urlMapping" class="org.springframework.web.servlet.handler.SimpleUrlHandlerMapping">
 		<property name="mappings">
@@ -63,10 +65,11 @@
 				<prop key="/logout.do">loginController</prop>
 				<prop key="/getproduct.do">getProductController</prop>
 				<prop key="/orderproduct.do">orderProductController</prop>
+				
 			<!-- CXW -->
 				
 			<!-- CSY -->
-			
+				<prop key="/modifypwd.do">modifyPwdController</prop>
 			</props>
 		</property>
 	</bean>
