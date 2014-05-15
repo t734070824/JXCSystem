@@ -14,6 +14,11 @@
     from producttype
     where t_id = #{tId,jdbcType=INTEGER}
   </select>
+  <select id="selectAllTypes" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from producttype
+  </select>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
     delete from producttype
     where t_id = #{tId,jdbcType=INTEGER}

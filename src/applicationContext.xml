@@ -48,6 +48,8 @@
 	<bean id="addUserController" class="com.friday.controller.AddUserController" />
 	<bean id="loginController" class="com.friday.controller.LoginController" />
 	<bean id="logoutController" class="com.friday.controller.LogoutController" />
+	<bean id="getProductController" class="com.friday.controller.GetProductController" />
+	<bean id="orderProductController" class="com.friday.controller.OrderProductController" />
 	<!-- CXW -->
 	
 	<!-- CSY -->
@@ -59,6 +61,8 @@
 				<prop key="/adduser.do">addUserController</prop>
 				<prop key="/login.do">loginController</prop>
 				<prop key="/logout.do">loginController</prop>
+				<prop key="/getproduct.do">getProductController</prop>
+				<prop key="/orderproduct.do">orderProductController</prop>
 			<!-- CXW -->
 				
 			<!-- CSY -->
