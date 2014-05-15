@@ -46,4 +46,24 @@ public class UserServiceImpl implements UserService {
 		}
 		return user;
 	}
+
+	@Override
+	public int updateByPrimaryKeySelective(User record) {
+		SqlSession sqlSession = null;
+		int ret = 0;
+		try {
+			sqlSession = SessionUtils.getSession();
+			UserMapper userMapper = sqlSession.getMapper(UserMapper.class);
+			
+			userMapper.insert(user);
+			sqlSession.commit();
+			ret = 1;
+		} catch (Exception e) {
+			sqlSession.rollback();
+			throw e;
+		} finally {
+			SessionUtils.closeSession(sqlSession);
+		}
+		return ret;
+	}
 }

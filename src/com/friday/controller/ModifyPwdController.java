@@ -13,7 +13,7 @@ import com.friday.model.User;
 import com.friday.service.UserService;
 import com.friday.service.impl.UserServiceImpl;
 
-public class AddUserController implements Controller {
+public class ModifyPwdController implements Controller {
 
 	@Override
 	public ModelAndView handleRequest(HttpServletRequest request,
@@ -26,15 +26,17 @@ public class AddUserController implements Controller {
 			
 			String uid = request.getParameter("account");
 			String upwd = request.getParameter("password");
-			String uname = request.getParameter("name");
-			String ubz = request.getParameter("note");
+			String newupwd = request.getParameter("newpassword");
 			
-			User user = new User();
+			User user = null;
 			
-			user.setuId(uid);
-			user.setuPwd(upwd);
-			user.setuName(uname);
-			user.setuBz(ubz);
+			user = userService.getUser(uid);
+			
+			if(user != null)
+			{
+				user.setuPwd(newupwd);
+//				userService.
+			}
 			
 			userService.addUser(user);
 			

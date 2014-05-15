@@ -42,6 +42,7 @@ ddaccordion.init({
 </script>
 <script src="JS/jquery.jclock-1.2.0.js.txt" type="text/javascript"></script>
 <script type="text/javascript" src="JS/jconfirmaction.jquery.js"></script>
+<script type="text/javascript" src="JS/formcheck.js"></script>
 <script type="text/javascript">
 	
 	$(document).ready(function() {
@@ -59,33 +60,35 @@ $(function($) {
 
 </head>
 <body bgcolor="transparent" style='background:transparent'>
+<form name="myform" action="adduser.do"  onsubmit="return formcheck()" method="post">
      <table id="rounded-corner" summary="2007 Major IT Companies' Profit">
 	 <tr>
 		<td colspan="7" align="left"><strong>添加管理员</strong></td>
 	</tr>
   <tr>
     <td width="112" align="right">用户名：</td>
-    <td><input name="textfield1" type="text" id="textfield1" size="20" /></td>
+    <td><input name="account" type="text" id="account" size="20" /></td>
   </tr>
   <tr>
     <td align="right">密&nbsp;&nbsp;&nbsp;&nbsp;码：</td>
-    <td><input name="textfield2" type="text" id="textfield2" size="20" /></td>
+    <td><input name="password" type="password" id="password" size="20" /></td>
   </tr>
   <tr>
     <td align="right">确认密码：</td>
-    <td><input name="textfield3" type="text" id="textfield3" size="20" /></td>
+    <td><input name="password2" type="password" id="password2" size="20" /></td>
   </tr>
   <tr>
-    <td align="right">真是姓名：</td>
-    <td><input name="textfield4" type="text" id="textfield4" size="20" /></td>
+    <td align="right">真实姓名：</td>
+    <td><input name="name" type="text" id="name" size="20" /></td>
     </tr>
   <tr>
     <td align="right">备&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;注</td>
-    <td><input name="textfield6" type="text" id="textfield6" size="60"/></td>
+    <td><input name="note" type="text" id="note" size="60"/></td>
   </tr>
   <tr>
     <td colspan="2" align="left">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="submit" name="button1" id="button1" value="确认添加" />        &nbsp;&nbsp;&nbsp;&nbsp;          <input type="reset" name="button2" id="button2" value="重新填写" ></td>
     </tr>
 </table>	
+</form>
 </body>
 </html>
