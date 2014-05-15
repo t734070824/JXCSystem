@@ -1,4 +1,5 @@
 <%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%
 String path = request.getContextPath();
 String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
@@ -58,101 +59,47 @@ $(function($) {
 <script language="javascript" type="text/javascript" src="JS/niceforms.js"></script>
 
 </head>
-<body bgcolor="transparent" style='background:transparent'>       
+<body bgcolor="transparent" style='background:transparent'>
+<form action="orderproduct.do" method="post">      
     <table id="rounded-corner" summary="2007 Major IT Companies' Profit">
 	<tr>
-		<td colspan="7" align="left"><strong>订购产品</strong></td>
+		<td colspan="4" align="left"><strong>订购产品</strong></td>
 	</tr>
-  <tr>
-    <td width="90" rowspan="10" align="right"><strong>选择产品</strong></td>
-    <td colspan="6" align="center"><strong>电器</strong></td>
-    </tr>
-  <tr>
-    <td width="26" align="right">名称</td>
-    <td width="102"><input name="textfield1" type="text" id="textfield1" size="10" /></td>
-    <td width="61" align="right">规格</td>
-    <td width="104"><input name="textfield2" type="text" id="textfield2" size="6" /></td>
-    <td width="104" align="right">库存数量</td>
-    <td width="106"><input name="textfield3" type="text" id="textfield3" size="9" /></td>
-  </tr>
-  <tr>
-    <td>&nbsp;</td>
-    <td width="102">&nbsp;</td>
-    <td width="61" align="right">单价</td>
-    <td width="104"><input name="textfield4" type="text" id="textfield4" size="6" /></td>
-    <td width="104" align="right">订购数量</td>
-    <td width="106"><input name="textfield5" type="text" id="textfield5" size="9" /></td>
-  </tr>
-  <tr>
-    <td align="right">名称</td>
-    <td width="102"><input name="textfield6" type="text" id="textfield6" size="10" /></td>
-    <td width="61" align="right">规格</td>
-    <td width="104"><input name="textfield7" type="text" id="textfield7" size="6" /></td>
-    <td width="104" align="right">库存数量</td>
-    <td width="106"><input name="textfield8" type="text" id="textfield8" size="9" /></td>
-  </tr>
-  <tr>
-    <td>&nbsp;</td>
-    <td width="102">&nbsp;</td>
-    <td width="61" align="right">单价</td>
-    <td width="104"><input name="textfield9" type="text" id="textfield9" size="6" /></td>
-    <td width="104" align="right">订购数量</td>
-    <td width="106"><input name="textfield10" type="text" id="textfield10" size="9" /></td>
-  </tr>
-  <tr>
-    <td colspan="6" align="center"><strong>家具</strong></td>
-    </tr>
-  <tr>
-    <td align="right">名称</td>
-    <td width="102"><input name="textfield11" type="text" id="textfield11" size="10" /></td>
-    <td width="61" align="right">规格</td>
-    <td width="104"><input name="textfield12" type="text" id="textfield12" size="6" /></td>
-    <td width="104" align="right">库存数量</td>
-    <td width="106"><input name="textfield13" type="text" id="textfield13" size="9" /></td>
-  </tr>
-  <tr>
-    <td>&nbsp;</td>
-    <td width="102">&nbsp;</td>
-    <td width="61" align="right">单价</td>
-    <td width="104"><input name="textfield14" type="text" id="textfield14" size="6" /></td>
-    <td width="104" align="right">订购数量</td>
-    <td width="106"><input name="textfield15" type="text" id="textfield15" size="9" /></td>
-  </tr>
-  <tr>
-    <td align="right">名称</td>
-    <td width="102"><input name="textfield16" type="text" id="textfield16" size="10" /></td>
-    <td width="61" align="right">规格</td>
-    <td width="104"><input name="textfield17" type="text" id="textfield17" size="6" /></td>
-    <td width="104" align="right">库存数量</td>
-    <td width="106"><input name="textfield18" type="text" id="textfield18" size="9" /></td>
-  </tr>
-  <tr>
-    <td>&nbsp;</td>
-    <td width="102">&nbsp;</td>
-    <td width="61" align="right">单价</td>
-    <td width="104"><input name="textfield19" type="text" id="textfield19" size="6" /></td>
-    <td width="104" align="right">订购数量</td>
-    <td width="106"><input name="textfield20" type="text" id="textfield20" size="9" /></td>
-  </tr>
+	<c:forEach items="${products }" var="productType">
+		<tr>
+	    	<td colspan="4" align="center"><strong></strong>${productType.key }</td>
+	  	</tr>
+	  <tr>
+	    <td width="26" align="ceter">名称</td>
+	    <td width="61" align="center">规格</td>
+	    <td width="61" align="center">单价</td>
+	    <td width="104" align="center">订购数量</td>
+	  </tr>
+	  <c:forEach items="${productType.value }" var="product">
+	  <tr>
+	    <td width="102" align="center"><input type="text" size="10" value="${product.pName }" readonly/></td>
+	    <td width="104" align="center"><input type="text" size="6" value="${product.pStyle }" readonly/></td>
+	    <td width="104" align="center"><input type="text" size="6" value="${product.pPrice }" readonly/></td>
+	    <td width="106" align="center"><input name="${product.pId }" type="text" size="9" onKeyUp="this.value=this.value.replace(/\D/g,'')"/></td>
+	  </tr>
+	  </c:forEach>
+  </c:forEach>
   <tr>
     <td align="right"><strong>订购时间</strong></td>
-    <td colspan="6"><input name="textfield21" type="text" id="textfield21" size="27" />
+    <td colspan="4"><input name="orderTime" type="text" id="textfield21" size="27" />
       &nbsp;&nbsp;＊点击文本框获取时间</td>
   </tr>
   <tr>
-    <td align="right"><strong>经办人</strong></td>
-    <td colspan="6"><input name="textfield22" type="text" id="textfield22" size="27" /></td>
-  </tr>
-  <tr>
     <td align="right"><strong>备注</strong></td>
-    <td colspan="6"><textarea name="textfield23" cols="60" id="textfield23"></textarea></td>
+    <td colspan="3"><textarea name="remark" cols="60" id="textfield23"></textarea></td>
   </tr>
   <tr>
-    <td>&nbsp;</td>
-    <td colspan="6"><input type="submit" name="button" id="button" value="确认提交" />
-                      &nbsp;&nbsp;&nbsp;&nbsp;
-                      <input type="submit" name="button2" id="button2" value="重新填写" /></td>
+    <td colspan="4" align="center">
+    	<input type="submit" id="button" value="确认提交" />&nbsp;&nbsp;&nbsp;&nbsp;
+       	<input type="reset" id="button2" value="重新填写" />
+    </td>
   </tr>
-</table>	
+</table>
+</form>
 </body>
 </html>

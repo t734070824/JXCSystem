@@ -1,5 +1,7 @@
 package com.friday.inter;
 
+import java.util.List;
+
 import com.friday.model.ProductType;
 
 public interface ProductTypeMapper {
@@ -14,4 +16,6 @@ public interface ProductTypeMapper {
     int updateByPrimaryKeySelective(ProductType record);
 
     int updateByPrimaryKey(ProductType record);
+    
+    List<ProductType> selectAllTypes();
 }

@@ -90,7 +90,7 @@ $(function($) {
             <a class="menuitem submenuheader" href="">订单管理</a>
             <div class="submenu">
                     <ul>
-                    <li><a onclick="clickA(this);" alt="order_product.jsp">订购产品</a></li>
+                    <li><a onclick="clickA(this);" alt="getproduct.do">订购产品</a></li>
                     <li><a onclick="clickA(this);" alt="order_record_query.jsp">订单记录查询</a></li>
                     </ul>
           </div>
@@ -150,7 +150,7 @@ $(function($) {
     </div>  
     
     <div class="right_content">            
-    <iframe id='mainiFrame' src="order_product.html" width="100%" height=1000 frameborder="0" scrolling="no"></iframe>
+    <iframe id='mainiFrame' src="getproduct.do" width="100%" height=1000 frameborder="0" scrolling="no"></iframe>
     </div><!-- end of right content-->
   </div>   <!--end of center content -->               
                     
