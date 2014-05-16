@@ -17,6 +17,12 @@
     from ordersdetails
     where o_id = #{oId,jdbcType=INTEGER}
   </select>
+  <select id="selectByOrderId" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from ordersdetails
+    where order_id = #{orderId,jdbcType=VARCHAR}
+  </select>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
     delete from ordersdetails
     where o_id = #{oId,jdbcType=INTEGER}

@@ -1,5 +1,7 @@
 package com.friday.inter;
 
+import java.util.List;
+
 import com.friday.model.Order;
 
 public interface OrderMapper {
@@ -14,4 +16,8 @@ public interface OrderMapper {
     int updateByPrimaryKeySelective(Order record);
 
     int updateByPrimaryKey(Order record);
+    
+    List<Order> selectAll();
+    
+    List<Order> selectByStyle(int oStyle);
 }

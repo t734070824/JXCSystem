@@ -1,4 +1,6 @@
+<%@page import="com.friday.model.Order"%>
 <%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%
 String path = request.getContextPath();
 String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
@@ -18,6 +20,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <link rel="stylesheet" type="text/css" href="style.css" />
 <script type="text/javascript" src="JS/jquery.min.js"></script>
 <script type="text/javascript" src="JS/ddaccordion.js"></script>
+<script type="text/javascript" src="My97DatePicker/WdatePicker.js"></script>
 <script type="text/javascript">
 ddaccordion.init({
 	headerclass: "submenuheader", //Shared CSS class name of headers group
@@ -38,7 +41,7 @@ ddaccordion.init({
 	onopenclose:function(header, index, state, isuseractivated){ //custom code to run whenever a header is opened or closed
 		//do nothing
 	}
-})
+});
 </script>
 <script src="JS/jquery.jclock-1.2.0.js.txt" type="text/javascript"></script>
 <script type="text/javascript" src="JS/jconfirmaction.jquery.js"></script>
@@ -63,120 +66,61 @@ $(function($) {
 <table id="rounded-corner" summary="2007 Major IT Companies' Profit">
     <thead>
 	<tr>
-		<td colspan="9" align="left"><strong>订单记录查询</strong></td>
+		<td colspan="5" align="left"><strong>订单记录查询</strong></td>
 	</tr>
     <tr>
-    <td width="51" align="center">&nbsp;</td>
-        	<td colspan="8" align="right">开始时间：
-        	  <label for="textfield"></label>
-        	  <input name="textfield" type="text" id="textfield" size="10" />
-        	  &nbsp;结束时间：
-        	  <label for="textfield2"></label>
-        	  <input name="textfield2" type="text" id="textfield2" size="10" />
-        	  &nbsp;入库单编号：
-        	  <label for="textfield3"></label>
-        	  <input name="textfield3" type="text" id="textfield3" size="10" />
-        	  <input type="submit" name="button" id="button" value="查询" /></td>
-            </tr>
-    	<tr>
+    	<td colspan="5" align="right">
+       	<form action="queryorder.do" method="post">
+        	  <label>开始时间：</label>
+        	  <input name="starttime" type="text" id="textfield" size="8" onclick="WdatePicker()" />
+        	  <label>结束时间:</label>
+        	  <input name="endtime" type="text" id="textfield2" size="8" onclick="WdatePicker()" />
+        	  <label>入库单编号:</label>
+        	  <input name="orderid" type="text" id="textfield3" size="8" />
+        	  <label>订单状态:</label>
+        	  <select name="orderstate">
+        	  	<option value="2">所有类型</option>
+        	  	<option value="0">未处理</option>
+        	  	<option value="1">已入库</option>
+        	  	<option value="-1">已退回</option>
+        	  </select>
+        	  <input type="submit" value="查询" />
+       	</form>
+       	</td>
+     </tr>
         <tr>
-        <td align="center">&nbsp;</td>
         	<td width="61" align="center"><strong>订单编号</strong></td>
             <td width="50" align="center"><strong>订购时间</strong></td>
             <td width="64" align="center"><strong>经办人 </strong></td>
-            <td width="161" align="center"><strong>供应商 </strong></td>
             <td width="85" align="center"><strong>合计金额</strong></td>
-            <td width="85" align="center"><strong>折后金额</strong></td>
-            <td width="54" align="center"><strong>修&nbsp;改</strong></td>
-            <td width="43" align="center"><strong>删&nbsp;除</strong></td>
-            </tr>
+            <td width="64" align="center"><strong>状态</strong></td>
+        </tr>
     </thead>
-        <tfoot>
-    	
-    </tfoot>
-    <tbody>
-    	<tr>
-        <td><input type="checkbox" name="" /></td>
-            <td align="center">读取订单号</td>
-            <td align="center">读取订购时间</td>
-            <td align="center">读取XXX</td>
-            <td align="center">获取XXXXXXXXXXX</td>
-            <td align="center">150￥</td>
-            <td align="center">130￥</td>
-            <td align="center"><a href="#"><img src="images/user_edit.png" alt="" title="" border="0" /></a></td>
-            <td align="center"><a href="#" class="ask"><img src="images/trash.png" alt="" title="" border="0" /></a></td>
-        </tr>
-        <tr>
-        <td><input type="checkbox" name="" /></td>
-            <td align="center">读取订单号</td>
-            <td align="center">读取订购时间</td>
-            <td align="center">读取XXX</td>
-            <td align="center">获取XXXXXXXXXXX</td>
-            <td align="center">150￥</td>
-            <td align="center">130￥</td>
-            <td align="center"><a href="#"><img src="images/user_edit.png" alt="" title="" border="0" /></a></td>
-            <td align="center"><a href="#" class="ask"><img src="images/trash.png" alt="" title="" border="0" /></a></td>
-        </tr>
-        <tr>
-        <td><input type="checkbox" name="" /></td>
-            <td align="center">读取订单号</td>
-            <td align="center">读取订购时间</td>
-            <td align="center">读取XXX</td>
-            <td align="center">获取XXXXXXXXXXX</td>
-            <td align="center">150￥</td>
-            <td align="center">130￥</td>
-            <td align="center"><a href="#"><img src="images/user_edit.png" alt="" title="" border="0" /></a></td>
-            <td align="center"><a href="#" class="ask"><img src="images/trash.png" alt="" title="" border="0" /></a></td>
-        </tr>
-        <tr>
-        <td><input type="checkbox" name="" /></td>
-            <td align="center">读取订单号</td>
-            <td align="center">读取订购时间</td>
-            <td align="center">读取XXX</td>
-            <td align="center">获取XXXXXXXXXXX</td>
-            <td align="center">150￥</td>
-            <td align="center">130￥</td>
-            <td align="center"><a href="#"><img src="images/user_edit.png" alt="" title="" border="0" /></a></td>
-            <td align="center"><a href="#" class="ask"><img src="images/trash.png" alt="" title="" border="0" /></a></td>
-        </tr>
-        <tr>
-        <td><input type="checkbox" name="" /></td>
-            <td align="center">读取订单号</td>
-            <td align="center">读取订购时间</td>
-            <td align="center">读取XXX</td>
-            <td align="center">获取XXXXXXXXXXX</td>
-            <td align="center">150￥</td>
-            <td align="center">130￥</td>
-            <td align="center"><a href="#"><img src="images/user_edit.png" alt="" title="" border="0" /></a></td>
-            <td align="center"><a href="#" class="ask"><img src="images/trash.png" alt="" title="" border="0" /></a></td>
-        </tr>
-        <tr>
-        <td><input type="checkbox" name="" /></td>
-            <td align="center">读取订单号</td>
-            <td align="center">读取订购时间</td>
-            <td align="center">读取XXX</td>
-            <td align="center">获取XXXXXXXXXXX</td>
-            <td align="center">150￥</td>
-            <td align="center">130￥</td>
-            <td align="center"><a href="#"><img src="images/user_edit.png" alt="" title="" border="0" /></a></td>
-            <td align="center"><a href="#" class="ask"><img src="images/trash.png" alt="" title="" border="0" /></a></td>
-        </tr>
-        <tr>
-        <td><input type="checkbox" name="" /></td>
-            <td align="center">读取订单号</td>
-            <td align="center">读取订购时间</td>
-            <td align="center">读取XXX</td>
-            <td align="center">获取XXXXXXXXXXX</td>
-            <td align="center">150￥</td>
-            <td align="center">130￥</td>
-            <td align="center"><a href="#"><img src="images/user_edit.png" alt="" title="" border="0" /></a></td>
-            <td align="center"><a href="#" class="ask"><img src="images/trash.png" alt="" title="" border="0" /></a></td>
-        </tr>
+    <tfoot>
 		 <tr>
-			<td colspan="8" align="right"><div class="pagination">
-				<span class="disabled"><< prev</span><span class="current">1</span><a href="">2</a><a href="">3</a><a href="">4</a><a href="">5</a>…<a href="">10</a><a href="">11</a><a href="">12</a>...<a href="">100</a><a href="">101</a><a href="">next >></a>
-			</div></td>
+			<td colspan="5" align="right">
+			<div class="pagination">
+				<span class="disabled">prev</span>
+				<span class="current">1</span>
+				<a href="">2</a>
+				<a href="">3</a>
+				<a href="">4</a>
+				<a href="">5</a>
+				<a href="">next</a>
+			</div>
+			</td>
 		 </tr>
+	</tfoot>
+    <tbody>
+    <c:forEach items="${result }" var="order">
+    	<tr>
+            <td align="center">${order.oId }</td>
+            <td align="center">${order.date }</td>
+            <td align="center">${order.user }</td>
+            <td align="center">${order.price }</td>
+            <td align="center">${order.style }</td>
+        </tr>
+     </c:forEach>
     </tbody>
 </table>
 
