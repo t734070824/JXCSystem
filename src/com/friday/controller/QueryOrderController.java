@@ -38,8 +38,24 @@ public class QueryOrderController implements Controller {
 			
 			List<Object> list = orderProductService.queryOrder(start, end, style, orderId);
 			
+			int pagecurrent = 0, pagecount = (list.size()-1) / 10 + 1;
+			
+			String page = request.getParameter("page");
+			
+			if (page!=null) {
+				pagecurrent = Integer.parseInt(page);
+			}
+			
+			list = list.subList(pagecurrent * 10, (pagecurrent*10 + 10) > list.size() ? list.size() : (pagecurrent*10 + 10));
+			
 			model.put("result", list);
 			
+			model.put("starttime", starttime);
+			model.put("endtime", endtime);
+			model.put("orderId", orderId);
+			model.put("orderstate", state);
+			model.put("pagecurrent", pagecurrent);
+			model.put("pagecount", pagecount);
 			return new ModelAndView("order_record_query", model);
 		} catch (Exception e) {
 			model.put("error", "操作失败");
