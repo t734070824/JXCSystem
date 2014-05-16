@@ -41,6 +41,7 @@ ddaccordion.init({
 })
 </script>
 <script src="JS/jquery.jclock-1.2.0.js.txt" type="text/javascript"></script>
+<script type="text/javascript" src="JS/formcheck.js"></script>
 <script type="text/javascript" src="JS/jconfirmaction.jquery.js"></script>
 <script type="text/javascript">
 	
@@ -59,25 +60,27 @@ $(function($) {
 
 </head>
 <body bgcolor="transparent" style='background:transparent'>  
+<form name="myform" action="modifypwd.do"  onsubmit="return modifypwdformcheck()" method="post">
      <table id="rounded-corner" summary="2007 Major IT Companies' Profit">
 	   <tr>
 		<td colspan="7" align="left"><strong>修改密码</strong></td>
 	</tr>
   <tr>
     <td width="112" align="right">原密码：</td>
-    <td><input name="textfield1" type="text" id="textfield1" size="20" /></td>
+    <td><input name="password" type="password" id="password" size="20" /></td>
   </tr>
   <tr>
     <td align="right">新密码：</td>
-    <td><input name="textfield2" type="text" id="textfield2" size="20" /></td>
+    <td><input name="newpassword" type="text" id="newpassword" size="20" /></td>
   </tr>
   <tr>
     <td align="right">确认密码：</td>
-    <td><input name="textfield3" type="text" id="textfield3" size="20" /></td>
+    <td><input name="newpassword2" type="text" id="newpassword2" size="20" /></td>
   </tr>
   <tr>
     <td colspan="2" align="left">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="submit" name="button1" id="button1" value="确认" />        &nbsp;&nbsp;&nbsp;&nbsp;          <input type="reset" name="button2" id="button2" value="重置" ></td>
   </tr>
 </table>
+</form>
 </body>
 </html>

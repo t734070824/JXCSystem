@@ -24,6 +24,8 @@
 	<!-- CXW -->
 	
 	<!-- CSY -->
+	<bean id="modifyPwdController" class="com.friday.controller.ModifyPwdController" />
+	
 	
 	<bean id="urlMapping" class="org.springframework.web.servlet.handler.SimpleUrlHandlerMapping">
 		<property name="mappings">
@@ -38,7 +40,7 @@
 			<!-- CXW -->
 				
 			<!-- CSY -->
-			
+				<prop key="/modifypwd.do">modifyPwdController</prop>
 			</props>
 		</property>
 	</bean>

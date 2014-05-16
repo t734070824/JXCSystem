@@ -64,7 +64,7 @@ ddaccordion.init({
 
      
          <div class="login_form">
-         <form action="login.do">
+         <form name="myform" action="login.do" method="post">
          <table width="550" border="0" align="center">
 	         <tr>
 	           <td width="180" height="59">&nbsp;</td>
