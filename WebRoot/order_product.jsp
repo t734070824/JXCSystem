@@ -19,6 +19,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <link rel="stylesheet" type="text/css" href="style.css" />
 <script type="text/javascript" src="JS/jquery.min.js"></script>
 <script type="text/javascript" src="JS/ddaccordion.js"></script>
+<script type="text/javascript" src="My97DatePicker/WdatePicker.js"></script>
 <script type="text/javascript">
 ddaccordion.init({
 	headerclass: "submenuheader", //Shared CSS class name of headers group
@@ -86,7 +87,7 @@ $(function($) {
   </c:forEach>
   <tr>
     <td align="right"><strong>订购时间</strong></td>
-    <td colspan="4"><input name="orderTime" type="text" id="textfield21" size="27" />
+    <td colspan="4"><input name="orderTime" type="text" id="textfield21" size="27" onclick="WdatePicker()"/>
       &nbsp;&nbsp;＊点击文本框获取时间</td>
   </tr>
   <tr>

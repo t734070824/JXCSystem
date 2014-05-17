@@ -39,10 +39,12 @@ public class AddUserController implements Controller {
 			userService.addUser(user);
 			
 			model.put("result", "success");
+			model.put("success", "成功");
 			return new ModelAndView("success", model);
 		} catch (Exception e) {
 			
 			model.put("result", "fail");
+			model.put("success", "失败");
 			e.printStackTrace();
 			return new ModelAndView("success", model);
 		}

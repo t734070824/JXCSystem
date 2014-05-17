@@ -48,16 +48,26 @@ public class UserServiceImpl implements UserService {
 	}
 
 	@Override
-	public int updateByPrimaryKeySelective(User record) throws Exception {
+	public int updateByPrimaryKey(String uid, String password, String newpassword) throws Exception{
 		SqlSession sqlSession = null;
 		int ret = 0;
 		try {
 			sqlSession = SessionUtils.getSession();
 			UserMapper userMapper = sqlSession.getMapper(UserMapper.class);
 			
-			userMapper.insert(record);
-			sqlSession.commit();
-			ret = 1;
+			User user = userMapper.selectByPrimaryKey(uid);
+			
+			if(user != null && user.getuPwd().equals(password))
+			{
+				user.setuPwd(newpassword);
+				userMapper.updateByPrimaryKey(user);
+				sqlSession.commit();
+				ret = 1;
+			}
+			else
+			{
+				ret = 0;				
+			}
 		} catch (Exception e) {
 			sqlSession.rollback();
 			throw e;

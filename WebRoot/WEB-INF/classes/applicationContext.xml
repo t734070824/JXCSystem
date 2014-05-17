@@ -13,36 +13,6 @@
 		<property name="viewClass" value="org.springframework.web.servlet.view.JstlView" />
 	</bean>
 
-    <!-- <bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">  
-	    <property name="driverClassName">
-	        <value>com.mysql.jdbc.Driver</value>
-	    </property>
-	    <property name="url">
-	        <value>jdbc:mysql://127.0.0.1:3306/friday?characterEncoding=UTF-8</value>
-	    </property>
-	    <property name="username">
-	        <value>root</value>
-	    </property>
-	    <property name="password">
-	        <value>root</value>
-	    </property>
-	</bean> -->
-	
-    <!--  <bean id="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
-     	<property name="dataSource" ref="dataSource" />
-    </bean> -->
-	
-	<!--  <bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
-    	<property name="dataSource" ref="dataSource"/>
-    	<property name="configLocation" value="classpath:Configuration.xml" />
-    	<property name="mapperLocations" value="classpath:com/friday/mapper/*.xml" />
-  	</bean> -->
-  
-	<!-- <bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
-     	<property name="basePackage" value="com.friday.inter" />
-     	<property name="sqlSessionFactoryBeanName" value="sqlSessionFactory" />
-  	</bean> -->
-
 	<!-- Spring MVC mapping -->
 	<!-- DYH -->
 	<bean id="addUserController" class="com.friday.controller.AddUserController" />
@@ -50,12 +20,15 @@
 	<bean id="logoutController" class="com.friday.controller.LogoutController" />
 	<bean id="getProductController" class="com.friday.controller.GetProductController" />
 	<bean id="orderProductController" class="com.friday.controller.OrderProductController" />
-	
+	<bean id="queryOrderController" class="com.friday.controller.QueryOrderController"></bean>
 	<!-- CXW -->
 	<bean id="stockLoadController" class="com.friday.controller.StockLoadController"/>
 	<bean id="stockQueryController" class="com.friday.controller.StockQueryController"/>
 	<bean id="stockWarnController" class="com.friday.controller.StockWarnController"/>
 	<!-- CSY -->
+	<bean id="modifyPwdController" class="com.friday.controller.ModifyPwdController" />
+	<bean id="addStaffController" class="com.friday.controller.AddStaffController" />
+	
 	
 	<bean id="urlMapping" class="org.springframework.web.servlet.handler.SimpleUrlHandlerMapping">
 		<property name="mappings">
@@ -66,12 +39,14 @@
 				<prop key="/logout.do">loginController</prop>
 				<prop key="/getproduct.do">getProductController</prop>
 				<prop key="/orderproduct.do">orderProductController</prop>
+				<prop key="/queryorder.do">queryOrderController</prop>
 			<!-- CXW -->
 				<prop key="/stockquery.do">stockQueryController</prop>
 				<prop key="/stockload.do">stockLoadController</prop>
 				<prop key="/stockwarn.do">stockWarnController</prop>
 			<!-- CSY -->
-			
+				<prop key="/modifypwd.do">modifyPwdController</prop>
+				<prop key="/addstaff.do">addStaffController</prop>
 			</props>
 		</property>
 	</bean>
