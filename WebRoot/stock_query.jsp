@@ -84,17 +84,17 @@ $(function($) {
             <td width="85" align="center">状态</td>
             <td width="96" align="center">单价</td>
             <td width="70" align="center">库存数量</td>
-            <!--  <td width="95" align="center">建议实价格</td> -->
+             <!-- <td width="95" align="center">建议实价格</td> -->
           </tr>
          
-          <c:forEach items="${stock.value}" var="productsMessage">
+          <c:forEach items="${stock}" var="productsMessage">
           <tr>
-            <td align="center">${productsMessage.pId}</td>
-            <td align="center">${productsMessage.pName}</td>
-            <td align="center">${productsMessage.pStyle}</td>
-            <td align="center">${productsMessage.pZt}</td>
-            <td align="center">${productsMessage.pPrice};</td>
-            <td align="center">${stock.key};</td>
+            <td align="center">${productsMessage.value.pId}</td>
+            <td align="center">${productsMessage.value.pName}</td>
+            <td align="center">${productsMessage.value.pStyle}</td>
+            <td align="center">${productsMessage.value.pZt}</td>
+            <td align="center">${productsMessage.value.pPrice};</td>
+            <td align="center">${productsMessage.key};</td>
            <!--   <td align="center">&nbsp;</td>-->
           </tr>
           </c:forEach>

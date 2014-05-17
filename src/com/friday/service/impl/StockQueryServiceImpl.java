@@ -20,7 +20,7 @@ public  class StockQueryServiceImpl implements StockQueryService {
 	public Map<Integer, Object> stockQuery(String sName) throws Exception {
 		SqlSession sqlSession = null;
 		List<Stock> list = null;
-		Map<Integer, Object> map = null;
+		Map<Integer, Object> map = new HashMap<Integer, Object>();
 		
 		try {
 			sqlSession =  SessionUtils.getSession();
@@ -31,11 +31,12 @@ public  class StockQueryServiceImpl implements StockQueryService {
 			
 			Shop shop = shopMapper.selectBySName(sName);
 			List<Stock> stocks = stockMapper.selectByshopId(shop.getsId());
+
 			for(Stock stock:stocks)
 			{
+				//System.out.print("//"+stock.getsNum());
 				Product product = productMapper.selectByPrimaryKey(stock.getpId());
-				//List<Product> products = null;
-				//products.add(product);
+				//System.out.println("///"+product.getpName());
 				map.put(stock.getsNum(), product);
 			}
 		} catch (Exception e) {

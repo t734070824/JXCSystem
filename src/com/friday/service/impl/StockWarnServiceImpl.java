@@ -34,10 +34,13 @@ public class StockWarnServiceImpl implements StockWarnService {
 			List<Shop> shops =null;
 			shops = shopMapper.selectAllShops();
 			for (Shop shop : shops) {
-				Map<String, Object> stockMap = null;
+				Map<String, Object> stockMap = new HashMap<String, Object>();
 				stocks = stockMapper.selectByshopIdAndStockNum(shop.getsId());
+				//System.out.println("///"+shop.getsName());
 				for (Stock stock : stocks) {
+					//System.out.println("////"+stock.getsNum());
 					stockMap.put(productMapper.selectByPrimaryKey(stock.getpId()).getpName(), stock);
+					//System.out.println("/////"+productMapper.selectByPrimaryKey(stock.getpId()).getpName());
 				}
 				map.put(shop.getsName(), stockMap);
 			}

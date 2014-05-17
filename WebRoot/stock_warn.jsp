@@ -64,14 +64,20 @@ $(function($) {
   <tr>
 		<td colspan="7" align="left"><strong>库存报警</strong></td>
 	</tr>
-	<c:forEach items = "${stockWarn}" var="stockWarnMessage">
+	<c:forEach items = "${stockWarn}" var="stockWarnMsg">
   <tr >
-    <td class="jlj" colspan="3" align="center"><strong>${stockWarnMessage.key}</strong></td>
+    <td class="jlj" colspan="3" align="center"><strong>${stockWarnMsg.key}</strong></td>
     </tr>
   <tr align="center" valign="middle">
-    <td><strong>${stockWarnMessage.value.key}</strong></td>
-    <td><strong>${stockWarnMessage.value.value.sNum}</strong></td>
+    <td><strong>产品名称</strong></td>
+    <td><strong>库存数量</strong></td>
   </tr>
+  <c:forEach items = "${stockWarnMsg.value}" var="stockWarnMessage">
+  <tr align="center" valign="middle">
+    <td><strong>${stockWarnMessage.key}</strong></td>
+    <td><strong>${stockWarnMessage.value.sNum}</strong></td>
+  </tr>
+  </c:forEach>
   </c:forEach>
    <tr>
 			<td colspan="8" align="right"><div class="pagination">
