@@ -74,9 +74,9 @@ $(function($) {
 		<ul>
 			<li><a onclick="clickA(this);" alt="order_record_query.jsp">订单记录查询</a></li>
 			<li><a onclick="clickA(this);" alt="product_storage.jsp">产品入库</a></li>
-			<li><a onclick="clickA(this);" alt="stock_query.jsp">库存查询</a></li>
+			<li><a onclick="clickA(this);" alt="stockload.do">库存查询</a></li>
 			<li><a onclick="clickA(this);" alt="product_sale.jsp">产品销售</a></li>
-			<li><a onclick="clickA(this);" alt="stock_warn.jsp">库存报警</a></li>
+			<li><a onclick="clickA(this);" alt="stockwarn.do">库存报警</a></li>
 			<li><a onclick="clickA(this);" alt="staff_management.jsp">员工管理</a></li>
 			<li><a onclick="clickA(this);" alt="modify_password.jsp">修改密码</a></li>
 		</ul>
@@ -105,8 +105,8 @@ $(function($) {
                 <a class="menuitem submenuheader" href="">库存信息</a>
                 <div class="submenu">
                     <ul>
-                    <li><a onclick="clickA(this);" alt="stock_query.jsp">库存查询</a></li>
-                    <li><a onclick="clickA(this);" alt="stock_warn.jsp">库存报警</a></li>
+                    <li><a onclick="clickA(this);" alt="stockload.do">库存查询</a></li>
+                    <li><a onclick="clickA(this);" alt="stockwarn.do">库存报警</a></li>
                     <li><a onclick="clickA(this);" alt="shop_management.jsp">网点管理</a></li>
                     </ul>
                 </div>

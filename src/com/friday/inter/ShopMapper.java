@@ -1,5 +1,7 @@
 package com.friday.inter;
 
+import java.util.List;
+
 import com.friday.model.Shop;
 
 public interface ShopMapper {
@@ -14,4 +16,8 @@ public interface ShopMapper {
     int updateByPrimaryKeySelective(Shop record);
 
     int updateByPrimaryKey(Shop record);
+
+	Shop selectBySName(String sName);
+
+	List<Shop> selectAllShops();
 }

@@ -1,9 +1,7 @@
 package com.friday.service;
 
 import java.sql.Date;
-import java.util.List;
 import java.util.Map;
-
 import com.friday.model.ProductType;
 
 public interface OrderProductService {

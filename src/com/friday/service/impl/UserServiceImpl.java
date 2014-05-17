@@ -48,14 +48,14 @@ public class UserServiceImpl implements UserService {
 	}
 
 	@Override
-	public int updateByPrimaryKeySelective(User record) {
+	public int updateByPrimaryKeySelective(User record) throws Exception {
 		SqlSession sqlSession = null;
 		int ret = 0;
 		try {
 			sqlSession = SessionUtils.getSession();
 			UserMapper userMapper = sqlSession.getMapper(UserMapper.class);
 			
-			userMapper.insert(user);
+			userMapper.insert(record);
 			sqlSession.commit();
 			ret = 1;
 		} catch (Exception e) {
