@@ -27,6 +27,7 @@
 	
 	<!-- CSY -->
 	<bean id="modifyPwdController" class="com.friday.controller.ModifyPwdController" />
+	<bean id="addStaffController" class="com.friday.controller.AddStaffController" />
 	
 	
 	<bean id="urlMapping" class="org.springframework.web.servlet.handler.SimpleUrlHandlerMapping">
@@ -45,6 +46,7 @@
 				
 			<!-- CSY -->
 				<prop key="/modifypwd.do">modifyPwdController</prop>
+				<prop key="/addstaff.do">addStaffController</prop>
 			</props>
 		</property>
 	</bean>

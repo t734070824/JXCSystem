@@ -60,6 +60,7 @@ $(function($) {
 
 </head>
 <body bgcolor="transparent" style='background:transparent'>
+ <form id="myform" name="myform" method="post" action="addstaff.do">
    <table id="rounded-corner" summary="2007 Major IT Companies' Profit">
     <tr>
 		<td colspan="7" align="left"><strong>添加员工</strong></td>
@@ -67,76 +68,68 @@ $(function($) {
   <tr>
     <td colspan="3">注：</td>
     </tr>
+   
   <tr>
     <td width="111" align="right"><strong>员工姓名：</strong></td>
-    <td colspan="2"><form id="form1" name="form1" method="post" action="">
-      <label for="textfield"></label>
-      <input type="text" name="textfield" id="textfield" />
-    </form></td>
+    <td colspan="2">
+      <label for="name"></label>
+      <input type="text" name="name" id="name" />
+    </td>
   </tr>
   <tr>
     <td align="right"><strong>员工性别：</strong></td>
-    <td colspan="2"><form id="form2" name="form2" method="post" action="">
+    <td colspan="2">
       <p>
         <label>
-          <input type="radio" name="RadioGroup1" value="单选" id="RadioGroup1_0" />
+          <input type="radio" name="sex" value="a" id="sex0" />
           男</label>
         <label>
-          <input type="radio" name="RadioGroup1" value="单选" id="RadioGroup1_1" />
+          <input type="radio" name="sex" value="b" id="sex1" />
          女</label>
         <br />
       </p>
-    </form></td>
+    </td>
   </tr>
   <tr>
     <td align="right"><strong>联系电话：</strong></td>
-    <td colspan="2"><form id="form3" name="form3" method="post" action="">
-      <label for="textfield2"></label>
-      <input type="text" name="textfield2" id="textfield2" />
-    </form></td>
+    <td colspan="2">
+      <input type="text" name="phone" id="phone" />
+    </td>
   </tr>
   <tr>
     <td align="right"><strong>家庭住址：</strong></td>
-    <td colspan="2"><form id="form4" name="form4" method="post" action="">
-      <label for="textfield3"></label>
-      <input type="text" name="textfield3" id="textfield3" />
-    </form></td>
-  </tr>
-  <tr>
-    <td align="right"><strong>身份证号：</strong></td>
-    <td colspan="2"><form id="form5" name="form5" method="post" action="">
-      <label for="textfield4"></label>
-      <input type="text" name="textfield4" id="textfield4" />
-    </form></td>
+    <td colspan="2">
+      <input type="text" name="address" id="address" />
+    </td>
   </tr>
   <tr>
     <td align="right"><strong>员工生日：</strong></td>
-    <td width="182"><form id="form6" name="form6" method="post" action="">
-      <label for="textfield5"></label>
-      <input type="text" name="textfield5" id="textfield5" />
-    </form></td>
+    <td width="182">
+      <input type="text" name="birthday" id="birthday" />
+   </td>
     <td width="316" align="left" ><a href="">＊点击文本框获取时间</a></td>
   </tr>
   <tr>
     <td align="right"><strong>员工工资：</strong></td>
-    <td colspan="2"><form id="form7" name="form7" method="post" action="">
-      <label for="textfield6"></label>
-      <input type="text" name="textfield6" id="textfield6" />
-    </form></td>
+    <td colspan="2">
+
+      <input type="text" name="price" id="price" />
+    </td>
   </tr>
   <tr>
     <td align="right"><strong>备注</strong></td>
-    <td colspan="2"><form id="form8" name="form8" method="post" action="">
-      <label for="textfield7"></label>
-      <input type="text" name="textfield7" id="textfield7" />
-    </form></td>
+    <td colspan="2">
+      <input type="text" name="note" id="note" />
+    </td>
   </tr>
+ 
   <tr>
     <td align="right">&nbsp;</td>
-    <td colspan="2"><form id="form9" name="form9" method="post" action="">
+    <td colspan="2">
       <input type="submit" name="button" id="button" value="确认添加" />&nbsp;&nbsp;&nbsp;&nbsp;<input name="" type="reset" value="重新填写"/>
-    </form></td>
+   </td>
   </tr>
 </table>
+ </form>
 </body>
 </html>
