@@ -72,11 +72,11 @@ $(function($) {
     	<td colspan="5" align="right">
        	<form action="queryorder.do" method="post">
         	  <label>开始时间：</label>
-        	  <input name="starttime" type="text" id="textfield" size="8" onclick="WdatePicker()" />
+        	  <input name="starttime" type="text" id="textfield" size="5" onclick="WdatePicker()" />
         	  <label>结束时间:</label>
-        	  <input name="endtime" type="text" id="textfield2" size="8" onclick="WdatePicker()" />
+        	  <input name="endtime" type="text" id="textfield2" size="5" onclick="WdatePicker()" />
         	  <label>入库单编号:</label>
-        	  <input name="orderid" type="text" id="textfield3" size="8" />
+        	  <input name="orderid" type="text" id="textfield3" size="5" />
         	  <label>订单状态:</label>
         	  <select name="orderstate">
         	  	<option value="2">所有类型</option>

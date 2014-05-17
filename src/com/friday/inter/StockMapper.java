@@ -1,5 +1,7 @@
 package com.friday.inter;
 
+import java.util.List;
+
 import com.friday.model.Stock;
 
 public interface StockMapper {
@@ -14,4 +16,6 @@ public interface StockMapper {
     int updateByPrimaryKeySelective(Stock record);
 
     int updateByPrimaryKey(Stock record);
+    
+    List<Stock> selectAll();
 }

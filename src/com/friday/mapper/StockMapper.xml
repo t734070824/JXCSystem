@@ -19,6 +19,11 @@
     from stocks
     where s_id = #{sId,jdbcType=INTEGER}
   </select>
+  <select id="selectAll" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from stocks
+  </select>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
     delete from stocks
     where s_id = #{sId,jdbcType=INTEGER}
