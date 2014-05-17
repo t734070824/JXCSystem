@@ -21,6 +21,7 @@
 	<bean id="getProductController" class="com.friday.controller.GetProductController" />
 	<bean id="orderProductController" class="com.friday.controller.OrderProductController" />
 	<bean id="queryOrderController" class="com.friday.controller.QueryOrderController"></bean>
+	<bean id="stockInController" class="com.friday.controller.StockInController"></bean>
 	<!-- CXW -->
 	
 	<!-- CSY -->
@@ -37,6 +38,7 @@
 				<prop key="/getproduct.do">getProductController</prop>
 				<prop key="/orderproduct.do">orderProductController</prop>
 				<prop key="/queryorder.do">queryOrderController</prop>
+				<prop key="/stockin.do">stockInController</prop>
 			<!-- CXW -->
 				
 			<!-- CSY -->

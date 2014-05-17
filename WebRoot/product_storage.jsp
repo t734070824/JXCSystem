@@ -18,6 +18,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <link rel="stylesheet" type="text/css" href="style.css" />
 <script type="text/javascript" src="JS/jquery.min.js"></script>
 <script type="text/javascript" src="JS/ddaccordion.js"></script>
+<script type="text/javascript" src="My97DatePicker/WdatePicker.js"></script>
 <script type="text/javascript">
 ddaccordion.init({
 	headerclass: "submenuheader", //Shared CSS class name of headers group
@@ -65,39 +66,30 @@ $(function($) {
 
 </head>
 <body bgcolor="transparent" style='background:transparent'>
+				<form action="stockin.do" method="post">
                   <table id="rounded-corner" summary="2007 Major IT Companies' Profit">
 				  <tr>
-					<td colspan="7" align="left"><strong>产品入库</strong></td>
+					<td colspan="3" align="left"><strong>产品入库</strong></td>
 					</tr>
                     <tr>
                       <td width="102">订单编号</td>
-                      <td width="154"><input name="textfield1" type="text" id="textfield1" size="20" /></td>
-                      <td width="353"><a href=
-                      "MyMessageDetails.html">查看详情</a></td>
-                    </tr>
-                    <tr>
-                      <td>入库单编号</td>
-                      <td colspan="2"><input name="textfield2" type="text" id="textfield2" size="20" /></td>
+                      <td width="154"><input name="orderid" type="text" id="textfield1" size="20" /></td>
                     </tr>
                     <tr>
                       <td>入库时间</td>
-                      <td colspan="2"><input name="textfield3" type="text" id="textfield3" size="20" /></td>
-                    </tr>
-                    <tr>
-                      <td>经办人</td>
-                      <td colspan="2"><input name="textfield4" type="text" id="textfield4" size="20" /></td>
+                      <td><input name="intime" type="text" id="textfield3" size="20" onclick="WdatePicker()"/></td>
                     </tr>
                     <tr>
                       <td>备注</td>
-                      <td colspan="2"><input name="textfield5" type="text" id="textfield5" size="20" /></td>
+                      <td><input name="remark" type="text" id="textfield5" size="20" /></td>
                     </tr>
                     <tr>
-                      <td align="left">&nbsp;</td>
-                      <td colspan="2" align="left"><a href="#" onclick="docheck()">
+                      <td colspan="2" align="center">
                         <input type="submit" name="button1" id="button1" value="确认添加" /></a>
-                        <input type="submit" name="button2" id="button2" value="重新填写" />
+                        <input type="reset" name="button2" id="button2" value="重新填写" />
                       </td>
                     </tr>
                   </table>
+                  </form>
 </body>
 </html>

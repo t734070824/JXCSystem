@@ -33,9 +33,11 @@ public class OrderProductController implements Controller {
 			
 			String uId = (String) session.getAttribute("account");
 			Map<Integer, Integer> order = new HashMap<Integer, Integer>();
-			Date date = new Date(System.currentTimeMillis());
+			String dateString = request.getParameter("orderTime");
+			
+			Date date = dateString.isEmpty() ? new Date(System.currentTimeMillis()) : Date.valueOf(dateString);
 			String bz = request.getParameter("remark");
-			String oId = new SimpleDateFormat("yyyyMMddHHmmssSSS").format(date);
+			String oId = "DD" + new SimpleDateFormat("yyyyMMddHHmmssSSS").format(new Date(System.currentTimeMillis()));
 			
 			Map<String, String[]> paraMap = request.getParameterMap(); 
 			Iterator<String> iterator = paraMap.keySet().iterator();
