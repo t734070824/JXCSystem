@@ -1,19 +1,28 @@
 package com.friday.service.impl;
 
 import java.sql.Date;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
+
+import javax.xml.crypto.Data;
+
 import org.apache.ibatis.session.SqlSession;
+
+import sun.print.resources.serviceui;
+
 import com.friday.inter.OrderDetailMapper;
 import com.friday.inter.OrderMapper;
 import com.friday.inter.ProductMapper;
 import com.friday.inter.ProductTypeMapper;
+import com.friday.inter.UserMapper;
 import com.friday.model.Order;
 import com.friday.model.OrderDetail;
 import com.friday.model.Product;
 import com.friday.model.ProductType;
+import com.friday.model.User;
 import com.friday.service.OrderProductService;
 import com.friday.utils.SessionUtils;
 
@@ -86,6 +95,93 @@ public class OrderProductServiceImpl implements OrderProductService {
 		}
 		
 		return ret;
+	}
+
+	@Override
+	public List<Object> queryOrder(Date start, Date end, int style,
+			String orderId) throws Exception {
+		List<Object> list = new ArrayList<Object>();
+		SqlSession sqlSession = null;
+		
+		try {
+			sqlSession = SessionUtils.getSession();
+			
+			ProductMapper productMapper = sqlSession.getMapper(ProductMapper.class);
+			OrderMapper orderMapper = sqlSession.getMapper(OrderMapper.class);
+			OrderDetailMapper orderDetailMapper = sqlSession.getMapper(OrderDetailMapper.class);
+			UserMapper userMapper	= sqlSession.getMapper(UserMapper.class);
+			
+			if (!orderId.isEmpty()) {
+				Order order = orderMapper.selectByPrimaryKey(orderId);
+				
+				if (order != null) {
+					Map<String, Object> map = new HashMap<String, Object>();
+					map.put("oId", order.getoId());
+					map.put("date", order.getoDate());
+					User user = userMapper.selectByPrimaryKey(order.getuId());
+					map.put("user", user.getuName());
+					List<OrderDetail> orderDetails = orderDetailMapper.selectByOrderId(order.getoId());
+					int price = 0;
+					for (OrderDetail orderDetail : orderDetails) {
+						Product product = productMapper.selectByPrimaryKey(orderDetail.getpId());
+						price += orderDetail.getoNum() * product.getpPrice();
+					}
+					map.put("price", price);
+					map.put("style", order.getoStyle());
+					list.add(map);
+				}
+				
+				return list;
+			}
+			else {
+				List<Order> orders = null;
+				if (style == 2) {
+					orders = orderMapper.selectAll();
+				}
+				else {
+					orders = orderMapper.selectByStyle(style);
+				}
+				
+				for (Order order : orders) {
+					if ((end == null ? true : order.getoDate().before(end)) && (start == null ? true : order.getoDate().after(start))) {
+						Map<String, Object> map = new HashMap<String, Object>();
+						map.put("oId", order.getoId());
+						map.put("date", order.getoDate());
+						User user = userMapper.selectByPrimaryKey(order.getuId());
+						map.put("user", user.getuName());
+						List<OrderDetail> orderDetails = orderDetailMapper.selectByOrderId(order.getoId());
+						int price = 0;
+						for (OrderDetail orderDetail : orderDetails) {
+							Product product = productMapper.selectByPrimaryKey(orderDetail.getpId());
+							price += orderDetail.getoNum() * product.getpPrice();
+						}
+						map.put("price", price);
+						switch (order.getoStyle()) {
+						case 0:
+							map.put("style", "未处理");
+							break;
+						case 1:
+							map.put("style", "已入库");
+							break;
+						case -1:
+							map.put("style", "已退回");
+							break;
+						default:
+							map.put("style", "未处理");
+							break;
+						}
+						
+						list.add(map);
+					}
+				}
+			}
+		} catch (Exception e) {
+			throw e;
+		} finally {
+			SessionUtils.closeSession(sqlSession);
+		}
+		
+		return list;
 	}
 
 }

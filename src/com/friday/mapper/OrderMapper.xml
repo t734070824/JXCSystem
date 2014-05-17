@@ -17,6 +17,17 @@
     from orders
     where o_id = #{oId,jdbcType=VARCHAR}
   </select>
+  <select id="selectByStyle" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from orders
+    where o_style = #{oStyle,jdbcType=INTEGER}
+  </select>
+  <select id="selectAll" resultMap="BaseResultMap" >
+    select 
+    <include refid="Base_Column_List" />
+    from orders
+  </select>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
     delete from orders
     where o_id = #{oId,jdbcType=VARCHAR}
