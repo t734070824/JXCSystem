@@ -14,7 +14,7 @@ import com.friday.model.ProductType;
 import com.friday.service.ProductMService;
 import com.friday.service.impl.ProductMServiceImpl;
 
-public class AddProductTypeController implements Controller {
+public class DeleteProductTypeController implements Controller {
 
 	@Override
 	public ModelAndView handleRequest(HttpServletRequest request,
@@ -24,12 +24,9 @@ public class AddProductTypeController implements Controller {
 		try {
 			ProductMService productMService = new ProductMServiceImpl();
 
-			String typename = request.getParameter("typename");
+			String tid = request.getParameter("typeid");
 
-			ProductType pt = new ProductType();
-			pt.settType(typename);
-
-			productMService.addType(pt);
+			productMService.removeType(Integer.parseInt(tid));
 
 			List<ProductType> list = productMService.getAllType();
 

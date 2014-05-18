@@ -14,22 +14,16 @@ import com.friday.model.ProductType;
 import com.friday.service.ProductMService;
 import com.friday.service.impl.ProductMServiceImpl;
 
-public class AddProductTypeController implements Controller {
+public class QueryProductTypeController implements Controller {
 
 	@Override
-	public ModelAndView handleRequest(HttpServletRequest request,
-			HttpServletResponse response) throws Exception {
+	public ModelAndView handleRequest(HttpServletRequest arg0,
+			HttpServletResponse arg1) throws Exception {
 		Map<String, Object> model = new HashMap<String, Object>();
 
 		try {
+
 			ProductMService productMService = new ProductMServiceImpl();
-
-			String typename = request.getParameter("typename");
-
-			ProductType pt = new ProductType();
-			pt.settType(typename);
-
-			productMService.addType(pt);
 
 			List<ProductType> list = productMService.getAllType();
 
@@ -37,10 +31,9 @@ public class AddProductTypeController implements Controller {
 
 			return new ModelAndView("class_management", model);
 		} catch (Exception e) {
-			model.put("success", "失败");
+			model.put("error", "操作失败");
 			e.printStackTrace();
-			return new ModelAndView("success", model);
+			return new ModelAndView("error", model);
 		}
 	}
-
 }

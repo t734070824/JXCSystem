@@ -34,6 +34,10 @@
 	<bean id="addStaffController" class="com.friday.controller.AddStaffController" />
 	<bean id="addproducttypeController" class="com.friday.controller.AddProductTypeController" />
 	<bean id="checktypeController" class="com.friday.controller.AjaxTypeController" />
+	<bean id="queryProductTypeController" class="com.friday.controller.QueryProductTypeController" />
+	<bean id="deleteProductTypeController" class="com.friday.controller.DeleteProductTypeController" />
+	<bean id="showmodifyPTypeController" class="com.friday.controller.ShowMPTypeController" />
+	
 	
 	<bean id="urlMapping" class="org.springframework.web.servlet.handler.SimpleUrlHandlerMapping">
 		<property name="mappings">
@@ -58,6 +62,10 @@
 				<prop key="/addstaff.do">addStaffController</prop>
 				<prop key="addproducttype.do">addproducttypeController</prop>
 				<prop key="checktype.do">checktypeController</prop>
+				<prop key="queryalltype.do">queryProductTypeController</prop>
+				<prop key="deletetype.do">deleteProductTypeController</prop>
+				<prop key="showmodifytype.do">showmodifyPTypeController</prop>
+				
 			</props>
 		</property>
 	</bean>

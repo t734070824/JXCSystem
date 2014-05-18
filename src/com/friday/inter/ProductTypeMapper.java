@@ -20,4 +20,5 @@ public interface ProductTypeMapper {
     List<ProductType> selectAllTypes();
     
     ProductType selectByTypeName(String tname);
+   
 }
