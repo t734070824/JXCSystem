@@ -1,4 +1,5 @@
 <%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%
 String path = request.getContextPath();
 String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
@@ -64,43 +65,26 @@ $(function($) {
 		<td colspan="7" align="left"><strong>网点管理</strong></td>
 	</tr>
   <tr>
-    <td colspan="5" align="left">添加网点&nbsp;&nbsp;&nbsp;&nbsp;<a href="add_shop.html"><img src="images/action_add.png" alt="" title="" border="0" /></a></td>
+    <td colspan="5" align="left">添加网点&nbsp;&nbsp;&nbsp;&nbsp;<a href="add_shop.jsp"><img src="images/action_add.png" alt="" title="" border="0" /></a></td>
     </tr>
   <tr align="center">
     <td width="72">网点编号</td>
     <td width="142">网点名称</td>
     <td width="146">网点地址</td>
     <td width="135">备注</td>
-    <td width="106" align="center">修改</td>
+    <td width="106" align="center">删除</td>
+   
   </tr>
-  <tr>
-    <td>获得XXXX</td>
-    <td>获得XXXXXXXXXX</td>
-    <td>&nbsp;</td>
-    <td>&nbsp;</td>
-    <td align="center"><img src="images/user_edit.png" alt="" title="" border="0" />&nbsp;</td>
-  </tr>
-  <tr>
-    <td>获得XXXX</td>
-    <td>获得XXXXXXXXXX</td>
-    <td>&nbsp;</td>
-    <td>&nbsp;</td>
-    <td align="center"><img src="images/user_edit.png" alt="" title="" border="0" />&nbsp;</td>
-  </tr>
-  <tr>
-    <td>获得XXXX</td>
-    <td>获得XXXXXXXXXX</td>
-    <td>&nbsp;</td>
-    <td>&nbsp;</td>
-    <td align="center"><img src="images/user_edit.png" alt="" title="" border="0" />&nbsp;</td>
-  </tr>
-  <tr>
-    <td>获得XXXX</td>
-    <td>获得XXXXXXXXXX</td>
-    <td>&nbsp;</td>
-    <td>&nbsp;</td>
-    <td align="center"><img src="images/user_edit.png" alt="" title="" border="0" />&nbsp;</td>
-  </tr>
+  <c:forEach items="${shop}" var="shopMessage">
+  <tr align="center">
+    <td width="72">"${shopMessage.sId}"</td>
+    <td width="142">"${shopMessage.sName}"</td>
+    <td width="146">"${shopMessage.sAddress}"</td>
+    <td width="135">"${shopMessage.sBz}"</td>
+    <td width="106" align="center"><a href="shopDelete.do?sId=${shopMessage.sId}">删除</a>
+<!--     <td align="center"><img src="images/user_edit.png" alt="" title="" border="0" />&nbsp;</td>
+ -->  </tr>
+  </c:forEach>
   <tr>
     <td colspan="8" align="right"><div class="pagination">
         <span class="disabled"><< prev</span><span class="current">1</span><a href="">2</a><a href="">3</a><a href="">4</a><a href="">5</a>…<a href="">10</a><a href="">11</a><a href="">12</a>...<a href="">100</a><a href="">101</a><a href="">next >></a>

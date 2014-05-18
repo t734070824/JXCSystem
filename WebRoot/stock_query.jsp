@@ -78,7 +78,7 @@ $(function($) {
             </tr>
           
           <tr>
-            <td align="center">产品编号</td>
+            <td align="center">网点名称</td>
             <td align="center">产品名称</td>
             <td width="79" align="center">规格</td>
             <td width="85" align="center">状态</td>
@@ -89,7 +89,9 @@ $(function($) {
          
           <c:forEach items="${stock}" var="productsMessage">
           <tr>
-            <td align="center">${productsMessage.value.pId}</td>
+          <c:forEach items="${sName}" var="shopName">
+            <td align="center">${shopName}</td>
+          </c:forEach>
             <td align="center">${productsMessage.value.pName}</td>
             <td align="center">${productsMessage.value.pStyle}</td>
             <td align="center">${productsMessage.value.pZt}</td>

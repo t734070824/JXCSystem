@@ -59,23 +59,25 @@ $(function($) {
 
 </head>
 <body bgcolor="transparent" style='background:transparent'>
+	<form action="shopAdd.do" method="post">
      <table id="rounded-corner" summary="2007 Major IT Companies' Profit">
 	 <tr>
 		<td colspan="7" align="left"><strong>添加网点</strong></td>
 	</tr>
-  <tr>
+ <!--  <tr>
     <td width="112" align="right">网点编号</td>
-    <td colspan="2"><input name="textfield1" type="text" id="textfield1" size="20" /></td>
-  </tr>
+    <td colspan="2"><input name="shopId" type="text" id="shopId" size="20" /></td>
+  </tr> -->
+ 
   <tr>
     <td align="right">网点名称</td>
-    <td colspan="2"><input name="textfield2" type="text" id="textfield2" size="20" /></td>
+    <td colspan="2"><input name="shopName" type="text" id="shopName" size="20" /></td>
   </tr>
   <tr>
     <td align="right">网点地址</td>
-    <td colspan="2"><input name="textfield3" type="text" id="textfield3" size="20" /></td>
+    <td colspan="2"><input name="shopAddress" type="text" id="shopAddress" size="20" /></td>
   </tr>
-  <tr>
+ <!--  <tr>
     <td align="right">添加时间</td>
     <td width="158"><input name="textfield4" type="text" id="textfield4" size="20" /></td>
     <td width="339" align="left"><a href="">＊点击文本框获取时间</a></td>
@@ -84,13 +86,14 @@ $(function($) {
     <td align="right">经&nbsp;&nbsp;办&nbsp;&nbsp;人</td>
     <td colspan="2"><input name="textfield5" type="text" id="textfield5" size="20" /></td>
   </tr>
-  <tr>
+  <tr> -->
     <td align="right">备&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;注</td>
-    <td colspan="2"><input name="textfield6" type="text" id="textfield6" size="60"/></td>
+    <td colspan="2"><input name="shopBz" type="text" id="shopBz" size="60"/></td>
   </tr>
   <tr>
     <td colspan="3" align="left">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="submit" name="button1" id="button1" value="确认添加" />        &nbsp;&nbsp;&nbsp;&nbsp;          <input type="reset" name="button2" id="button2" value="重新填写" ></td>
     </tr>
 </table>
+</form>
 </body>
 </html>

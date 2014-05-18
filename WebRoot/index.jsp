@@ -107,7 +107,7 @@ $(function($) {
                     <ul>
                     <li><a onclick="clickA(this);" alt="stockload.do">库存查询</a></li>
                     <li><a onclick="clickA(this);" alt="stockwarn.do">库存报警</a></li>
-                    <li><a onclick="clickA(this);" alt="shop_management.jsp">网点管理</a></li>
+                    <li><a onclick="clickA(this);" alt="shopmanagement.do">网点管理</a></li>
                     </ul>
                 </div>
                <a class="menuitem submenuheader" href="">出库管理</a>

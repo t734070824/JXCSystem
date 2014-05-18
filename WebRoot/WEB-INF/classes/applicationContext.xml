@@ -25,6 +25,11 @@
 	<bean id="stockLoadController" class="com.friday.controller.StockLoadController"/>
 	<bean id="stockQueryController" class="com.friday.controller.StockQueryController"/>
 	<bean id="stockWarnController" class="com.friday.controller.StockWarnController"/>
+	<bean id="shopShowController" class="com.friday.controller.ShopShowController"/>
+	<bean id="shopDeleteController" class="com.friday.controller.ShopDeleteController"/>
+	<bean id="shopAddController" class="com.friday.controller.ShopAddController"/>
+	
+	
 	<!-- CSY -->
 	<bean id="modifyPwdController" class="com.friday.controller.ModifyPwdController" />
 	<bean id="addStaffController" class="com.friday.controller.AddStaffController" />
@@ -44,6 +49,11 @@
 				<prop key="/stockquery.do">stockQueryController</prop>
 				<prop key="/stockload.do">stockLoadController</prop>
 				<prop key="/stockwarn.do">stockWarnController</prop>
+				<prop key="/shopmanagement.do">shopShowController</prop>
+				<prop key="/shopDelete.do">shopDeleteController </prop>
+				<prop key="/shopAdd.do">shopAddController </prop>
+				
+				
 			<!-- CSY -->
 				<prop key="/modifypwd.do">modifyPwdController</prop>
 				<prop key="/addstaff.do">addStaffController</prop>

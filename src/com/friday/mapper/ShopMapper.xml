@@ -32,9 +32,9 @@
     where s_id = #{sId,jdbcType=INTEGER}
   </delete>
   <insert id="insert" parameterType="com.friday.model.Shop" >
-    insert into shops (s_id, s_name, s_bz, 
+    insert into shops (s_name, s_bz, 
       s_address)
-    values (#{sId,jdbcType=INTEGER}, #{sName,jdbcType=VARCHAR}, #{sBz,jdbcType=VARCHAR}, 
+    values (#{sName,jdbcType=VARCHAR}, #{sBz,jdbcType=VARCHAR}, 
       #{sAddress,jdbcType=CHAR})
   </insert>
   <insert id="insertSelective" parameterType="com.friday.model.Shop" >

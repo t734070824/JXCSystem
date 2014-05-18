@@ -23,8 +23,10 @@ public class StockQueryController implements Controller {
 		
 		try {
 			StockQueryService stockQueryService = new StockQueryServiceImpl();
-			model.put("stock", stockQueryService.stockQuery(request.getParameter("sName").toString()));
+			String string = request.getParameter("sName").toString();
+			model.put("stock", stockQueryService.stockQuery(string));
 			model.put("shop", stockQueryService.shopQuery());
+			model.put("sName", string);
 		} catch (Exception e) {
 			model.put("result","fail");
 			e.printStackTrace();
