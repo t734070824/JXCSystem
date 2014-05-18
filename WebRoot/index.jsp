@@ -114,7 +114,7 @@ $(function($) {
                <a class="menuitem submenuheader" href="">出库管理</a>
                 <div class="submenu">
                     <ul>
-                    <li><a onclick="clickA(this);" alt="product_out_storage.jsp">产品出库</a></li>
+                    <li><a onclick="clickA(this);" alt="getoutproduct.do">产品出库</a></li>
                     <li><a onclick="clickA(this);" alt="warehouse_out.jsp">出库记录查询</a></li>
                     <li><a onclick="clickA(this);" alt="product_sale.jsp">产品销售</a></li>
                     </ul>

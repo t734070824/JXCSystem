@@ -81,7 +81,7 @@ $(function($) {
 	    <td width="102" align="center"><input type="text" size="10" value="${product.pName }" readonly/></td>
 	    <td width="104" align="center"><input type="text" size="6" value="${product.pStyle }" readonly/></td>
 	    <td width="104" align="center"><input type="text" size="6" value="${product.pPrice }" readonly/></td>
-	    <td width="106" align="center"><input name="${product.pId }" type="text" size="9" onKeyUp="this.value=this.value.replace(/\D/g,'')"/></td>
+	    <td width="106" align="center"><input name="${product.pId }" type="text" size="9" onkeyup="this.value=this.value.replace(/\D/g,'')"/></td>
 	  </tr>
 	  </c:forEach>
   </c:forEach>

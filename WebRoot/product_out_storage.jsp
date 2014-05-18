@@ -1,4 +1,5 @@
 <%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%
 String path = request.getContextPath();
 String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
@@ -7,17 +8,18 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-<base href="<%=basePath%>">
+<base href="<%=basePath%>" />
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<meta http-equiv="pragma" content="no-cache">
-<meta http-equiv="cache-control" content="no-cache">
-<meta http-equiv="expires" content="0">    
-<meta http-equiv="keywords" content="keyword1,keyword2,keyword3">
-<meta http-equiv="description" content="This is my page">
+<meta http-equiv="pragma" content="no-cache" />
+<meta http-equiv="cache-control" content="no-cache" />
+<meta http-equiv="expires" content="0" />    
+<meta http-equiv="keywords" content="keyword1,keyword2,keyword3" />
+<meta http-equiv="description" content="This is my page" />
 <title>IN ADMIN PANEL | Powered by INDEZINER</title>
 <link rel="stylesheet" type="text/css" href="style.css" />
 <script type="text/javascript" src="JS/jquery.min.js"></script>
 <script type="text/javascript" src="JS/ddaccordion.js"></script>
+<script type="text/javascript" src="My97DatePicker/WdatePicker.js"></script>
 <script type="text/javascript">
 ddaccordion.init({
 	headerclass: "submenuheader", //Shared CSS class name of headers group
@@ -38,7 +40,7 @@ ddaccordion.init({
 	onopenclose:function(header, index, state, isuseractivated){ //custom code to run whenever a header is opened or closed
 		//do nothing
 	}
-})
+});
 </script>
 <script type="text/javascript">
 function docheck()
@@ -65,37 +67,51 @@ $(function($) {
 
 </head>
 <body bgcolor="transparent" style='background:transparent'>
+<form action="stockout.do" method="post">
  <table id="rounded-corner" summary="2007 Major IT Companies' Profit">
-   <tr>
-		<td colspan="7" align="left"><strong>产品出库</strong></td>
+   	<tr>
+		<td colspan="4" align="left"><strong>产品出库</strong></td>
 	</tr>
-  <tr>
-    <td width="107" align="right">入库网点</td>
-    <td colspan="2"><label for="select"><select name="select" id="select" >
-      <option>苏宁店</option>
-      </select></label></td>
-  </tr>
-  <tr>
-    <td align="right">出库时间</td>
-    <td width="154"><input name="textfield11" type="text" id="textfield11" size="20" /></td
-  >
-    <td width="348" align="left">＊点击文本框获取时间</td
-  >
-  </tr>
-  <tr>
-    <td align="right">经办人</td>
-    <td colspan="2"><input name="textfield4" type="text" id="textfield4" size="20" /></td>
-  </tr>
-  <tr>
-    <td align="right">备注</td>
-    <td colspan="2"><input name="textfield5" type="text" id="textfield5" size="20" /></td>
-  </tr>
-  <tr>
-    <td>&nbsp;</td>
-    <td colspan="2" align="left"><a href="#" onclick="docheck()"><input type="submit" name="button" id="button" value="确认提交" /></a>
-                      &nbsp;&nbsp;&nbsp;&nbsp;
-                      <input type="submit" name="button2" id="button2" value="重新填写" /></td>
-  </tr>
+  	<tr>
+    	<td align="right">出库网点</td>
+	    <td colspan="3">
+	    	<select name="shopid">
+	    	<c:forEach items="${shops }" var="shop">
+	    		<option value="${shop.sId }">${shop.sName }</option>
+	    	</c:forEach>
+	      	</select>
+	    </td>
+  	</tr>
+  	<tr>
+	    <td align="center">产品名称</td>
+	    <td align="center">产品数量</td>
+	    <td align="center">产品价格</td>
+	    <td align="center">出库数量</td>
+	</tr>
+	<c:forEach items="${products }" var="product">
+	<tr>
+	    <td align="center"><input type="text" size="10" value="${product.name }" readonly /></td>
+	    <td align="center"><input type="text" size="10" value="${product.num }" readonly /></td>
+	    <td align="center"><input type="text" size="10" value="${product.price }" readonly /></td>
+	    <td align="center"><input type="text" size="10" name="${product.pid }" onKeyUp="this.value=this.value.replace(/\D/g,'')" /></td>
+	</tr>
+	</c:forEach>
+	<tr>
+	    <td align="right">出库时间</td>
+	    <td><input name="outtime" type="text" size="20" onclick="WdatePicker()"/></td>
+	    <td align="left" colspan="2">＊点击文本框获取时间</td>
+	</tr>
+	<tr>
+	    <td align="right">备注</td>
+	    <td colspan="3"><input name="remark" type="text" size="20" /></td>
+	</tr>
+	<tr>
+	    <td colspan="4" align="center">
+	    	<input type="submit" value="确认出库" />
+	    	<input type="reset" value="重新填写" />
+	    </td>
+	</tr>
 </table>
+</form>
 </body>
 </html>

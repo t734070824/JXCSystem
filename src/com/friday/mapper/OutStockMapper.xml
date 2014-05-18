@@ -21,7 +21,7 @@
     delete from outstock
     where o_id = #{oId,jdbcType=INTEGER}
   </delete>
-  <insert id="insert" parameterType="com.friday.model.OutStock" >
+  <insert id="insert" useGeneratedKeys="true" keyProperty="oId" parameterType="com.friday.model.OutStock" >
     insert into outstock (o_id, s_id, o_date, 
       u_id, o_bz)
     values (#{oId,jdbcType=INTEGER}, #{sId,jdbcType=INTEGER}, #{oDate,jdbcType=TIMESTAMP}, 
