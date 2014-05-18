@@ -18,6 +18,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <link rel="stylesheet" type="text/css" href="style.css" />
 <script type="text/javascript" src="JS/jquery.min.js"></script>
 <script type="text/javascript" src="JS/ddaccordion.js"></script>
+<script type="text/javascript" src="My97DatePicker/WdatePicker.js"></script>
+<script type="text/javascript" src="JS/formcheck.js"></script>
 <script type="text/javascript">
 ddaccordion.init({
 	headerclass: "submenuheader", //Shared CSS class name of headers group
@@ -42,6 +44,7 @@ ddaccordion.init({
 </script>
 <script src="JS/jquery.jclock-1.2.0.js.txt" type="text/javascript"></script>
 <script type="text/javascript" src="JS/jconfirmaction.jquery.js"></script>
+
 <script type="text/javascript">
 	
 	$(document).ready(function() {
@@ -60,7 +63,7 @@ $(function($) {
 
 </head>
 <body bgcolor="transparent" style='background:transparent'>
- <form id="myform" name="myform" method="post" action="addstaff.do">
+ <form name="myform" action="addstaff.do" onsubmit="return addstaffformcheck()" method="post"  >
    <table id="rounded-corner" summary="2007 Major IT Companies' Profit">
     <tr>
 		<td colspan="7" align="left"><strong>添加员工</strong></td>
@@ -70,14 +73,14 @@ $(function($) {
     </tr>
    
   <tr>
-    <td width="111" align="right"><strong>员工姓名：</strong></td>
+    <td width="111" align="right"><strong>*员工姓名：</strong></td>
     <td colspan="2">
       <label for="name"></label>
-      <input type="text" name="name" id="name" />
+      <input type="text" name="name" id="name" maxlength="10"/>
     </td>
   </tr>
   <tr>
-    <td align="right"><strong>员工性别：</strong></td>
+    <td align="right"><strong>*员工性别：</strong></td>
     <td colspan="2">
       <p>
         <label>
@@ -91,35 +94,35 @@ $(function($) {
     </td>
   </tr>
   <tr>
-    <td align="right"><strong>联系电话：</strong></td>
+    <td align="right"><strong>*联系电话：</strong></td>
     <td colspan="2">
-      <input type="text" name="phone" id="phone" />
+      <input type="text" name="phone" id="phone" maxlength="11"/>
     </td>
   </tr>
   <tr>
-    <td align="right"><strong>家庭住址：</strong></td>
+    <td align="right"><strong>*家庭住址：</strong></td>
     <td colspan="2">
       <input type="text" name="address" id="address" />
     </td>
   </tr>
   <tr>
-    <td align="right"><strong>员工生日：</strong></td>
+    <td align="right"><strong>*员工生日：</strong></td>
     <td width="182">
-      <input type="text" name="birthday" id="birthday" />
+      <input type="text" name="birthday" id="birthday"  onclick="WdatePicker()"/>
    </td>
-    <td width="316" align="left" ><a href="">＊点击文本框获取时间</a></td>
+
   </tr>
   <tr>
-    <td align="right"><strong>员工工资：</strong></td>
+    <td align="right"><strong>*员工工资：</strong></td>
     <td colspan="2">
 
-      <input type="text" name="price" id="price" />
+      <input type="text" name="price" id="price" maxlength="10"/>
     </td>
   </tr>
   <tr>
-    <td align="right"><strong>备注</strong></td>
+    <td align="right"><strong>备注：</strong></td>
     <td colspan="2">
-      <input type="text" name="note" id="note" />
+      <input type="text" name="note" id="note" maxlength="20"/>
     </td>
   </tr>
  

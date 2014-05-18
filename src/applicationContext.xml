@@ -21,6 +21,10 @@
 	<bean id="getProductController" class="com.friday.controller.GetProductController" />
 	<bean id="orderProductController" class="com.friday.controller.OrderProductController" />
 	<bean id="queryOrderController" class="com.friday.controller.QueryOrderController"></bean>
+	<bean id="stockInController" class="com.friday.controller.StockInController"></bean>
+	<bean id="goodsBackController" class="com.friday.controller.GoodsBackController"></bean>
+	<bean id="getOutProductController" class="com.friday.controller.StockOutGetProductController"></bean>
+	<bean id="stockOutController" class="com.friday.controller.StockOutController"></bean>
 	<!-- CXW -->
 	<bean id="stockLoadController" class="com.friday.controller.StockLoadController"/>
 	<bean id="stockQueryController" class="com.friday.controller.StockQueryController"/>
@@ -33,7 +37,8 @@
 	<!-- CSY -->
 	<bean id="modifyPwdController" class="com.friday.controller.ModifyPwdController" />
 	<bean id="addStaffController" class="com.friday.controller.AddStaffController" />
-	
+	<bean id="addproducttypeController" class="com.friday.controller.AddProductTypeController" />
+	<bean id="checktypeController" class="com.friday.controller.AjaxTypeController" />
 	
 	<bean id="urlMapping" class="org.springframework.web.servlet.handler.SimpleUrlHandlerMapping">
 		<property name="mappings">
@@ -45,6 +50,10 @@
 				<prop key="/getproduct.do">getProductController</prop>
 				<prop key="/orderproduct.do">orderProductController</prop>
 				<prop key="/queryorder.do">queryOrderController</prop>
+				<prop key="/stockin.do">stockInController</prop>
+				<prop key="/goodsback.do">goodsBackController</prop>
+				<prop key="/getoutproduct.do">getOutProductController</prop>
+				<prop key="/stockout.do">stockOutController</prop>
 			<!-- CXW -->
 				<prop key="/stockquery.do">stockQueryController</prop>
 				<prop key="/stockload.do">stockLoadController</prop>
@@ -57,6 +66,8 @@
 			<!-- CSY -->
 				<prop key="/modifypwd.do">modifyPwdController</prop>
 				<prop key="/addstaff.do">addStaffController</prop>
+				<prop key="addproducttype.do">addproducttypeController</prop>
+				<prop key="checktype.do">checktypeController</prop>
 			</props>
 		</property>
 	</bean>

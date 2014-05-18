@@ -7,13 +7,13 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-<base href="<%=basePath%>">
+<base href="<%=basePath%>" />
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<meta http-equiv="pragma" content="no-cache">
-<meta http-equiv="cache-control" content="no-cache">
-<meta http-equiv="expires" content="0">    
-<meta http-equiv="keywords" content="keyword1,keyword2,keyword3">
-<meta http-equiv="description" content="This is my page">
+<meta http-equiv="pragma" content="no-cache" />
+<meta http-equiv="cache-control" content="no-cache" />
+<meta http-equiv="expires" content="0" />    
+<meta http-equiv="keywords" content="keyword1,keyword2,keyword3" />
+<meta http-equiv="description" content="This is my page" />
 <title>IN ADMIN PANEL | Powered by INDEZINER</title>
 <link rel="stylesheet" type="text/css" href="style.css" />
 <script type="text/javascript" src="JS/jquery.min.js"></script>
@@ -39,7 +39,7 @@ ddaccordion.init({
 	onopenclose:function(header, index, state, isuseractivated){ //custom code to run whenever a header is opened or closed
 		//do nothing
 	}
-})
+});
 </script>
 <script src="JS/jquery.jclock-1.2.0.js.txt" type="text/javascript"></script>
 <script type="text/javascript" src="JS/jconfirmaction.jquery.js"></script>
@@ -66,17 +66,17 @@ $(function($) {
 
 </head>
 <body bgcolor="transparent" style='background:transparent'>
-				<form action="stockin.do" method="post">
+				<form action="goodsback.do" method="post">
                   <table id="rounded-corner" summary="2007 Major IT Companies' Profit">
 				  <tr>
-					<td colspan="3" align="left"><strong>产品入库</strong></td>
+					<td colspan="3" align="left"><strong>订单退回</strong></td>
 					</tr>
                     <tr>
                       <td width="102">订单编号</td>
                       <td width="154"><input name="orderid" type="text" id="textfield1" size="20" /></td>
                     </tr>
                     <tr>
-                      <td>入库时间</td>
+                      <td>退回时间</td>
                       <td><input name="intime" type="text" id="textfield3" size="20" onclick="WdatePicker()"/></td>
                     </tr>
                     <tr>
@@ -85,7 +85,7 @@ $(function($) {
                     </tr>
                     <tr>
                       <td colspan="2" align="center">
-                        <input type="submit" name="button1" id="button1" value="确认添加" /></a>
+                        <input type="submit" name="button1" id="button1" value="确认退回" />
                         <input type="reset" name="button2" id="button2" value="重新填写" />
                       </td>
                     </tr>

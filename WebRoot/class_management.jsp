@@ -64,7 +64,9 @@ $(function($) {
 		<td colspan="8" align="left"><strong>类别管理</strong></td>
 	</tr>
   <tr>
-    <td colspan="4" align="right">添加类别&nbsp;&nbsp;&nbsp;&nbsp;<a href="add_shop.html"><img src="images/action_add.png" alt="" title="" border="0" /></a></td>
+    <td colspan="4" align="right"><a href="add_class.jsp">添加类别</a>
+    <!-- <img src="images/action_add.png" alt="" title="" border="0" /> -->
+    </td>
     </tr>
   <tr align="center">
     <td width="72" align="center">类别编号</td>

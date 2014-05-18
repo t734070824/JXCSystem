@@ -18,4 +18,6 @@ public interface ProductTypeMapper {
     int updateByPrimaryKey(ProductType record);
     
     List<ProductType> selectAllTypes();
+    
+    ProductType selectByTypeName(String tname);
 }

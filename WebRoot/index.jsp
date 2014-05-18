@@ -7,13 +7,13 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-<base href="<%=basePath%>">
+<base href="<%=basePath%>" />
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<meta http-equiv="pragma" content="no-cache">
-<meta http-equiv="cache-control" content="no-cache">
-<meta http-equiv="expires" content="0">    
-<meta http-equiv="keywords" content="keyword1,keyword2,keyword3">
-<meta http-equiv="description" content="This is my page">
+<meta http-equiv="pragma" content="no-cache" />
+<meta http-equiv="cache-control" content="no-cache" />
+<meta http-equiv="expires" content="0" />    
+<meta http-equiv="keywords" content="keyword1,keyword2,keyword3" />
+<meta http-equiv="description" content="This is my page" />
 <title>IN ADMIN PANEL | Powered by INDEZINER</title>
 <link rel="stylesheet" type="text/css" href="style.css" />
 <script type="text/javascript" src="JS/jquery.min.js"></script>
@@ -38,7 +38,7 @@ ddaccordion.init({
 	onopenclose:function(header, index, state, isuseractivated){ //custom code to run whenever a header is opened or closed
 		//do nothing
 	}
-})
+});
 </script>
 <script src="JS/jquery.jclock-1.2.0.js.txt" type="text/javascript"></script>
 <script type="text/javascript" src="JS/jconfirmaction.jquery.js"></script>
@@ -99,6 +99,7 @@ $(function($) {
                     <ul>
                     <li><a onclick="clickA(this);" alt="product_storage.jsp">产品入库</a></li>
                     <li><a onclick="clickA(this);" alt="storage_record_query.jsp">入库记录查询</a></li>
+                    <li><a onclick="clickA(this);" alt="product_return.jsp">产品退回</a></li>
                     <li><a onclick="clickA(this);" alt="Returns_records_query.jsp">退货记录查询</a></li>
                   </ul>
                 </div>
@@ -113,7 +114,7 @@ $(function($) {
                <a class="menuitem submenuheader" href="">出库管理</a>
                 <div class="submenu">
                     <ul>
-                    <li><a onclick="clickA(this);" alt="product_out_storage.jsp">产品出库</a></li>
+                    <li><a onclick="clickA(this);" alt="getoutproduct.do">产品出库</a></li>
                     <li><a onclick="clickA(this);" alt="warehouse_out.jsp">出库记录查询</a></li>
                     <li><a onclick="clickA(this);" alt="product_sale.jsp">产品销售</a></li>
                     </ul>
