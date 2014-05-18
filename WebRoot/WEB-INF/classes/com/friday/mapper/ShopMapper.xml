@@ -16,6 +16,17 @@
     from shops
     where s_id = #{sId,jdbcType=INTEGER}
   </select>
+  <select id="selectBySName" resultMap="BaseResultMap" parameterType="java.lang.String">
+  	select 
+  	<include refid="Base_Column_List"/>
+  	from shops 
+  	where s_name = #{sName,jdbcType=VARCHAR}
+  </select>
+  <select id="selectAllShops" resultMap="BaseResultMap">
+  	select
+  	<include refid="Base_Column_List"/>
+  	from shops
+  </select>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
     delete from shops
     where s_id = #{sId,jdbcType=INTEGER}

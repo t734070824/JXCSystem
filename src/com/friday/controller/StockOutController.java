@@ -2,9 +2,9 @@ package com.friday.controller;
 
 import java.sql.Date;
 import java.text.SimpleDateFormat;
-import java.util.Enumeration;
 import java.util.HashMap;
 import java.util.Iterator;
+import java.util.List;
 import java.util.Map;
 import java.util.regex.Pattern;
 
@@ -15,31 +15,34 @@ import javax.servlet.http.HttpSession;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.Controller;
 
+import com.friday.model.Shop;
 import com.friday.service.OrderProductService;
+import com.friday.service.StockOutService;
 import com.friday.service.impl.OrderProductServiceImpl;
+import com.friday.service.impl.StockOutServiceImpl;
 
-public class OrderProductController implements Controller {
+public class StockOutController implements Controller {
 
 	@Override
 	public ModelAndView handleRequest(HttpServletRequest request,
 			HttpServletResponse response) throws Exception {
-		
-		Map<String, Object> model = new HashMap<String, Object>();
+Map<String, Object> model = new HashMap<String, Object>();
 		
 		try {
 			
-			OrderProductService orderProductService = new OrderProductServiceImpl();
+			StockOutService stockOutService = new StockOutServiceImpl();
 			HttpSession session = request.getSession();
 			
 			String uId = (String) session.getAttribute("account");
-			Map<Integer, Integer> order = new HashMap<Integer, Integer>();
-			String dateString = request.getParameter("orderTime");
-			
+			Map<Integer, Integer> stockOut = new HashMap<Integer, Integer>();
+			String dateString = request.getParameter("outtime");
 			Date date = dateString.isEmpty() ? new Date(System.currentTimeMillis()) : Date.valueOf(dateString);
 			String bz = request.getParameter("remark");
-			String oId = "DD" + new SimpleDateFormat("yyyyMMddHHmmssSSS").format(new Date(System.currentTimeMillis()));
 			
-			Map<String, String[]> paraMap = request.getParameterMap(); 
+			String shopIdString = request.getParameter("shopid");
+			int shopId = Integer.parseInt(shopIdString);
+			
+			Map<String, String[]> paraMap = request.getParameterMap();
 			Iterator<String> iterator = paraMap.keySet().iterator();
 			while (iterator.hasNext()) {
 				String key = iterator.next();
@@ -47,12 +50,12 @@ public class OrderProductController implements Controller {
 				Pattern pattern = Pattern.compile("[0-9]*");
 				if (pattern.matcher(key).matches()) {
 					if(value.isEmpty()) continue;
-					order.put(Integer.parseInt(key), Integer.parseInt(value));
+					stockOut.put(Integer.parseInt(key), Integer.parseInt(value));
 				}
 			}
 			
-			orderProductService.orderProduct(order, date, bz, uId, oId);
-			model.put("success", "添加订单成功");
+			stockOutService.stockOut(stockOut, date, bz, uId, shopId);
+			model.put("success", "产品出库成功");
 			return new ModelAndView("success", model);
 		} catch (Exception e) {
 			model.put("error", "操作失败");

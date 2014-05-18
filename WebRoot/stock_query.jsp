@@ -1,4 +1,5 @@
 <%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%
 String path = request.getContextPath();
 String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
@@ -59,17 +60,21 @@ $(function($) {
 
 </head>
 <body bgcolor="transparent" style='background:transparent'>
+<form action="stockquery.do" method="post">
   <table id="rounded-corner" summary="2007 Major IT Companies' Profit" width="623" border="0">
   <tr>
 		<td colspan="7" align="left"><strong>库存查询</strong></td>
 	</tr>
           <tr>
             <td width="82" align="center">搜索：</td>
-            <td width="88" align="center"><label for="select"><select name="select" id="select" >
-              <option>苏宁店</option>
-              <option>乐&nbsp;&nbsp;&nbsp;&nbsp;购</option>
+            <td width="88" align="center"><label for="select">
+            <select name="sName" id="sName" >
+            <c:forEach items="${shop}" var="shopName"> 
+            <option>${shopName.sName}</option>
+            </c:forEach>
+              
               </select></label></td>
-            <td colspan="5" align="left"><a href="MyMessageDetails.html">查看详情</a>&nbsp;</td>
+            <td colspan="5" align="left"><input type="submit" value="查询" style="font-size:16px" />
             </tr>
           
           <tr>
@@ -77,60 +82,28 @@ $(function($) {
             <td align="center">产品名称</td>
             <td width="79" align="center">规格</td>
             <td width="85" align="center">状态</td>
-            <td width="96" align="center">退货单价</td>
-            <td width="95" align="center">建议实价格</td>
+            <td width="96" align="center">单价</td>
             <td width="70" align="center">库存数量</td>
+            <!--  <td width="95" align="center">建议实价格</td> -->
           </tr>
+         
+          <c:forEach items="${stock.value}" var="productsMessage">
           <tr>
-            <td align="center">读取订单号</td>
-            <td align="center">xxxxxxxxxx</td>
-            <td align="center">xxx</td>
-            <td align="center">普通产品</td>
-            <td align="center">&nbsp;</td>
-            <td align="center">&nbsp;</td>
-            <td align="center">&nbsp;</td>
+            <td align="center">${productsMessage.pId}</td>
+            <td align="center">${productsMessage.pName}</td>
+            <td align="center">${productsMessage.pStyle}</td>
+            <td align="center">${productsMessage.pZt}</td>
+            <td align="center">${productsMessage.pPrice};</td>
+            <td align="center">${stock.key};</td>
+           <!--   <td align="center">&nbsp;</td>-->
           </tr>
+          </c:forEach>
           <tr>
-            <td align="center">读取订单号</td>
-            <td align="center">xxxxxxxxxx</td>
-            <td align="center">xxx</td>
-            <td align="center">普通产品</td>
-            <td align="center">&nbsp;</td>
-            <td align="center">&nbsp;</td>
-            <td align="center">&nbsp;</td>
-          </tr>
-          <tr>
-            <td align="center">读取订单号</td>
-            <td align="center">xxxxxxxxxx</td>
-            <td align="center">xxx</td>
-            <td align="center">促销产品</td>
-            <td align="center">&nbsp;</td>
-            <td align="center">&nbsp;</td>
-            <td align="center">&nbsp;</td>
-          </tr>
-          <tr>
-            <td align="center">读取订单号</td>
-            <td align="center">xxxxxxxxxx</td>
-            <td align="center">xxx</td>
-            <td align="center">促销产品</td>
-            <td align="center">&nbsp;</td>
-            <td align="center">&nbsp;</td>
-            <td align="center">&nbsp;</td>
-          </tr>
-          <tr>
-            <td align="center">&nbsp;</td>
-            <td align="center">&nbsp;</td>
-            <td align="center" >&nbsp;</td>
-            <td align="center"></td>
-            <td align="right">库存金额：</td>
-            <td align="center"></td>
-            <td align="left">元</td>
-          </tr>
-		   <tr>
 			<td colspan="8" align="right"><div class="pagination">
 				<span class="disabled"><< prev</span><span class="current">1</span><a href="">2</a><a href="">3</a><a href="">4</a><a href="">5</a>…<a href="">10</a><a href="">11</a><a href="">12</a>...<a href="">100</a><a href="">101</a><a href="">next >></a>
 			</div></td>
 		 </tr>
 </table>
+</form>
 </body>
 </html>

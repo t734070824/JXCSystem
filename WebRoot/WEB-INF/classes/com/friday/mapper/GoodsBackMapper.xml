@@ -22,7 +22,7 @@
     delete from goodsback
     where g_id = #{gId,jdbcType=INTEGER}
   </delete>
-  <insert id="insert" parameterType="com.friday.model.GoodsBack" >
+  <insert id="insert" useGeneratedKeys="true" keyProperty="gId" parameterType="com.friday.model.GoodsBack" >
     insert into goodsback (g_id, g_date, u_id, 
       g_price, g_backPrice, g_bz)
     values (#{gId,jdbcType=INTEGER}, #{gDate,jdbcType=TIMESTAMP}, #{uId,jdbcType=VARCHAR}, 
