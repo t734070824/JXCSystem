@@ -19,6 +19,11 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <script type="text/javascript" src="JS/jquery.min.js"></script>
 <script type="text/javascript" src="JS/ddaccordion.js"></script>
 <script type="text/javascript">
+
+
+</script>
+
+<script type="text/javascript">
 ddaccordion.init({
 	headerclass: "submenuheader", //Shared CSS class name of headers group
 	contentclass: "submenu", //Shared CSS class name of contents group
@@ -42,6 +47,7 @@ ddaccordion.init({
 </script>
 <script src="JS/jquery.jclock-1.2.0.js.txt" type="text/javascript"></script>
 <script type="text/javascript" src="JS/jconfirmaction.jquery.js"></script>
+<script type="text/javascript" src="JS/ajaxcheck.js"></script>
 <script type="text/javascript">
 	
 	$(document).ready(function() {
@@ -59,34 +65,21 @@ $(function($) {
 
 </head>
 <body bgcolor="transparent" style='background:transparent'>
+<form name = "myform" id="myform" action="addproducttype.do" method ="post">
  <table id="rounded-corner" summary="2007 Major IT Companies' Profit">
 	<tr>
 		<td colspan="7" align="left"><strong>添加类别</strong></td>
 	</tr>
   <tr>
-    <td width="112" align="right">类别编号</td>
-    <td colspan="2"><input name="textfield1" type="text" id="textfield1" size="20" /></td>
-  </tr>
-  <tr>
     <td align="right">类别名称</td>
-    <td colspan="2"><input name="textfield2" type="text" id="textfield2" size="20" /></td>
-  </tr>
-  <tr>
-    <td align="right">添加时间</td>
-    <td width="158"><input name="textfield4" type="text" id="textfield4" size="20" /></td>
-    <td width="339" align="left"><a href="">＊点击文本框获取时间</a></td>
-  </tr>
-  <tr>
-    <td align="right">经&nbsp;&nbsp;办&nbsp;&nbsp;人</td>
-    <td colspan="2"><input name="textfield5" type="text" id="textfield5" size="20" /></td>
-  </tr>
-  <tr>
-    <td align="right">备&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;注</td>
-    <td colspan="2"><input name="textfield6" type="text" id="textfield6" size="20"/></td>
+    <td colspan="2"><input name="typename" type="text" id="typename" size="20" maxlength="10" /></td>
+    <td><label id="showResult"></label></td>
+    <td> <input type="button"onclick="JudgeUserName()" value="是否新类别？"></input></td>
   </tr>
   <tr>
     <td colspan="3" align="left">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="submit" name="button1" id="button1" value="确认添加" />        &nbsp;&nbsp;&nbsp;&nbsp;          <input type="reset" name="button2" id="button2" value="重新填写" ></td>
     </tr>
 </table>
+</form>
 </body>
 </html>

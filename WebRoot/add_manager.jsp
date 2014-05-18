@@ -67,23 +67,23 @@ $(function($) {
 	</tr>
   <tr>
     <td width="112" align="right">用户名：</td>
-    <td><input name="account" type="text" id="account" size="20" /></td>
+    <td><input name="account" type="text" id="account" size="20" maxlength="10"/></td>
   </tr>
   <tr>
     <td align="right">密&nbsp;&nbsp;&nbsp;&nbsp;码：</td>
-    <td><input name="password" type="password" id="password" size="20" /></td>
+    <td><input name="password" type="password" id="password" size="20" maxlength="10"/></td>
   </tr>
   <tr>
     <td align="right">确认密码：</td>
-    <td><input name="password2" type="password" id="password2" size="20" /></td>
+    <td><input name="password2" type="password" id="password2" size="20" maxlength="10"/></td>
   </tr>
   <tr>
     <td align="right">真实姓名：</td>
-    <td><input name="name" type="text" id="name" size="20" /></td>
+    <td><input name="name" type="text" id="name" size="20" maxlength="10"/></td>
     </tr>
   <tr>
     <td align="right">备&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;注</td>
-    <td><input name="note" type="text" id="note" size="20"/></td>
+    <td><input name="note" type="text" id="note" size="20" maxlength="20"/></td>
   </tr>
   <tr>
     <td colspan="2" align="left">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="submit" name="button1" id="button1" value="确认添加" />        &nbsp;&nbsp;&nbsp;&nbsp;          <input type="reset" name="button2" id="button2" value="重新填写" ></td>
