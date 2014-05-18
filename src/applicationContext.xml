@@ -25,6 +25,8 @@
 	<bean id="goodsBackController" class="com.friday.controller.GoodsBackController"></bean>
 	<bean id="getOutProductController" class="com.friday.controller.StockOutGetProductController"></bean>
 	<bean id="stockOutController" class="com.friday.controller.StockOutController"></bean>
+	<bean id="sellLoadController" class="com.friday.controller.SellLoadController"></bean>
+	<bean id="sellController" class="com.friday.controller.SellController"></bean>
 	<!-- CXW -->
 	<bean id="stockLoadController" class="com.friday.controller.StockLoadController"/>
 	<bean id="stockQueryController" class="com.friday.controller.StockQueryController"/>
@@ -53,6 +55,8 @@
 				<prop key="/goodsback.do">goodsBackController</prop>
 				<prop key="/getoutproduct.do">getOutProductController</prop>
 				<prop key="/stockout.do">stockOutController</prop>
+				<prop key="/sellload.do">sellLoadController</prop>
+				<prop key="/sell.do">sellController</prop>
 			<!-- CXW -->
 				<prop key="/stockquery.do">stockQueryController</prop>
 				<prop key="/stockload.do">stockLoadController</prop>

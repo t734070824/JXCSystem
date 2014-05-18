@@ -1,7 +1,6 @@
 package com.friday.controller;
 
 import java.sql.Date;
-import java.text.SimpleDateFormat;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
@@ -16,16 +15,15 @@ import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.Controller;
 
 import com.friday.model.Shop;
-import com.friday.service.OrderProductService;
 import com.friday.service.StockOutService;
-import com.friday.service.impl.OrderProductServiceImpl;
 import com.friday.service.impl.StockOutServiceImpl;
 
-public class StockOutController implements Controller {
+public class SellController implements Controller {
 
 	@Override
 	public ModelAndView handleRequest(HttpServletRequest request,
 			HttpServletResponse response) throws Exception {
+		
 		Map<String, Object> model = new HashMap<String, Object>();
 		
 		try {
@@ -54,8 +52,8 @@ public class StockOutController implements Controller {
 				}
 			}
 			
-			stockOutService.stockOut(stockOut, date, bz, uId, shopId);
-			model.put("success", "产品出库成功");
+			stockOutService.sell(stockOut, date, bz, uId, shopId);
+			model.put("success", "产品销售成功");
 			return new ModelAndView("success", model);
 		} catch (Exception e) {
 			model.put("error", "操作失败");

@@ -10,4 +10,5 @@ public interface StockOutService {
 	List<Object> getProductByShop(int shopId) throws Exception;
 	List<Shop> getAllShops() throws Exception;
 	int stockOut(Map<Integer, Integer> outStocks, Date date, String bz , String uId, int shopId) throws Exception;
+	int sell(Map<Integer, Integer> sells, Date date, String bz , String uId, int shopId) throws Exception;
 }
