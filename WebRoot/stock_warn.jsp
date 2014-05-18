@@ -1,4 +1,5 @@
 <%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%
 String path = request.getContextPath();
 String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
@@ -63,52 +64,15 @@ $(function($) {
   <tr>
 		<td colspan="7" align="left"><strong>库存报警</strong></td>
 	</tr>
+	<c:forEach items = "${stockWarn}" var="stockWarnMessage">
   <tr >
-    <td class="jlj" colspan="3" align="center"><strong>苏宁店</strong></td>
+    <td class="jlj" colspan="3" align="center"><strong>${stockWarnMessage.key}</strong></td>
     </tr>
   <tr align="center" valign="middle">
-    <td><strong>产品编号</strong></td>
-    <td><strong>产品名称</strong></td>
-    <td><strong>库存数量</strong></td>
+    <td><strong>${stockWarnMessage.value.key}</strong></td>
+    <td><strong>${stockWarnMessage.value.value.sNum}</strong></td>
   </tr>
-  <tr>
-    <td>获得编号XXXXXXXX</td>
-    <td>获得名称XXXXXXXX</td>
-    <td>&nbsp;</td>
-  </tr>
-  <tr>
-    <td>获得编号XXXXXXXX</td>
-    <td>获得名称XXXXXXXX</td>
-    <td>&nbsp;</td>
-  </tr>
-  <tr>
-    <td>获得编号XXXXXXXX</td>
-    <td>获得名称XXXXXXXX</td>
-    <td>&nbsp;</td>
-  </tr>
-  <tr>
-    <td>获得编号XXXXXXXX</td>
-    <td>获得名称XXXXXXXX</td>
-    <td>&nbsp;</td>
-  </tr>
-  <tr>
-    <td  class="jlj" colspan="3" align="center" ><strong>乐&nbsp;&nbsp;&nbsp;&nbsp;购</strong></td>
-    </tr>
-  <tr align="center" valign="middle">
-    <td><strong>产品编号</strong></td>
-    <td><strong>产品名称</strong></td>
-    <td><strong>库存数量</strong></td>
-  </tr>
-  <tr>
-    <td>获得编号XXXXXXXX</td>
-    <td>获得名称XXXXXXXX</td>
-    <td>&nbsp;</td>
-  </tr>
-  <tr>
-    <td>获得编号XXXXXXXX</td>
-    <td>获得名称XXXXXXXX</td>
-    <td>&nbsp;</td>
-  </tr>
+  </c:forEach>
    <tr>
 			<td colspan="8" align="right"><div class="pagination">
 				<span class="disabled"><< prev</span><span class="current">1</span><a href="">2</a><a href="">3</a><a href="">4</a><a href="">5</a>…<a href="">10</a><a href="">11</a><a href="">12</a>...<a href="">100</a><a href="">101</a><a href="">next >></a>

@@ -24,6 +24,30 @@
     <include refid="Base_Column_List" />
     from stocks
   </select>
+  
+  <select id="selectByshopId" resultMap="BaseResultMap" parameterType="java.lang.Integer">
+  	select 
+  	<include refid="Base_Column_List"/>
+  	from stocks
+  	where shop_id = #{shopId,jdbcType=INTEGER}
+  </select>
+ <select id="selctAllStocks" resultMap="BaseResultMap">
+ 	select
+ 	<include refid="Base_Column_List"/>
+ 	from stocks
+ </select>
+  <select id = "selectByPid" resultMap = "BaseResultMap" parameterType="java.lang.Integer">
+  	select
+  	<include refid="Base_Column_List"/>
+  	from stocks
+  	where shop_id = #{shopId,jdbcType=INTEGER}
+  </select>
+  <select id="selectByshopIdAndStockNum" resultMap = "BaseResultMap" parameterType="java.lang.Integer">
+  	select
+  	<include refid="Base_Column_List"/>
+  	from stocks
+  	where shop_id = #{shopId,jdbcType=INTEGER} AND s_num in (0,1,2,3,4,5,6,7,8,9,10)
+  </select>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
     delete from stocks
     where s_id = #{sId,jdbcType=INTEGER}
