@@ -21,7 +21,7 @@
     delete from sell
     where s_id = #{sId,jdbcType=INTEGER}
   </delete>
-  <insert id="insert" parameterType="com.friday.model.Sell" >
+  <insert id="insert" useGeneratedKeys="true" keyProperty="sId" parameterType="com.friday.model.Sell" >
     insert into sell (s_id, shop_id, u_id, 
       s_date, s_bz)
     values (#{sId,jdbcType=INTEGER}, #{shopId,jdbcType=INTEGER}, #{uId,jdbcType=VARCHAR}, 

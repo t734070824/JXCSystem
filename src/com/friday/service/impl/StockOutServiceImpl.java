@@ -15,6 +15,8 @@ import com.friday.inter.OutStockDetailMapper;
 import com.friday.inter.OutStockMapper;
 import com.friday.inter.ProductMapper;
 import com.friday.inter.ProductTypeMapper;
+import com.friday.inter.SellDetailMapper;
+import com.friday.inter.SellMapper;
 import com.friday.inter.ShopMapper;
 import com.friday.inter.StockMapper;
 import com.friday.model.Order;
@@ -23,6 +25,8 @@ import com.friday.model.OutStock;
 import com.friday.model.OutStockDetail;
 import com.friday.model.Product;
 import com.friday.model.ProductType;
+import com.friday.model.Sell;
+import com.friday.model.SellDetail;
 import com.friday.model.Shop;
 import com.friday.model.Stock;
 import com.friday.service.StockOutService;
@@ -161,6 +165,62 @@ public class StockOutServiceImpl implements StockOutService {
 		
 		return ret;
 		
+	}
+
+	@Override
+	public int sell(Map<Integer, Integer> sells, Date date, String bz, String uId, int shopId) throws Exception {
+		int ret = 0;
+		SqlSession sqlSession = null;
+		
+		try {
+			sqlSession = SessionUtils.getSession();
+			
+			SellMapper sellMapper = sqlSession.getMapper(SellMapper.class);
+			SellDetailMapper sellDetailMapper = sqlSession.getMapper(SellDetailMapper.class);
+			StockMapper stockMapper = sqlSession.getMapper(StockMapper.class);
+			
+			Sell sell = new Sell();
+			sell.setsBz(bz);
+			sell.setsDate(date);
+			sell.setShopId(shopId);
+			sell.setuId(uId);
+
+			
+			sellMapper.insert(sell);
+			
+			Iterator<Integer> iterator = sells.keySet().iterator();
+			List<Stock> stocks = stockMapper.selectAll();
+			
+			while (iterator.hasNext()) {
+				SellDetail sellDetail = new SellDetail();
+				sellDetail.setSellId(sell.getsId());
+				sellDetail.setpId(iterator.next());
+				sellDetail.setsNum(sells.get(sellDetail.getpId()));
+				sellDetailMapper.insert(sellDetail);
+				
+				for (Stock stock : stocks) {
+					if(stock.getShopId() == shopId && stock.getpId() == sellDetail.getpId()){
+						if (stock.getsNum() >= sellDetail.getsNum()) {
+							stock.setsNum(stock.getsNum() - sellDetail.getsNum());
+							stockMapper.updateByPrimaryKey(stock);
+						}
+						else {
+							throw new Exception();
+						}
+					}
+				}
+			}
+			
+			sqlSession.commit();
+			ret = 1;
+		} catch (Exception e) {
+			sqlSession.rollback();
+			throw e;
+		} finally {
+			SessionUtils.closeSession(sqlSession);
+		}
+		
+		return ret;
 	}
 
 }

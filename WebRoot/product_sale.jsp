@@ -1,4 +1,5 @@
 <%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%
 String path = request.getContextPath();
 String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
@@ -7,17 +8,18 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-<base href="<%=basePath%>">
+<base href="<%=basePath%>" />
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<meta http-equiv="pragma" content="no-cache">
-<meta http-equiv="cache-control" content="no-cache">
-<meta http-equiv="expires" content="0">    
-<meta http-equiv="keywords" content="keyword1,keyword2,keyword3">
-<meta http-equiv="description" content="This is my page">
+<meta http-equiv="pragma" content="no-cache" />
+<meta http-equiv="cache-control" content="no-cache" />
+<meta http-equiv="expires" content="0" />    
+<meta http-equiv="keywords" content="keyword1,keyword2,keyword3" />
+<meta http-equiv="description" content="This is my page" />
 <title>IN ADMIN PANEL | Powered by INDEZINER</title>
 <link rel="stylesheet" type="text/css" href="style.css" />
 <script type="text/javascript" src="JS/jquery.min.js"></script>
 <script type="text/javascript" src="JS/ddaccordion.js"></script>
+<script type="text/javascript" src="My97DatePicker/WdatePicker.js"></script>
 <script type="text/javascript">
 ddaccordion.init({
 	headerclass: "submenuheader", //Shared CSS class name of headers group
@@ -38,7 +40,7 @@ ddaccordion.init({
 	onopenclose:function(header, index, state, isuseractivated){ //custom code to run whenever a header is opened or closed
 		//do nothing
 	}
-})
+});
 </script>
 <script src="JS/jquery.jclock-1.2.0.js.txt" type="text/javascript"></script>
 <script type="text/javascript" src="JS/jconfirmaction.jquery.js"></script>
@@ -61,31 +63,67 @@ $(function($) {
 <body bgcolor="transparent" style='background:transparent'>
  <table id="rounded-corner" summary="2007 Major IT Companies' Profit">
   <tr>
-	<td colspan="7" align="left"><strong>产品销售</strong></td>
+	<td colspan="4" align="left"><strong>产品销售</strong></td>
   </tr>
   <tr>
-    <td align="right">网点名称</td>
-    <td colspan="2"><label for="select"><select name="select" id="select" >
-      <option>苏宁店</option>
-      </select></label>
-      </td>
+    	<td align="right">出库网点</td>
+	    <td colspan="3">
+	    	<select onchange="shopChange(this.value)" id="shopselect">
+	    	<c:forEach items="${shops }" var="shop">
+	    		<option value="${shop.sId }">${shop.sName }</option>
+	    	</c:forEach>
+	      	</select>
+	    </td>
   </tr>
-  <tr>
-    <td align="right">销售时间</td>
-    <td width="158"><input name="textfield4" type="text" id="textfield4" size="20" /></td>
-    <td width="339" align="left">＊点击文本框获取时间</td>
-  </tr>
-  <tr>
-    <td align="right">经&nbsp;&nbsp;办&nbsp;&nbsp;人</td>
-    <td colspan="2"><input name="textfield5" type="text" id="textfield5" size="20" /></td>
-  </tr>
-  <tr>
-    <td align="right">备&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;注</td>
-    <td colspan="2"><input name="textfield6" type="text" id="textfield6" size="20"/></td>
-  </tr>
-  <tr>
-    <td colspan="3" align="left">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="submit" name="button1" id="button1" value="确认添加" />        &nbsp;&nbsp;&nbsp;&nbsp;          <input type="submit" name="button2" id="button2" value="重新填写" ></td>
-    </tr>
+  	<tr><td colspan="4">
+  	<c:forEach items="${shopproducts }" var="products">
+  	<form action="sell.do" method="post" id="${products.key }">
+  	<table id="rounded-corner">
+  	<tr style="display:none"]><td colspan="4"><input type="text" name="shopid" value="${products.key }" readonly /></td></tr>
+  	<tr>
+	    <td align="center">产品名称</td>
+	    <td align="center">产品数量</td>
+	    <td align="center">产品价格</td>
+	    <td align="center">销售数量</td>
+	</tr>
+	<c:forEach items="${products.value }" var="product">
+	<tr>
+	    <td align="center"><input type="text" size="10" value="${product.name }" readonly /></td>
+	    <td align="center"><input type="text" size="10" value="${product.num }" readonly /></td>
+	    <td align="center"><input type="text" size="10" value="${product.price }" readonly /></td>
+	    <td align="center"><input type="text" size="10" name="${product.pid }" onKeyUp="this.value=this.value.replace(/\D/g,'')" /></td>
+	</tr>
+	</c:forEach>
+  	<tr>
+	    <td align="right">销售时间</td>
+	    <td><input name="outtime" type="text" size="20" onclick="WdatePicker()"/></td>
+	    <td align="left" colspan="2">＊点击文本框获取时间</td>
+	</tr>
+	<tr>
+	    <td align="right">备注</td>
+	    <td colspan="3"><input name="remark" type="text" size="20" /></td>
+	</tr>
+	<tr>
+	    <td colspan="4" align="center">
+	    	<input type="submit" value="确认销售" />
+	    	<input type="reset" value="重新填写" />
+	    </td>
+	</tr>
+	</table>
+	</form>
+	</c:forEach>
+	</td></tr>
 </table>
+<script> 
+function shopChange(id){
+	for(var i=0; i < document.forms.length; i++) {
+		var form = document.forms[i];
+		form.style.display = "none";
+	}
+	var curForm = document.getElementById(id);
+	curForm.style.display = "";
+}
+shopChange(document.getElementById("shopselect").value);
+</script>
 </body>
 </html>
