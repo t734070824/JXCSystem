@@ -26,7 +26,8 @@
 	<!-- CSY -->
 	<bean id="modifyPwdController" class="com.friday.controller.ModifyPwdController" />
 	<bean id="addStaffController" class="com.friday.controller.AddStaffController" />
-	
+	<bean id="addproducttypeController" class="com.friday.controller.AddProductTypeController" />
+	<bean id="checktypeController" class="com.friday.controller.AjaxTypeController" />
 	
 	<bean id="urlMapping" class="org.springframework.web.servlet.handler.SimpleUrlHandlerMapping">
 		<property name="mappings">
@@ -43,6 +44,8 @@
 			<!-- CSY -->
 				<prop key="/modifypwd.do">modifyPwdController</prop>
 				<prop key="/addstaff.do">addStaffController</prop>
+				<prop key="addproducttype.do">addproducttypeController</prop>
+				<prop key="checktype.do">checktypeController</prop>
 			</props>
 		</property>
 	</bean>

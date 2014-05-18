@@ -14,6 +14,13 @@
     from producttype
     where t_id = #{tId,jdbcType=INTEGER}
   </select>
+  
+    <select id="selectByTypeName" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from producttype
+    where t_type = #{tType,jdbcType=VARCHAR}
+  </select>
   <select id="selectAllTypes" resultMap="BaseResultMap">
     select 
     <include refid="Base_Column_List" />

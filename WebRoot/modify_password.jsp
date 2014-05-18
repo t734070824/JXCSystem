@@ -67,15 +67,15 @@ $(function($) {
 	</tr>
   <tr>
     <td width="112" align="right">原密码：</td>
-    <td><input name="password" type="password" id="password" size="20" /></td>
+    <td><input name="password" type="password" id="password" size="20" maxlength="10"/></td>
   </tr>
   <tr>
     <td align="right">新密码：</td>
-    <td><input name="newpassword" type="text" id="newpassword" size="20" /></td>
+    <td><input name="newpassword" type="password" id="newpassword" size="20" maxlength="10"/></td>
   </tr>
   <tr>
     <td align="right">确认密码：</td>
-    <td><input name="newpassword2" type="text" id="newpassword2" size="20" /></td>
+    <td><input name="newpassword2" type="password" id="newpassword2" size="20" maxlength="10"/></td>
   </tr>
   <tr>
     <td colspan="2" align="left">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="submit" name="button1" id="button1" value="确认" />        &nbsp;&nbsp;&nbsp;&nbsp;          <input type="reset" name="button2" id="button2" value="重置" ></td>
