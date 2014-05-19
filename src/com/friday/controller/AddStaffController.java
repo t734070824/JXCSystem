@@ -21,36 +21,33 @@ public class AddStaffController implements Controller {
 	@Override
 	public ModelAndView handleRequest(HttpServletRequest request,
 			HttpServletResponse response) throws Exception {
-		
-Map<String, Object> model = new HashMap<String, Object>();
-		
+
+		Map<String, Object> model = new HashMap<String, Object>();
+
 		try {
 			StaffService staffService = new StaffServiceImpl();
-			
+
 			String name = request.getParameter("name");
-			
+
 			String sex = request.getParameter("sex");
-			if(sex != null)
-			{
-				if("a".equals(sex))
-				{
+			if (sex != null) {
+				if ("a".equals(sex)) {
 					sex = "男";
-				}else
-				{
+				} else {
 					sex = "女";
 				}
 			}
-			
+
 			String phone = request.getParameter("phone");
 			String address = request.getParameter("address");
-			
-			Float price =Float.parseFloat(request.getParameter("price"));
+
+			Float price = Float.parseFloat(request.getParameter("price"));
 			String note = request.getParameter("note");
-			
+
 			SimpleDateFormat simformat = new SimpleDateFormat("yyyy-MM-dd");
 			String strbirthday = request.getParameter("birthday");
 			Date birthday = simformat.parse(strbirthday);
-			
+
 			Employee employee = new Employee();
 			employee.seteAddress(address);
 			employee.seteDate(birthday);
@@ -58,20 +55,19 @@ Map<String, Object> model = new HashMap<String, Object>();
 			employee.setePrice(price);
 			employee.seteSex(sex);
 			employee.seteName(name);
-			if(!"".equals(note.trim()))
-			{
+			if (!"".equals(note.trim())) {
 				employee.seteBz(note);
 			}
 			UUID uuid = UUID.randomUUID();
 			employee.seteId(uuid.toString());
-			
+
 			staffService.addStaff(employee);
-			
+
 			model.put("result", "success");
 			model.put("success", "成功");
 			return new ModelAndView("success", model);
 		} catch (Exception e) {
-			
+
 			model.put("result", "fail");
 			model.put("success", "失败");
 			e.printStackTrace();

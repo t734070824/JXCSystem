@@ -1,7 +1,9 @@
-<%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
+<%@ page language="java" import="java.util.*,java.text.SimpleDateFormat" pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%
 String path = request.getContextPath();
 String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
+SimpleDateFormat simformat1 = new SimpleDateFormat("yyyy-MM-dd");
 %>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
@@ -11,7 +13,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta http-equiv="pragma" content="no-cache">
 <meta http-equiv="cache-control" content="no-cache">
-<meta http-equiv="expires" content="0">    
+<meta http-equiv="expires" content="0">
 <meta http-equiv="keywords" content="keyword1,keyword2,keyword3">
 <meta http-equiv="description" content="This is my page">
 <title>IN ADMIN PANEL | Powered by INDEZINER</title>
@@ -67,53 +69,18 @@ $(function($) {
 	</tr>
     	<tr>
     	  <td width="123" align="center"><strong>姓名</strong></td>
-    	  <td width="126" align="center"><strong>部门</strong></td>
     	  <td width="79" align="center"><strong>生日</strong></td>
     	  <td align="center">祝福发送至</td>
     	  </tr>
     </thead>
     <tbody>
+    <c:forEach items="${birthdays}" var="employee">
     	<tr>
-        	<td align="center">lwr</td>
-            <td align="center">XXX</td>
-            <td align="center">XXX-XX-XX</td>
-            <td align="center">XXX-XX-XX999999</td>
+        	<td align="center">${employee.eName }</td>
+            <td align="center">${nowday }</td>
+            <td align="center">${employee.ePhone }</td>
         </tr>
-    	<tr>
-    	  <td align="center">jlj</td>
-            <td align="center">XXX</td>
-            <td align="center">XXX-XX-XX</td>
-            <td align="center">XXX-XX-XX999999</td>
-  	    </tr>
-        <tr>
-    	  <td align="center">dyh</td>
-            <td align="center">XXX</td>
-            <td align="center">XXX-XX-XX</td>
-            <td align="center">XXX-XX-XX999999</td>
-  	    </tr>
-        <tr>
-    	  <td align="center">csy</td>
-            <td align="center">XXX</td>
-            <td align="center">XXX-XX-XX</td>
-            <td align="center">XXX-XX-XX999999</td>
-  	    </tr>
-        <tr>
-    	  <td align="center">cxw</td>
-            <td align="center">XXX</td>
-            <td align="center">XXX-XX-XX</td>
-            <td align="center">XXX-XX-XX999999</td>
-  	    </tr>
-        <tr>
-    	  <td align="center">sh</td>
-            <td align="center">XXX</td>
-            <td align="center">XXX-XX-XX</td>
-            <td align="center">XXX-XX-XX999999</td>
-  	    </tr>
-       <tr>
-			<td colspan="8" align="right"><div class="pagination">
-				<span class="disabled"><< prev</span><span class="current">1</span><a href="">2</a><a href="">3</a><a href="">4</a><a href="">5</a>…<a href="">10</a><a href="">11</a><a href="">12</a>...<a href="">100</a><a href="">101</a><a href="">next >></a>
-			</div></td>
-		 </tr>
+   </c:forEach>
     </tbody>
 </table>
 </body>
