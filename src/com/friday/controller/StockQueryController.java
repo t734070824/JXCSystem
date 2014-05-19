@@ -23,13 +23,14 @@ public class StockQueryController implements Controller {
 		
 		try {
 			StockQueryService stockQueryService = new StockQueryServiceImpl();
-			model.put("stock", stockQueryService.stockQuery(request.getParameter("sName").toString()));
+			int shopId = Integer.parseInt(request.getParameter("sName"));
+			model.put("stock", stockQueryService.stockQuery(shopId));
 			model.put("shop", stockQueryService.shopQuery());
+			model.put("shopname", stockQueryService.QueryShopName(shopId));
 		} catch (Exception e) {
-			model.put("result","fail");
+			model.put("error","查询库存失败");
 			e.printStackTrace();
-			return new ModelAndView("stock_query",model);
-		
+			return new ModelAndView("error",model);
 		}
 		
 		return new ModelAndView("stock_query",model);

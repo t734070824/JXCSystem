@@ -8,13 +8,13 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-<base href="<%=basePath%>">
+<base href="<%=basePath%>" />
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<meta http-equiv="pragma" content="no-cache">
-<meta http-equiv="cache-control" content="no-cache">
-<meta http-equiv="expires" content="0">    
-<meta http-equiv="keywords" content="keyword1,keyword2,keyword3">
-<meta http-equiv="description" content="This is my page">
+<meta http-equiv="pragma" content="no-cache" />
+<meta http-equiv="cache-control" content="no-cache" />
+<meta http-equiv="expires" content="0" />    
+<meta http-equiv="keywords" content="keyword1,keyword2,keyword3" />
+<meta http-equiv="description" content="This is my page" />
 <title>IN ADMIN PANEL | Powered by INDEZINER</title>
 <link rel="stylesheet" type="text/css" href="style.css" />
 <script type="text/javascript" src="JS/jquery.min.js"></script>
@@ -39,7 +39,7 @@ ddaccordion.init({
 	onopenclose:function(header, index, state, isuseractivated){ //custom code to run whenever a header is opened or closed
 		//do nothing
 	}
-})
+});
 </script>
 <script src="JS/jquery.jclock-1.2.0.js.txt" type="text/javascript"></script>
 <script type="text/javascript" src="JS/jconfirmaction.jquery.js"></script>
@@ -61,21 +61,24 @@ $(function($) {
 </head>
 <body bgcolor="transparent" style='background:transparent'>
   <table id="rounded-corner" summary="2007 Major IT Companies' Profit">
-  <tr>
-		<td colspan="7" align="left"><strong>库存报警</strong></td>
+  	<tr>
+		<td colspan="3" align="left"><strong>库存报警</strong></td>
 	</tr>
-	<c:forEach items = "${stockWarn}" var="stockWarnMessage">
-  <tr >
-    <td class="jlj" colspan="3" align="center"><strong>${stockWarnMessage.key}</strong></td>
+	<tr>
+            <td align="center">网点</td>
+            <td align="center">产品</td>
+            <td align="center">库存数量</td>
     </tr>
-  <tr align="center" valign="middle">
-    <td><strong>${stockWarnMessage.value.key}</strong></td>
-    <td><strong>${stockWarnMessage.value.value.sNum}</strong></td>
-  </tr>
-  </c:forEach>
+	<c:forEach items = "${stockWarn}" var="stockWarnMessage">
+	  	<tr align="center" valign="middle">
+	    	<td>${stockWarnMessage.shop}</td>
+	    	<td>${stockWarnMessage.product}</td>
+	    	<td><font size="4" color="red">${stockWarnMessage.num}</font></td>
+	  	</tr>
+  	</c:forEach>
    <tr>
 			<td colspan="8" align="right"><div class="pagination">
-				<span class="disabled"><< prev</span><span class="current">1</span><a href="">2</a><a href="">3</a><a href="">4</a><a href="">5</a>…<a href="">10</a><a href="">11</a><a href="">12</a>...<a href="">100</a><a href="">101</a><a href="">next >></a>
+				<span class="disabled">prev</span><span class="current">1</span><span class="disabled">next</span>
 			</div></td>
 		 </tr>
 </table>

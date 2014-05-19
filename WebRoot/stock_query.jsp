@@ -62,45 +62,42 @@ $(function($) {
 <body bgcolor="transparent" style='background:transparent'>
 <form action="stockquery.do" method="post">
   <table id="rounded-corner" summary="2007 Major IT Companies' Profit" width="623" border="0">
-  <tr>
-		<td colspan="7" align="left"><strong>库存查询</strong></td>
+  	<tr>
+		<td colspan="4" align="left"><strong>库存查询</strong></td>
 	</tr>
           <tr>
             <td width="82" align="center">搜索：</td>
             <td width="88" align="center"><label for="select">
             <select name="sName" id="sName" >
             <c:forEach items="${shop}" var="shopName"> 
-            <option>${shopName.sName}</option>
+            <option value="${shopName.sId}">${shopName.sName}</option>
             </c:forEach>
               
               </select></label></td>
-            <td colspan="5" align="left"><input type="submit" value="查询" style="font-size:16px" />
+            <td colspan="4" align="left"><input type="submit" value="查询" style="font-size:16px" /></td>
             </tr>
-          
+         	<tr>
+				<td colspan="4" align="center"><strong>${shopname}</strong></td>
+			</tr>
           <tr>
-            <td align="center">产品编号</td>
             <td align="center">产品名称</td>
             <td width="79" align="center">规格</td>
-            <td width="85" align="center">状态</td>
             <td width="96" align="center">单价</td>
             <td width="70" align="center">库存数量</td>
-            <!--  <td width="95" align="center">建议实价格</td> -->
           </tr>
          
-          <c:forEach items="${stock.value}" var="productsMessage">
+          <c:forEach items="${stock }" var="productsMessage">
           <tr>
-            <td align="center">${productsMessage.pId}</td>
-            <td align="center">${productsMessage.pName}</td>
-            <td align="center">${productsMessage.pStyle}</td>
-            <td align="center">${productsMessage.pZt}</td>
-            <td align="center">${productsMessage.pPrice};</td>
-            <td align="center">${stock.key};</td>
-           <!--   <td align="center">&nbsp;</td>-->
+            <td align="center">${productsMessage.name}</td>
+            <td align="center">${productsMessage.guige}</td>
+            <td align="center">${productsMessage.price}</td>
+            <td align="center">${productsMessage.num}</td>
           </tr>
           </c:forEach>
+          
           <tr>
-			<td colspan="8" align="right"><div class="pagination">
-				<span class="disabled"><< prev</span><span class="current">1</span><a href="">2</a><a href="">3</a><a href="">4</a><a href="">5</a>…<a href="">10</a><a href="">11</a><a href="">12</a>...<a href="">100</a><a href="">101</a><a href="">next >></a>
+			<td colspan="4" align="right"><div class="pagination">
+				<span class="disabled">prev</span><span class="current">1</span><span class="disabled">prev</span>
 			</div></td>
 		 </tr>
 </table>

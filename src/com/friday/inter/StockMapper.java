@@ -23,8 +23,4 @@ public interface StockMapper {
 	List<Stock> selectByshopId(Integer sId);
 
 	List<Stock> selectAllStocks();
-
-	List<Stock> selectByStockNum();
-
-	List<Stock> selectByshopIdAndStockNum(Integer getsId);
 }

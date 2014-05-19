@@ -1,8 +1,8 @@
 package com.friday.service;
 
+import java.util.List;
 import java.util.Map;
 
 public interface StockWarnService {
-	public Map<String, Object> stockWarn() throws Exception;
-	
+	public List<Object> stockWarn() throws Exception;
 }
