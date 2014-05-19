@@ -1,4 +1,6 @@
+<%@page import="com.friday.model.Order"%>
 <%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%
 String path = request.getContextPath();
 String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
@@ -7,17 +9,18 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-<base href="<%=basePath%>">
+<base href="<%=basePath%>" />
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<meta http-equiv="pragma" content="no-cache">
-<meta http-equiv="cache-control" content="no-cache">
-<meta http-equiv="expires" content="0">    
-<meta http-equiv="keywords" content="keyword1,keyword2,keyword3">
-<meta http-equiv="description" content="This is my page">
+<meta http-equiv="pragma" content="no-cache" />
+<meta http-equiv="cache-control" content="no-cache" />
+<meta http-equiv="expires" content="0" />    
+<meta http-equiv="keywords" content="keyword1,keyword2,keyword3" />
+<meta http-equiv="description" content="This is my page" />
 <title>IN ADMIN PANEL | Powered by INDEZINER</title>
 <link rel="stylesheet" type="text/css" href="style.css" />
 <script type="text/javascript" src="JS/jquery.min.js"></script>
 <script type="text/javascript" src="JS/ddaccordion.js"></script>
+<script type="text/javascript" src="My97DatePicker/WdatePicker.js"></script>
 <script type="text/javascript">
 ddaccordion.init({
 	headerclass: "submenuheader", //Shared CSS class name of headers group
@@ -38,7 +41,7 @@ ddaccordion.init({
 	onopenclose:function(header, index, state, isuseractivated){ //custom code to run whenever a header is opened or closed
 		//do nothing
 	}
-})
+});
 </script>
 <script src="JS/jquery.jclock-1.2.0.js.txt" type="text/javascript"></script>
 <script type="text/javascript" src="JS/jconfirmaction.jquery.js"></script>
@@ -59,124 +62,77 @@ $(function($) {
 <link rel="stylesheet" type="text/css" media="all" href="CSS/niceforms-default.css" />
 
 </head>
-<body bgcolor="transparent" style='background:transparent'>    
+<body bgcolor="transparent" style='background:transparent'>         
 <table id="rounded-corner" summary="2007 Major IT Companies' Profit">
     <thead>
 	<tr>
-		<td colspan="8" align="left"><strong>库存记录查询</strong></td>
+		<td colspan="4" align="left"><strong>退回记录查询</strong></td>
 	</tr>
     <tr>
-        	<td colspan="8" align="right">开始时间：
-        	  <label for="textfield"></label>
-        	  <input name="textfield" type="text" id="textfield" size="10" />
-        	  &nbsp;结束时间：
-        	  <label for="textfield2"></label>
-        	  <input name="textfield2" type="text" id="textfield2" size="10" />
-        	  &nbsp;入库单编号：
-        	  <label for="textfield3"></label>
-        	  <input name="textfield3" type="text" id="textfield3" size="10" />
-        	  <input type="submit" name="button" id="button" value="查询" /></td>
-            </tr>
-    	<tr>
-        	<td align="center">&nbsp;</td>
-            <td align="center"><strong>订单编号</strong></td>
-            <td align="center"><strong>订购时间
-           
-            </strong></td>
-            <td align="center"><strong>经办人
-           
-            </strong></td>
-            <td align="center"><strong>供应商
-           
-            </strong></td>
-            <td align="center"><strong>合计金额
-           
-            </strong></td>
-            <td align="center"><strong>成本金额
-           
-            </strong></td>
-            <td align="center"><strong>备注
-           
-            </strong></td>
-            </tr>
+    	<td colspan="4" align="right">
+       	<form action="thquery.do" method="post">
+        	  <label>开始时间：</label>
+        	  <input name="starttime" type="text" id="textfield" size="5" onclick="WdatePicker()" />
+        	  <label>结束时间:</label>
+        	  <input name="endtime" type="text" id="textfield2" size="5" onclick="WdatePicker()" />
+        	  <label>退回编号:</label>
+        	  <input name="orderid" type="text" id="textfield3" size="5" />
+        	  <input type="submit" value="查询" />
+       	</form>
+       	</td>
+     </tr>
+        <tr>
+        	<td width="61" align="center"><strong>退回编号</strong></td>
+            <td width="50" align="center"><strong>退回时间</strong></td>
+            <td width="64" align="center"><strong>经办人 </strong></td>
+            <td width="85" align="center"><strong>合计金额</strong></td>
+        </tr>
     </thead>
+    <tfoot>
+		 <tr>
+			<td colspan="4" align="right">
+			<div class="pagination">
+				<form action="thquery.do" method="post" style="display:none" name="hideform">
+		       	  <input name="starttime" type="text" id="textfield" size="8" onclick="WdatePicker()" value="${starttime }"/>
+		       	  <input name="endtime" type="text" id="textfield2" size="8" onclick="WdatePicker()" value="${endtime }"/>
+		       	  <input name="orderid" type="text" id="textfield3" size="8" value="${orderid }"/>
+		       	  <input type="submit" value="查询" />
+		      	</form>
+		      	<% 
+		      		int pagecount = request.getAttribute("pagecount") == null ? 1 : (Integer)request.getAttribute("pagecount");
+		      		int pagecurrent = request.getAttribute("pagecurrent") == null ? 0 : (Integer)request.getAttribute("pagecurrent");
+
+		      		if (pagecurrent == 0) out.print("<span class=\"disabled\">prev</span>");
+		      		else out.print("<a href=\"javascript:hideform.action='queryorder.do?page=" + String.format("%d", pagecurrent-1) +"';hideform.submit()\">prev</a>");
+		      		for(int i=0; i < pagecount; i++) {
+		      			if(i == pagecurrent) out.print("<span class=\"current\">" + String.format("%d", i+1) + "</span>");
+		      			else out.print("<a href=\"javascript:hideform.action='queryorder.do?page=" + String.format("%d", i) +"';hideform.submit()\">" + String.format("%d", i+1) + "</a>");
+		      		}
+		      		if (pagecurrent == pagecount-1) out.print("<span class=\"disabled\">next</span>");
+		      		else out.print("<a href=\"javascript:hideform.action='queryorder.do?page=" + String.format("%d", pagecurrent+1) +"';hideform.submit()\">next</a>");
+		      	%>
+				<!-- <span class="disabled">prev</span>
+				<span class="current">1</span>
+				<a href="">2</a>
+				<a href="">3</a>
+				<a href="">4</a>
+				<a href="">5</a>
+				<a href="">next</a> -->
+			</div>
+			</td>
+		 </tr>
+	</tfoot>
     <tbody>
+    <c:forEach items="${result }" var="order">
     	<tr>
-        	<td><input type="checkbox" name="" /></td>
-            <td align="center">读取订单号</td>
-            <td align="center">读取订购时间</td>
-            <td align="center">读取XXX</td>
-            <td align="center">获取XXXXXXXXXXX</td>
-            <td align="center">150￥</td>
-            <td align="center">130￥</td>
-            <td align="center">ccc</td>
+            <td align="center">${order.oId }</td>
+            <td align="center">${order.date }</td>
+            <td align="center">${order.user }</td>
+            <td align="center">${order.price }</td>
         </tr>
-        <tr>
-        	<td><input type="checkbox" name="" /></td>
-            <td align="center">读取订单号</td>
-            <td align="center">读取订购时间</td>
-            <td align="center">读取XXX</td>
-            <td align="center">获取XXXXXXXXXXX</td>
-            <td align="center">150￥</td>
-            <td align="center">130￥</td>
-            <td align="center">cccc</td>
-        </tr>
-        <tr>
-        	<td><input type="checkbox" name="" /></td>
-            <td align="center">读取订单号</td>
-            <td align="center">读取订购时间</td>
-            <td align="center">读取XXX</td>
-            <td align="center">获取XXXXXXXXXXX</td>
-            <td align="center">150￥</td>
-            <td align="center">130￥</td>
-            <td align="center">cccc</td>
-        </tr>
-        <tr>
-        	<td><input type="checkbox" name="" /></td>
-            <td align="center">读取订单号</td>
-            <td align="center">读取订购时间</td>
-            <td align="center">读取XXX</td>
-            <td align="center">获取XXXXXXXXXXX</td>
-            <td align="center">150￥</td>
-            <td align="center">130￥</td>
-            <td align="center">cccc</td>
-        </tr>
-        <tr>
-        	<td><input type="checkbox" name="" /></td>
-            <td align="center">读取订单号</td>
-            <td align="center">读取订购时间</td>
-            <td align="center">读取XXX</td>
-            <td align="center">获取XXXXXXXXXXX</td>
-            <td align="center">150￥</td>
-            <td align="center">130￥</td>
-            <td align="center">cccc</td>
-        </tr>
-        <tr>
-        	<td><input type="checkbox" name="" /></td>
-            <td align="center">读取订单号</td>
-            <td align="center">读取订购时间</td>
-            <td align="center">读取XXX</td>
-            <td align="center">获取XXXXXXXXXXX</td>
-            <td align="center">150￥</td>
-            <td align="center">130￥</td>
-            <td align="center">cccc</td>
-        </tr>
-        <tr>
-        	<td><input type="checkbox" name="" /></td>
-            <td align="center">读取订单号</td>
-            <td align="center">读取订购时间</td>
-            <td align="center">读取XXX</td>
-            <td align="center">获取XXXXXXXXXXX</td>
-            <td align="center">150￥</td>
-            <td align="center">130￥</td>
-            <td align="center">cccc</td>
-        </tr>
-		<tr>
-    <td colspan="8" align="right"><div class="pagination">
-        <span class="disabled"><< prev</span><span class="current">1</span><a href="">2</a><a href="">3</a><a href="">4</a><a href="">5</a>…<a href="">10</a><a href="">11</a><a href="">12</a>...<a href="">100</a><a href="">101</a><a href="">next >></a>
-        </div></td>
-    </tr>
+     </c:forEach>
     </tbody>
 </table>
+
 </body>
 </html>

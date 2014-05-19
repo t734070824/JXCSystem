@@ -19,6 +19,7 @@ import com.friday.inter.SellDetailMapper;
 import com.friday.inter.SellMapper;
 import com.friday.inter.ShopMapper;
 import com.friday.inter.StockMapper;
+import com.friday.inter.UserMapper;
 import com.friday.model.Order;
 import com.friday.model.OrderDetail;
 import com.friday.model.OutStock;
@@ -29,6 +30,7 @@ import com.friday.model.Sell;
 import com.friday.model.SellDetail;
 import com.friday.model.Shop;
 import com.friday.model.Stock;
+import com.friday.model.User;
 import com.friday.service.StockOutService;
 import com.friday.utils.SessionUtils;
 
@@ -221,6 +223,159 @@ public class StockOutServiceImpl implements StockOutService {
 		}
 		
 		return ret;
+	}
+
+	@Override
+	public List<Object> queryStockOut(Date start, Date end, int shopId,
+			int orderId) throws Exception {
+		List<Object> list = new ArrayList<Object>();
+		SqlSession sqlSession = null;
+		
+		try {
+			sqlSession = SessionUtils.getSession();
+			
+			ProductMapper productMapper = sqlSession.getMapper(ProductMapper.class);
+			OutStockMapper outStockMapper = sqlSession.getMapper(OutStockMapper.class);
+			OutStockDetailMapper outStockDetailMapper = sqlSession.getMapper(OutStockDetailMapper.class);
+			UserMapper userMapper	= sqlSession.getMapper(UserMapper.class);
+			ShopMapper shopMapper = sqlSession.getMapper(ShopMapper.class);
+			
+			if (orderId != -1) {
+				OutStock outStock = outStockMapper.selectByPrimaryKey(orderId);
+				
+				if (outStock != null) {
+					Map<String, Object> map = new HashMap<String, Object>();
+					map.put("oId", outStock.getoId());
+					map.put("date", outStock.getoDate());
+					User user = userMapper.selectByPrimaryKey(outStock.getuId());
+					map.put("user", user.getuName());
+					List<OutStockDetail> outStockDetails = outStockDetailMapper.selectByOutStocksId(outStock.getoId());
+					int price = 0;
+					for (OutStockDetail outStockDetail : outStockDetails) {
+						Product product = productMapper.selectByPrimaryKey(outStockDetail.getpId());
+						price += outStockDetail.getoNum() * product.getpPrice();
+					}
+					map.put("price", price);
+					Shop shop = shopMapper.selectByPrimaryKey(outStock.getsId());
+					map.put("shop", shop.getsName());
+					list.add(map);
+				}
+				
+				return list;
+			}
+			else {
+				List<OutStock> outStocks = null;
+				if (shopId == 0) {
+					outStocks = outStockMapper.selectAll();
+				}
+				else {
+					outStocks = outStockMapper.selectByShopId(shopId);
+				}
+				
+				for (OutStock outStock : outStocks) {
+					if ((end == null ? true : outStock.getoDate().before(end)) && (start == null ? true : outStock.getoDate().after(start))) {
+						Map<String, Object> map = new HashMap<String, Object>();
+						map.put("oId", outStock.getoId());
+						map.put("date", outStock.getoDate());
+						User user = userMapper.selectByPrimaryKey(outStock.getuId());
+						map.put("user", user.getuName());
+						List<OutStockDetail> outStockDetails = outStockDetailMapper.selectByOutStocksId(outStock.getoId());
+						int price = 0;
+						for (OutStockDetail outStockDetail : outStockDetails) {
+							Product product = productMapper.selectByPrimaryKey(outStockDetail.getpId());
+							price += outStockDetail.getoNum() * product.getpPrice();
+						}
+						map.put("price", price);
+						Shop shop = shopMapper.selectByPrimaryKey(outStock.getsId());
+						map.put("shop", shop.getsName());
+						list.add(map);
+					}
+				}
+			}
+		} catch (Exception e) {
+			throw e;
+		} finally {
+			SessionUtils.closeSession(sqlSession);
+		}
+		
+		return list;
+	}
+
+	@Override
+	public List<Object> querySell(Date start, Date end, int shopId, int orderId)
+			throws Exception {
+		
+		List<Object> list = new ArrayList<Object>();
+		SqlSession sqlSession = null;
+		
+		try {
+			sqlSession = SessionUtils.getSession();
+			
+			ProductMapper productMapper = sqlSession.getMapper(ProductMapper.class);
+			SellMapper sellMapper = sqlSession.getMapper(SellMapper.class);
+			SellDetailMapper sellDetailMapper = sqlSession.getMapper(SellDetailMapper.class);
+			UserMapper userMapper	= sqlSession.getMapper(UserMapper.class);
+			ShopMapper shopMapper = sqlSession.getMapper(ShopMapper.class);
+			
+			if (orderId != -1) {
+				Sell sell = sellMapper.selectByPrimaryKey(orderId);
+				
+				if (sell != null) {
+					Map<String, Object> map = new HashMap<String, Object>();
+					map.put("oId", sell.getsId());
+					map.put("date", sell.getsDate());
+					User user = userMapper.selectByPrimaryKey(sell.getuId());
+					map.put("user", user.getuName());
+					List<SellDetail> sellDetails = sellDetailMapper.selectBySellId(sell.getsId());
+					int price = 0;
+					for (SellDetail sellDetail : sellDetails) {
+						Product product = productMapper.selectByPrimaryKey(sellDetail.getpId());
+						price += sellDetail.getsNum() * product.getpPrice();
+					}
+					map.put("price", price);
+					Shop shop = shopMapper.selectByPrimaryKey(sell.getShopId());
+					map.put("shop", shop.getsName());
+					list.add(map);
+				}
+				
+				return list;
+			}
+			else {
+				List<Sell> sells = null;
+				if (shopId == 0) {
+					sells = sellMapper.selectAll();
+				}
+				else {
+					sells = sellMapper.selectByShopId(shopId);
+				}
+				
+				for (Sell sell : sells) {
+					if ((end == null ? true : sell.getsDate().before(end)) && (start == null ? true : sell.getsDate().after(start))) {
+						Map<String, Object> map = new HashMap<String, Object>();
+						map.put("oId", sell.getsId());
+						map.put("date", sell.getsDate());
+						User user = userMapper.selectByPrimaryKey(sell.getuId());
+						map.put("user", user.getuName());
+						List<SellDetail> sellDetails = sellDetailMapper.selectBySellId(sell.getShopId());
+						int price = 0;
+						for (SellDetail sellDetail : sellDetails) {
+							Product product = productMapper.selectByPrimaryKey(sellDetail.getpId());
+							price += sellDetail.getsNum() * product.getpPrice();
+						}
+						map.put("price", price);
+						Shop shop = shopMapper.selectByPrimaryKey(sell.getShopId());
+						map.put("shop", shop.getsName());
+						list.add(map);
+					}
+				}
+			}
+		} catch (Exception e) {
+			throw e;
+		} finally {
+			SessionUtils.closeSession(sqlSession);
+		}
+		
+		return list;
 	}
 
 }

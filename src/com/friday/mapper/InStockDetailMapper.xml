@@ -16,6 +16,12 @@
     from instockdetails
     where i_id = #{iId,jdbcType=INTEGER}
   </select>
+  <select id="selectByInStockId" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from instockdetails
+    where inStock_id = #{inId,jdbcType=INTEGER}
+  </select>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
     delete from instockdetails
     where i_id = #{iId,jdbcType=INTEGER}
