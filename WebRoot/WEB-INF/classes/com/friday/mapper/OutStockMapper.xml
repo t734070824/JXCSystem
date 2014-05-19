@@ -17,6 +17,17 @@
     from outstock
     where o_id = #{oId,jdbcType=INTEGER}
   </select>
+  <select id="selectAll" resultMap="BaseResultMap" >
+    select 
+    <include refid="Base_Column_List" />
+    from outstock
+  </select>
+  <select id="selectByShopId" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from outstock
+    where s_id = #{sId,jdbcType=INTEGER}
+  </select>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
     delete from outstock
     where o_id = #{oId,jdbcType=INTEGER}

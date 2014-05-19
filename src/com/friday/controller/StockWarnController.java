@@ -23,9 +23,9 @@ public class StockWarnController implements Controller {
 			StockWarnService stockWarnService = new StockWarnServiceImpl();
 			model.put("stockWarn", stockWarnService.stockWarn());
 		} catch (Exception e) {
-			model.put("result", "fail");
+			model.put("error", "操作失败");
 			e.printStackTrace();
-			return new ModelAndView("stock_warn",model);
+			return new ModelAndView("error", model);
 		}
 		
 		return new ModelAndView("stock_warn",model);

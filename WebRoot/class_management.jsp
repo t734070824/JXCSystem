@@ -1,4 +1,5 @@
 <%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%
 String path = request.getContextPath();
 String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
@@ -69,40 +70,17 @@ $(function($) {
     </td>
     </tr>
   <tr align="center">
-    <td width="72" align="center">类别编号</td>
     <td align="center">类别名称</td>
     <td width="135" align="center">修改</td>
     <td width="106" align="center">重置（删除）</td>
   </tr>
+ <c:forEach items="${result}" var="type">
   <tr>
-    <td align="center">获得XXXX</td>
-    <td align="center">获得XXXXXXXXXX</td>
-    <td align="center"><img src="images/user_edit.png" alt="" title="" border="0" /></td>
-    <td align="center"><a href="#" class="ask"><img src="images/trash.png" alt="" title="" border="0" /></a>&nbsp;</td>
+    <td align="center">${type.tType }</td>
+    <td align="center"><a href="showmodifytype.do?typename=${type.tType }" ><img src="images/user_edit.png" alt="" title="" border="0" /></a></td>
+    <td align="center"><a href="deletetype.do?typeid=${type.tId }" class="ask"><img src="images/trash.png" alt="" title="" border="0" /></a>&nbsp;</td>
   </tr>
-  <tr>
-    <td align="center">获得XXXX</td>
-    <td align="center">获得XXXXXXXXXX</td>
-    <td align="center"><img src="images/user_edit.png" alt="" title="" border="0" /></td>
-    <td align="center"><a href="#" class="ask"><img src="images/trash.png" alt="" title="" border="0" /></a></td>
-  </tr>
-  <tr>
-    <td align="center">获得XXXX</td>
-    <td align="center">获得XXXXXXXXXX</td>
-    <td align="center"><img src="images/user_edit.png" alt="" title="" border="0" /></td>
-    <td align="center"><a href="#" class="ask"><img src="images/trash.png" alt="" title="" border="0" /></a></td>
-  </tr>
-  <tr>
-    <td align="center">获得XXXX</td>
-    <td align="center">获得XXXXXXXXXX</td>
-    <td align="center"><img src="images/user_edit.png" alt="" title="" border="0" /></td>
-    <td align="center"><a href="#" class="ask"><img src="images/trash.png" alt="" title="" border="0" /></a></td>
-  </tr>
-  <tr>
-    <td colspan="8" align="right"><div class="pagination">
-        <span class="disabled"><< prev</span><span class="current">1</span><a href="">2</a><a href="">3</a><a href="">4</a><a href="">5</a>…<a href="">10</a><a href="">11</a><a href="">12</a>...<a href="">100</a><a href="">101</a><a href="">next >></a>
-        </div></td>
-    </tr>
+ </c:forEach>
 </table>
 </body>
 </html>

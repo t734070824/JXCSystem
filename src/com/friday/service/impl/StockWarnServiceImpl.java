@@ -1,5 +1,6 @@
 package com.friday.service.impl;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -19,16 +20,18 @@ import com.friday.utils.SessionUtils;
 public class StockWarnServiceImpl implements StockWarnService {
 
 	@Override
-	public Map<String, Object> stockWarn() throws Exception {
+	public List<Object> stockWarn() throws Exception {
 		SqlSession sqlSession = null;
-		Map<String, Object> map = new HashMap<String, Object>();
+		List<Object> list = new ArrayList<Object>();
 		
 		try {
 			sqlSession = SessionUtils.getSession();
+			
 			StockMapper stockMapper = sqlSession.getMapper(StockMapper.class);
 			ShopMapper shopMapper = sqlSession.getMapper(ShopMapper.class);
 			ProductMapper productMapper = sqlSession.getMapper(ProductMapper.class);
 			
+<<<<<<< HEAD
 			List<Stock> stocks = null;
 			List<Product> products = null;
 			List<Shop> shops =null;
@@ -41,8 +44,20 @@ public class StockWarnServiceImpl implements StockWarnService {
 					//System.out.println("////"+stock.getsNum());
 					stockMap.put(productMapper.selectByPrimaryKey(stock.getpId()).getpName(), stock);
 					//System.out.println("/////"+productMapper.selectByPrimaryKey(stock.getpId()).getpName());
+=======
+			List<Stock> stocks =stockMapper.selectAll();
+			for (Stock stock : stocks) {
+				Map<String, Object> stockMap = new HashMap<String, Object>();
+				if (stock.getsNum() <= 10) {
+					Shop shop = shopMapper.selectByPrimaryKey(stock.getShopId());
+					Product product = productMapper.selectByPrimaryKey(stock.getpId());
+					stockMap.put("shop", shop.getsName());
+					stockMap.put("product", product.getpName());
+					stockMap.put("num", stock.getsNum());
+					
+					list.add(stockMap);
+>>>>>>> 592d5b2549c3ac839b09c3c62aaad115cbe73a2f
 				}
-				map.put(shop.getsName(), stockMap);
 			}
 		} catch (Exception e) {
 			throw e;
@@ -50,7 +65,7 @@ public class StockWarnServiceImpl implements StockWarnService {
 			SessionUtils.closeSession(sqlSession);
 		}
 		
-		return map;
+		return list;
 	}
 
 }

@@ -8,7 +8,7 @@ import com.friday.model.Shop;
 import com.friday.model.Stock;
 
 public interface StockQueryService {
-	public Map<Integer, Object> stockQuery(String sName) throws Exception;
-	public List<Shop> shopQuery()throws Exception;
-
+	public List<Object> stockQuery(int shopId) throws Exception;
+	public List<Shop> shopQuery() throws Exception;
+	public String QueryShopName(int shopId) throws Exception;
 }

@@ -66,45 +66,44 @@ $(function($) {
 <table id="rounded-corner" summary="2007 Major IT Companies' Profit">
     <thead>
 	<tr>
-		<td colspan="5" align="left"><strong>订单记录查询</strong></td>
+		<td colspan="5" align="left"><strong>销售记录查询</strong></td>
 	</tr>
     <tr>
     	<td colspan="5" align="right">
-       	<form action="queryorder.do" method="post">
+       	<form action="sellquery.do" method="post">
         	  <label>开始时间：</label>
         	  <input name="starttime" type="text" id="textfield" size="5" onclick="WdatePicker()" />
         	  <label>结束时间:</label>
         	  <input name="endtime" type="text" id="textfield2" size="5" onclick="WdatePicker()" />
         	  <label>订单编号:</label>
         	  <input name="orderid" type="text" id="textfield3" size="5" />
-        	  <label>订单状态:</label>
-        	  <select name="orderstate">
-        	  	<option value="2">所有类型</option>
-        	  	<option value="0">未处理</option>
-        	  	<option value="1">已入库</option>
-        	  	<option value="-1">已退回</option>
+        	  <label>网点:</label>
+        	  <select name="outshop">
+        	  	<c:forEach items="${shops }" var="shopname">
+        	  	<option value="${shopname.sId }">${shopname.sName }</option>
+        	  	</c:forEach>
         	  </select>
         	  <input type="submit" value="查询" />
        	</form>
        	</td>
      </tr>
         <tr>
-        	<td width="61" align="center"><strong>订单编号</strong></td>
-            <td width="50" align="center"><strong>订购时间</strong></td>
+        	<td width="61" align="center"><strong>销售编号</strong></td>
+        	<td width="50" align="center"><strong>销售网点</strong></td>
+            <td width="50" align="center"><strong>销售时间</strong></td>
             <td width="64" align="center"><strong>经办人 </strong></td>
             <td width="85" align="center"><strong>合计金额</strong></td>
-            <td width="64" align="center"><strong>状态</strong></td>
         </tr>
     </thead>
     <tfoot>
 		 <tr>
 			<td colspan="5" align="right">
 			<div class="pagination">
-				<form action="queryorder.do" method="post" style="display:none" name="hideform">
+				<form action="sellquery.do" method="post" style="display:none" name="hideform">
 		       	  <input name="starttime" type="text" id="textfield" size="8" onclick="WdatePicker()" value="${starttime }"/>
 		       	  <input name="endtime" type="text" id="textfield2" size="8" onclick="WdatePicker()" value="${endtime }"/>
 		       	  <input name="orderid" type="text" id="textfield3" size="8" value="${orderid }"/>
-		       	  <input name="orderstate" value="${orderstate }" />
+		       	  <input name="outshop" value="${outshop }" />
 		       	  <input type="submit" value="查询" />
 		      	</form>
 		      	<% 
@@ -135,10 +134,10 @@ $(function($) {
     <c:forEach items="${result }" var="order">
     	<tr>
             <td align="center">${order.oId }</td>
+            <td align="center">${order.shop }</td>
             <td align="center">${order.date }</td>
             <td align="center">${order.user }</td>
             <td align="center">${order.price }</td>
-            <td align="center">${order.style }</td>
         </tr>
      </c:forEach>
     </tbody>

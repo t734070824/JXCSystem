@@ -1,5 +1,7 @@
 package com.friday.inter;
 
+import java.util.List;
+
 import com.friday.model.GoodsBackDetail;
 
 public interface GoodsBackDetailMapper {
@@ -14,4 +16,6 @@ public interface GoodsBackDetailMapper {
     int updateByPrimaryKeySelective(GoodsBackDetail record);
 
     int updateByPrimaryKey(GoodsBackDetail record);
+    
+    List<GoodsBackDetail> selectByBackId(int bId);
 }

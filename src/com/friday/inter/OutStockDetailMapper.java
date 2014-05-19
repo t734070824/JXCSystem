@@ -1,5 +1,8 @@
 package com.friday.inter;
 
+import java.util.List;
+
+import com.friday.model.OutStock;
 import com.friday.model.OutStockDetail;
 
 public interface OutStockDetailMapper {
@@ -14,4 +17,6 @@ public interface OutStockDetailMapper {
     int updateByPrimaryKeySelective(OutStockDetail record);
 
     int updateByPrimaryKey(OutStockDetail record);
+    
+    List<OutStockDetail> selectByOutStocksId(int oid);
 }

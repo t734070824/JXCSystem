@@ -17,11 +17,22 @@
     from sell
     where s_id = #{sId,jdbcType=INTEGER}
   </select>
+  <select id="selectAll" resultMap="BaseResultMap" >
+    select 
+    <include refid="Base_Column_List" />
+    from sell
+  </select>
+  <select id="selectByShopId" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from sell
+    where shop_id = #{sId,jdbcType=INTEGER}
+  </select>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
     delete from sell
     where s_id = #{sId,jdbcType=INTEGER}
   </delete>
-  <insert id="insert" parameterType="com.friday.model.Sell" >
+  <insert id="insert" useGeneratedKeys="true" keyProperty="sId" parameterType="com.friday.model.Sell" >
     insert into sell (s_id, shop_id, u_id, 
       s_date, s_bz)
     values (#{sId,jdbcType=INTEGER}, #{shopId,jdbcType=INTEGER}, #{uId,jdbcType=VARCHAR}, 
