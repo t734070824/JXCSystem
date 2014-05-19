@@ -9,10 +9,10 @@ import javax.servlet.http.HttpServletResponse;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.Controller;
 
-import com.friday.service.StockQueryService;
-import com.friday.service.impl.StockQueryServiceImpl;
+import com.friday.service.ShopManagementService;
+import com.friday.service.impl.ShopManagementServiceImpl;
 
-public class StockLoadController implements Controller {
+public class ShopShowController implements Controller {
 
 	@Override
 	public ModelAndView handleRequest(HttpServletRequest request,
@@ -20,18 +20,14 @@ public class StockLoadController implements Controller {
 		Map<String, Object> model = new HashMap<String, Object>();
 		
 		try {
-			StockQueryService stockQueryService = new StockQueryServiceImpl();
-			model.put("shop", stockQueryService.shopQuery());
+			ShopManagementService shopManagementService = new ShopManagementServiceImpl();
+			model.put("shop", shopManagementService.shopShow());
 		} catch (Exception e) {
-			model.put("error","加载失败");
+			model.put("result", "fail");
 			e.printStackTrace();
-			return new ModelAndView("error",model);
-		
+			return new ModelAndView("shop_management",model);
 		}
-		
-		return new ModelAndView("stock_query",model);
-	
-		
+		return new ModelAndView("shop_management",model);
 	}
 
 }

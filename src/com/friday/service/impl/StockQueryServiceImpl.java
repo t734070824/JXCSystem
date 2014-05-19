@@ -20,7 +20,9 @@ public  class StockQueryServiceImpl implements StockQueryService {
 	
 	public List<Object> stockQuery(int shopId) throws Exception {
 		SqlSession sqlSession = null;
+
 		List<Object> list = new ArrayList<Object>();
+
 		try {
 			sqlSession =  SessionUtils.getSession();
 			
@@ -30,7 +32,9 @@ public  class StockQueryServiceImpl implements StockQueryService {
 			List<Stock> stocks = stockMapper.selectByshopId(shopId);
 			for(Stock stock:stocks)
 			{
+				//System.out.print("//"+stock.getsNum());
 				Product product = productMapper.selectByPrimaryKey(stock.getpId());
+
 				Map<String, Object> map = new HashMap<String, Object>();
 				map.put("num", stock.getsNum());
 				map.put("name", product.getpName());

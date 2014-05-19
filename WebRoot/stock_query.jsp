@@ -39,7 +39,7 @@ ddaccordion.init({
 	onopenclose:function(header, index, state, isuseractivated){ //custom code to run whenever a header is opened or closed
 		//do nothing
 	}
-})
+});
 </script>
 <script src="JS/jquery.jclock-1.2.0.js.txt" type="text/javascript"></script>
 <script type="text/javascript" src="JS/jconfirmaction.jquery.js"></script>
@@ -84,6 +84,7 @@ $(function($) {
             <td width="79" align="center">规格</td>
             <td width="96" align="center">单价</td>
             <td width="70" align="center">库存数量</td>
+
           </tr>
          
           <c:forEach items="${stock }" var="productsMessage">
@@ -92,6 +93,7 @@ $(function($) {
             <td align="center">${productsMessage.guige}</td>
             <td align="center">${productsMessage.price}</td>
             <td align="center">${productsMessage.num}</td>
+
           </tr>
           </c:forEach>
           

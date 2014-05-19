@@ -27,10 +27,21 @@
 	<bean id="stockOutController" class="com.friday.controller.StockOutController"></bean>
 	<bean id="sellLoadController" class="com.friday.controller.SellLoadController"></bean>
 	<bean id="sellController" class="com.friday.controller.SellController"></bean>
+	<bean id="rkQueryController" class="com.friday.controller.RKQueryController"></bean>
+	<bean id="thQueryController" class="com.friday.controller.THQueryController"></bean>
+	<bean id="stockOutQueryLoadController" class="com.friday.controller.QueryStockOutLoadController"></bean>
+	<bean id="stockOutQueryController" class="com.friday.controller.QueryStockOutController"></bean>
+	<bean id="sellQueryLoadController" class="com.friday.controller.SellQueryLoadController"></bean>
+	<bean id="sellQueryController" class="com.friday.controller.SellQueryController"></bean>
 	<!-- CXW -->
 	<bean id="stockLoadController" class="com.friday.controller.StockLoadController"/>
 	<bean id="stockQueryController" class="com.friday.controller.StockQueryController"/>
 	<bean id="stockWarnController" class="com.friday.controller.StockWarnController"/>
+	<bean id="shopShowController" class="com.friday.controller.ShopShowController"/>
+	<bean id="shopDeleteController" class="com.friday.controller.ShopDeleteController"/>
+	<bean id="shopAddController" class="com.friday.controller.ShopAddController"/>
+	
+	
 	<!-- CSY -->
 	<bean id="modifyPwdController" class="com.friday.controller.ModifyPwdController" />
 	<bean id="addStaffController" class="com.friday.controller.AddStaffController" />
@@ -60,10 +71,21 @@
 				<prop key="/stockout.do">stockOutController</prop>
 				<prop key="/sellload.do">sellLoadController</prop>
 				<prop key="/sell.do">sellController</prop>
+				<prop key="/rkquery.do">rkQueryController</prop>
+				<prop key="/thquery.do">thQueryController</prop>
+				<prop key="/stockoutqueryload.do">stockOutQueryLoadController</prop>
+				<prop key="/querystockout.do">stockOutQueryController</prop>
+				<prop key="/sellqueryload.do">sellQueryLoadController</prop>
+				<prop key="/sellquery.do">sellQueryController</prop>
 			<!-- CXW -->
 				<prop key="/stockquery.do">stockQueryController</prop>
 				<prop key="/stockload.do">stockLoadController</prop>
 				<prop key="/stockwarn.do">stockWarnController</prop>
+				<prop key="/shopmanagement.do">shopShowController</prop>
+				<prop key="/shopDelete.do">shopDeleteController </prop>
+				<prop key="/shopAdd.do">shopAddController </prop>
+				
+				
 			<!-- CSY -->
 				<prop key="/modifypwd.do">modifyPwdController</prop>
 				<prop key="/addstaff.do">addStaffController</prop>
