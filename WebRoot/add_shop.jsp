@@ -7,7 +7,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-<base href="<%=basePath%>">
+<base href="<%=basePath%>" />
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta http-equiv="pragma" content="no-cache">
 <meta http-equiv="cache-control" content="no-cache">
@@ -72,10 +72,6 @@ $(function($) {
   <tr>
     <td align="right">网点名称</td>
     <td colspan="2"><input name="shopName" type="text" id="shopName" size="20" /></td>
-  </tr>
-  <tr>
-    <td align="right">网点地址</td>
-    <td colspan="2"><input name="shopAddress" type="text" id="shopAddress" size="20" /></td>
   </tr>
  <!--  <tr>
     <td align="right">添加时间</td>

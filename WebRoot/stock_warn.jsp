@@ -64,23 +64,6 @@ $(function($) {
   	<tr>
 		<td colspan="3" align="left"><strong>库存报警</strong></td>
 	</tr>
-<<<<<<< HEAD
-	<c:forEach items = "${stockWarn}" var="stockWarnMsg">
-  <tr >
-    <td class="jlj" colspan="3" align="center"><strong>${stockWarnMsg.key}</strong></td>
-    </tr>
-  <tr align="center" valign="middle">
-    <td><strong>产品名称</strong></td>
-    <td><strong>库存数量</strong></td>
-  </tr>
-  <c:forEach items = "${stockWarnMsg.value}" var="stockWarnMessage">
-  <tr align="center" valign="middle">
-    <td><strong>${stockWarnMessage.key}</strong></td>
-    <td><strong>${stockWarnMessage.value.sNum}</strong></td>
-  </tr>
-  </c:forEach>
-  </c:forEach>
-=======
 	<tr>
             <td align="center">网点</td>
             <td align="center">产品</td>
@@ -93,7 +76,6 @@ $(function($) {
 	    	<td><font size="4" color="red">${stockWarnMessage.num}</font></td>
 	  	</tr>
   	</c:forEach>
->>>>>>> 592d5b2549c3ac839b09c3c62aaad115cbe73a2f
    <tr>
 			<td colspan="8" align="right"><div class="pagination">
 				<span class="disabled">prev</span><span class="current">1</span><span class="disabled">next</span>

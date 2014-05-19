@@ -12,7 +12,6 @@ import org.springframework.web.servlet.mvc.Controller;
 import com.friday.model.Shop;
 import com.friday.service.ShopManagementService;
 import com.friday.service.impl.ShopManagementServiceImpl;
-import com.sun.net.httpserver.Authenticator.Success;
 
 public class ShopAddController implements Controller {
 
@@ -24,9 +23,8 @@ public class ShopAddController implements Controller {
 		try {
 			ShopManagementService shopManagementService = new ShopManagementServiceImpl();
 			Shop shop = new Shop();
-			shop.setsAddress(request.getParameter("shopAddress").toString());
+			shop.setsAddress("");
 			shop.setsBz(request.getParameter("shopBz").toString());
-//		shop.setsId(request.getParameter("shopId"));
 			shop.setsName(request.getParameter("shopName").toString());
 			shopManagementService.shopAdd(shop);
 			

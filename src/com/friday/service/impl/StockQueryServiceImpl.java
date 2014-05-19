@@ -20,41 +20,27 @@ public  class StockQueryServiceImpl implements StockQueryService {
 	
 	public List<Object> stockQuery(int shopId) throws Exception {
 		SqlSession sqlSession = null;
-<<<<<<< HEAD
-		List<Stock> list = null;
-		Map<Integer, Object> map = new HashMap<Integer, Object>();
-		
-=======
+
 		List<Object> list = new ArrayList<Object>();
->>>>>>> 592d5b2549c3ac839b09c3c62aaad115cbe73a2f
+
 		try {
 			sqlSession =  SessionUtils.getSession();
 			
 			StockMapper stockMapper = sqlSession.getMapper(StockMapper.class);
 			ProductMapper productMapper = sqlSession.getMapper(ProductMapper.class);
 			
-<<<<<<< HEAD
-			Shop shop = shopMapper.selectBySName(sName);
-			List<Stock> stocks = stockMapper.selectByshopId(shop.getsId());
-
-=======
 			List<Stock> stocks = stockMapper.selectByshopId(shopId);
->>>>>>> 592d5b2549c3ac839b09c3c62aaad115cbe73a2f
 			for(Stock stock:stocks)
 			{
 				//System.out.print("//"+stock.getsNum());
 				Product product = productMapper.selectByPrimaryKey(stock.getpId());
-<<<<<<< HEAD
-				//System.out.println("///"+product.getpName());
-				map.put(stock.getsNum(), product);
-=======
+
 				Map<String, Object> map = new HashMap<String, Object>();
 				map.put("num", stock.getsNum());
 				map.put("name", product.getpName());
 				map.put("guige", product.getpStyle());
 				map.put("price", product.getpPrice());
 				list.add(map);
->>>>>>> 592d5b2549c3ac839b09c3c62aaad115cbe73a2f
 			}
 		} catch (Exception e) {
 			throw e;

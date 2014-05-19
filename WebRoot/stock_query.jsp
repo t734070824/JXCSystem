@@ -39,7 +39,7 @@ ddaccordion.init({
 	onopenclose:function(header, index, state, isuseractivated){ //custom code to run whenever a header is opened or closed
 		//do nothing
 	}
-})
+});
 </script>
 <script src="JS/jquery.jclock-1.2.0.js.txt" type="text/javascript"></script>
 <script type="text/javascript" src="JS/jconfirmaction.jquery.js"></script>
@@ -80,30 +80,11 @@ $(function($) {
 				<td colspan="4" align="center"><strong>${shopname}</strong></td>
 			</tr>
           <tr>
-<<<<<<< HEAD
-            <td align="center">网点名称</td>
-=======
->>>>>>> 592d5b2549c3ac839b09c3c62aaad115cbe73a2f
             <td align="center">产品名称</td>
             <td width="79" align="center">规格</td>
             <td width="96" align="center">单价</td>
             <td width="70" align="center">库存数量</td>
-<<<<<<< HEAD
-             <!-- <td width="95" align="center">建议实价格</td> -->
-          </tr>
-         
-          <c:forEach items="${stock}" var="productsMessage">
-          <tr>
-          <c:forEach items="${sName}" var="shopName">
-            <td align="center">${shopName}</td>
-          </c:forEach>
-            <td align="center">${productsMessage.value.pName}</td>
-            <td align="center">${productsMessage.value.pStyle}</td>
-            <td align="center">${productsMessage.value.pZt}</td>
-            <td align="center">${productsMessage.value.pPrice};</td>
-            <td align="center">${productsMessage.key};</td>
-           <!--   <td align="center">&nbsp;</td>-->
-=======
+
           </tr>
          
           <c:forEach items="${stock }" var="productsMessage">
@@ -112,7 +93,7 @@ $(function($) {
             <td align="center">${productsMessage.guige}</td>
             <td align="center">${productsMessage.price}</td>
             <td align="center">${productsMessage.num}</td>
->>>>>>> 592d5b2549c3ac839b09c3c62aaad115cbe73a2f
+
           </tr>
           </c:forEach>
           

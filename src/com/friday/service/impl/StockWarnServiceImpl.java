@@ -31,20 +31,6 @@ public class StockWarnServiceImpl implements StockWarnService {
 			ShopMapper shopMapper = sqlSession.getMapper(ShopMapper.class);
 			ProductMapper productMapper = sqlSession.getMapper(ProductMapper.class);
 			
-<<<<<<< HEAD
-			List<Stock> stocks = null;
-			List<Product> products = null;
-			List<Shop> shops =null;
-			shops = shopMapper.selectAllShops();
-			for (Shop shop : shops) {
-				Map<String, Object> stockMap = new HashMap<String, Object>();
-				stocks = stockMapper.selectByshopIdAndStockNum(shop.getsId());
-				//System.out.println("///"+shop.getsName());
-				for (Stock stock : stocks) {
-					//System.out.println("////"+stock.getsNum());
-					stockMap.put(productMapper.selectByPrimaryKey(stock.getpId()).getpName(), stock);
-					//System.out.println("/////"+productMapper.selectByPrimaryKey(stock.getpId()).getpName());
-=======
 			List<Stock> stocks =stockMapper.selectAll();
 			for (Stock stock : stocks) {
 				Map<String, Object> stockMap = new HashMap<String, Object>();
@@ -56,7 +42,6 @@ public class StockWarnServiceImpl implements StockWarnService {
 					stockMap.put("num", stock.getsNum());
 					
 					list.add(stockMap);
->>>>>>> 592d5b2549c3ac839b09c3c62aaad115cbe73a2f
 				}
 			}
 		} catch (Exception e) {
