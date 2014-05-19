@@ -9,8 +9,6 @@ import javax.servlet.http.HttpServletResponse;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.Controller;
 
-import com.friday.model.ProductType;
-
 public class ShowMPTypeController implements Controller {
 
 	@Override
@@ -18,7 +16,6 @@ public class ShowMPTypeController implements Controller {
 			HttpServletResponse response) throws Exception {
 		Map<String, Object> model = new HashMap<String, Object>();
 		String pt = request.getParameter("typename");
-//		String tid = request.getParameter("typeid");
 		model.put("typename", pt);
 		return new ModelAndView("modify_class", model);
 	}
