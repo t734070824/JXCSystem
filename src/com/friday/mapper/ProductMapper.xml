@@ -18,6 +18,11 @@
     from products
     where p_id = #{pId,jdbcType=INTEGER}
   </select>
+    <select id="selectAll" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from products
+  </select>
   <select id="selectByType" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
     select 
     <include refid="Base_Column_List" />

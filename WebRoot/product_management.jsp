@@ -1,4 +1,5 @@
 <%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%
 String path = request.getContextPath();
 String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
@@ -66,7 +67,7 @@ $(function($) {
   <tr>
     <td colspan="8">添加产品&nbsp;&nbsp;&nbsp;&nbsp;<a href="add_shop.html"><img src="images/plus.gif" alt="" title="" border="0" /></a></td>
     </tr>
-  <tr>
+  <!-- <tr>
     <td>&nbsp;</td>
     <td>&nbsp;</td>
     <td>&nbsp;</td>
@@ -74,9 +75,9 @@ $(function($) {
     <td align="right">产品名称：</td>
     <td colspan="2"> <input name="textfield" type="text" id="textfield" size="20" /></td>
     <td><a href="">查询</a></td>
-    </tr>
+    </tr> -->
   <tr align="center">
-    <td width="66" align="center">产品编号</td>
+<!--     <td width="66" align="center">产品编号</td> -->
     <td width="114" align="center">产品名称</td>
     <td width="40" align="center">规格</td>
     <td width="70" align="center">类别</td>
@@ -85,57 +86,21 @@ $(function($) {
     <td width="54" align="center">修改</td>
     <td width="78" align="center">删除</td>
   </tr>
+   <c:forEach items="${result}" var="product">
   <tr>
-    <td align="center">获得XXX</td>
-    <td align="center">获得XXXXXXXX</td>
-    <td align="center">&nbsp;</td>
-    <td align="center">&nbsp;</td>
-    <td align="center">$$$$$$$$</td>
-    <td align="center">$$$$$$$$</td>
-    <td align="center"><img src="images/user_edit.png" width="16" height="16" /></td>
-    <td align="center"><input type="checkbox" name="" /><img src="images/user_logout.png" width="16" height="16" /></td>
+    <td align="center">${product.pName }</td>
+    <td align="center">${product.pStyle }</td>
+    <td align="center">${product.typename }</td>
+    <td align="center">${product.pPrice }</td>
+    <td align="center">${product.pZt }</td>
+    <td align="center"><a href="XXX.do?typename=${product.pId }" ><img src="images/user_edit.png" width="16" height="16" /></a></td>
+    <td align="center">
+    <a href="deleteproduct.do?pid=${product.pId }" class="ask"><img src="images/trash.png" alt="" title="" border="0" /></a>
+   <%--  <a href="deleteproduct.do?pid=${product.pId }"><img src="images/user_logout.png" width="16" height="16" /></a> --%>
+   </td>
   </tr>
-  <tr>
-    <td align="center">获得XXX</td>
-    <td align="center"><font color="red">获得XXXXXXXX</font></td>
-    <td align="center">&nbsp;</td>
-    <td align="center">&nbsp;</td>
-    <td align="center">$$$$$$$$</td>
-    <td align="center">$$$$$$$$</td>
-    <td align="center"><img src="images/user_edit.png" width="16" height="16" /></td>
-    <td align="center"><input type="checkbox" name="" /><img src="images/user_logout.png" alt="" width="16" height="16" /></td>
-  </tr>
-  <tr>
-    <td align="center">获得XXX</td>
-    <td align="center"><font color="red">获得XXXXXXXX</font></td>
-    <td align="center">&nbsp;</td>
-    <td align="center">&nbsp;</td>
-    <td align="center">$$$$$$$$</td>
-    <td align="center">$$$$$$$$</td>
-    <td align="center"><img src="images/user_edit.png" alt="" width="16" height="16" /></td>
-    <td align="center"><input type="checkbox" name="" /><img src="images/user_logout.png" alt="" width="16" height="16" /></td>
-  </tr>
-  <tr>
-    <td align="center">获得XXX</td>
-    <td align="center"><font color="green">获得XXXXXXXX</font></td>
-    <td align="center">&nbsp;</td>
-    <td align="center">&nbsp;</td>
-    <td align="center">$$$$$$$$</td>
-    <td align="center">$$$$$$$$</td>
-    <td align="center"><img src="images/user_edit.png" alt="" width="16" height="16" /></td>
-    <td align="center"><input type="checkbox" name="" /><img src="images/user_logout.png" alt="" width="16" height="16" /></td>
-  </tr>
-  <tr>
-    <td align="center">获得XXX</td>
-    <td align="center"><font color="green">获得XXXXXXXX</font></td>
-    <td align="center">&nbsp;</td>
-    <td align="center">&nbsp;</td>
-    <td align="center">$$$$$$$$</td>
-    <td align="center">$$$$$$$$</td>
-    <td align="center"><img src="images/user_edit.png" alt="" width="16" height="16" /></td>
-    <td align="center"><input type="checkbox" name="" /><img src="images/user_logout.png" alt="" width="16" height="16" /></td>
-  </tr>
-  <tr>
+ </c:forEach>
+  <!-- <tr>
     <td colspan="8" align="right"><div class="pagination">
         <span class="disabled"><< prev</span><span class="current">1</span><a href="">2</a><a href="">3</a><a href="">4</a><a href="">5</a>…<a href="">10</a><a href="">11</a><a href="">12</a>...<a href="">100</a><a href="">101</a><a href="">next >></a>
         </div></td>
@@ -144,7 +109,7 @@ $(function($) {
     <td colspan="5"><font color="green">注</font>：蓝色为普通品 <font color="red">红色为新品</font> <font color="green">绿色为促销品</font></td>
     <td align="right"><input type="checkbox" name="" />全选</td>
      <td colspan="2"><input type="submit" name="button" id="button" value="删除" /></td>
-    </tr>
+    </tr> -->
 </table>
 </body>
 </html>
