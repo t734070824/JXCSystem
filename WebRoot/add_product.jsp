@@ -1,4 +1,5 @@
 <%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%
 String path = request.getContextPath();
 String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
@@ -52,46 +53,37 @@ $(function($) {
 
 </head>
 <body bgcolor="transparent" style='background:transparent'>
+<form name="myform"  action="addproduct.do">
  <table id="rounded-corner" summary="2007 Major IT Companies' Profit">
 	<tr>
 		<td colspan="6" align="left"><strong>添加产品</strong></td>
 	</tr>
   <tr>
     <td width="112" align="right">产品名称</td>
-    <td><input name="textfield1" type="text" id="textfield1" size="20" /></td>
+    <td><input name="pName" type="text" id="pName" size="20" maxlength="10"/></td>
   </tr>
   <tr>
     <td align="right">产品类别</td>
-    <td><form id="form1" name="form1" method="post" action="">
-      <label for="select"></label>
-      <select name="select" id="select">
-      <option>酒水</option>
-      <option>家具</option>
-      </select>
-    </form></td>
+    <td>
+      <select name="tId">
+	    	<c:forEach items="${types }" var="type">
+	    		<option value="${type.tId }">${type.tType }</option>
+	    	</c:forEach>
+	      	</select>
+</td>
   </tr>
   <tr>
     <td align="right">产品规格</td>
-    <td><input name="textfield4" type="text" id="textfield4" size="20" /></td>
+    <td><input name="pStyle" type="text" id="pStyle" size="20" maxlength="10" /></td>
    </tr>
   <tr>
     <td align="right">产品价格</td>
-    <td><input name="textfield5" type="text" id="textfield5" size="20" /></td>
-  </tr>
-  <tr>
-    <td align="right">产品状态</td>
-    <td><form id="form2" name="form2" method="post" action="">
-      <label for="select2"></label>
-      <select name="select2" id="select2">
-      <option>普通产品</option>
-       <option>新产品</option>
-        <option>促销产品</option>
-      </select>
-    </form></td>
+    <td><input name="pPrice" type="text" id="pPrice" size="20" maxlength="10"/></td>
   </tr>
   <tr>
     <td colspan="2" align="left">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="submit" name="button1" id="button1" value="确认添加" />        &nbsp;&nbsp;&nbsp;&nbsp;          <input type="reset" name="button2" id="button2" value="重新填写" ></td>
     </tr>
 </table>
+</form>
 </body>
 </html>

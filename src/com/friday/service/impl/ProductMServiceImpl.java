@@ -152,4 +152,61 @@ public class ProductMServiceImpl implements ProductMService  {
 		}
 		return ret;
 	}
+
+	@Override
+	public int addProduct(Product product) throws Exception {
+		SqlSession sqlSession = null;
+		int ret = 0;
+		try {
+			sqlSession = SessionUtils.getSession();
+			ProductMapper productMapper = sqlSession.getMapper(ProductMapper.class);
+			
+			productMapper.insertSelective(product);
+			sqlSession.commit();
+			ret = 1;
+		} catch (Exception e) {
+			sqlSession.rollback();
+			throw e;
+		} finally {
+			SessionUtils.closeSession(sqlSession);
+		}
+		return ret;
+	}
+
+	@Override
+	public Product getProductByid(int id) throws Exception {
+		SqlSession sqlSession = null;
+		Product product = null;
+		try {
+			sqlSession = SessionUtils.getSession();
+			ProductMapper productMapper = sqlSession.getMapper(ProductMapper.class);
+			
+			product = productMapper.selectByPrimaryKey(id);	
+		} catch (Exception e) {
+			throw e;
+		} finally {
+			SessionUtils.closeSession(sqlSession);
+		}		
+		return product;
+	}
+
+	@Override
+	public int updateProduct(Product product) throws Exception {
+		SqlSession sqlSession = null;
+		int ret = 0;
+		try {
+			sqlSession = SessionUtils.getSession();
+			ProductMapper productMapper = sqlSession.getMapper(ProductMapper.class);
+			
+			productMapper.updateByPrimaryKey(product);
+			sqlSession.commit();
+			ret = 1;
+		} catch (Exception e) {
+			sqlSession.rollback();
+			throw e;
+		} finally {
+			SessionUtils.closeSession(sqlSession);
+		}
+		return ret;
+	}
 }

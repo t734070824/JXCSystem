@@ -4,17 +4,10 @@
 String path = request.getContextPath();
 String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
 %>
-
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-<base href="<%=basePath%>">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<meta http-equiv="pragma" content="no-cache">
-<meta http-equiv="cache-control" content="no-cache">
-<meta http-equiv="expires" content="0">    
-<meta http-equiv="keywords" content="keyword1,keyword2,keyword3">
-<meta http-equiv="description" content="This is my page">
 <title>IN ADMIN PANEL | Powered by INDEZINER</title>
 <link rel="stylesheet" type="text/css" href="style.css" />
 <script type="text/javascript" src="JS/jquery.min.js"></script>
@@ -44,7 +37,6 @@ ddaccordion.init({
 <script src="JS/jquery.jclock-1.2.0.js.txt" type="text/javascript"></script>
 <script type="text/javascript" src="JS/jconfirmaction.jquery.js"></script>
 <script type="text/javascript">
-	
 	$(document).ready(function() {
 		$('.ask').jConfirmAction();
 	});
@@ -60,56 +52,47 @@ $(function($) {
 
 </head>
 <body bgcolor="transparent" style='background:transparent'>
+<form name="myform"  action="addproduct.do">
  <table id="rounded-corner" summary="2007 Major IT Companies' Profit">
-  <tr>
-		<td colspan="8" align="left"><strong>产品管理</strong></td>
+	<tr>
+		<td colspan="6" align="left"><strong>添加产品</strong></td>
 	</tr>
   <tr>
-    <td colspan="8" align="right">&nbsp;&nbsp;&nbsp;&nbsp;<a href="getaddproduct.do"><img src="images/plus.gif" alt="" title="" border="0" /></a></td>
-    </tr>
-  <!-- <tr>
-    <td>&nbsp;</td>
-    <td>&nbsp;</td>
-    <td>&nbsp;</td>
-    <td>&nbsp;</td>
-    <td align="right">产品名称：</td>
-    <td colspan="2"> <input name="textfield" type="text" id="textfield" size="20" /></td>
-    <td><a href="">查询</a></td>
-    </tr> -->
-  <tr align="center">
-<!--     <td width="66" align="center">产品编号</td> -->
-    <td width="114" align="center">产品名称</td>
-    <td width="40" align="center">规格</td>
-    <td width="70" align="center">类别</td>
-    <td width="89" align="center">进货单价</td>
-    <td width="100" align="center"></td>
-    <td width="54" align="center">修改</td>
-    <td width="78" align="center">删除</td>
+    <td width="112" align="right">产品名称</td>
+    <td>
+    <input name="pId" type="hidden" id="pId" size="20" value ="${product.pId }"/>
+    <input name="pName" type="text" id="pName" size="20" value ="${product.pName }"/></td>
   </tr>
-   <c:forEach items="${result}" var="product">
   <tr>
-    <td align="center">${product.pName }</td>
-    <td align="center">${product.pStyle }</td>
-    <td align="center">${product.typename }</td>
-    <td align="center">${product.pPrice }</td>
-    <td align="center">${product.pZt }</td>
-    <td align="center"><a href="getaddproduct.do?productid=${product.pId }" ><img src="images/user_edit.png" width="16" height="16" /></a></td>
-    <td align="center">
-    <a href="deleteproduct.do?pid=${product.pId }" class="ask"><img src="images/trash.png" alt="" title="" border="0" /></a>
-   <%--  <a href="deleteproduct.do?pid=${product.pId }"><img src="images/user_logout.png" width="16" height="16" /></a> --%>
-   </td>
+    <td align="right">产品类别</td>
+    <td>
+      <select name="tId">
+	    	<c:forEach items="${types }" var="type">
+	    		<c:choose>
+	    		<c:when test="${type.tId == product.tId }">
+	    			<option value="${type.tId }" selected="selected">${type.tType }</option>
+	    		</c:when>
+	    		<c:otherwise>
+	    			<option value="${type.tId }" >${type.tType }</option>
+	    		</c:otherwise>
+	    		</c:choose>
+	    	</c:forEach>
+	      	</select>
+</td>
   </tr>
- </c:forEach>
-  <!-- <tr>
-    <td colspan="8" align="right"><div class="pagination">
-        <span class="disabled"><< prev</span><span class="current">1</span><a href="">2</a><a href="">3</a><a href="">4</a><a href="">5</a>…<a href="">10</a><a href="">11</a><a href="">12</a>...<a href="">100</a><a href="">101</a><a href="">next >></a>
-        </div></td>
+  <tr>
+    <td align="right">产品规格</td>
+    <td><input name="pStyle" type="text" id="pStyle" size="20" value ="${product.pStyle }"/></td>
+   </tr>
+  <tr>
+    <td align="right">产品价格</td>
+    <td><input name="pPrice" type="text" id="pPrice" size="20" value ="${product.pPrice }"/></td>
+  </tr>
+
+  <tr>
+    <td colspan="2" align="left">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="submit" name="button1" id="button1" value="确认添加" />        &nbsp;&nbsp;&nbsp;&nbsp;          <input type="reset" name="button2" id="button2" value="重新填写" ></td>
     </tr>
-    <tr>
-    <td colspan="5"><font color="green">注</font>：蓝色为普通品 <font color="red">红色为新品</font> <font color="green">绿色为促销品</font></td>
-    <td align="right"><input type="checkbox" name="" />全选</td>
-     <td colspan="2"><input type="submit" name="button" id="button" value="删除" /></td>
-    </tr> -->
 </table>
+</form>
 </body>
 </html>

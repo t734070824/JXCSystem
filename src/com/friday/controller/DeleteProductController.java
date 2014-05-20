@@ -19,7 +19,6 @@ public class DeleteProductController implements Controller {
 	public ModelAndView handleRequest(HttpServletRequest request,
 			HttpServletResponse response) throws Exception {
 		Map<String, Object> model = new HashMap<String, Object>();
-		System.out.println("1111111111111111111111111");
 		try {
 			ProductMService productMService = new ProductMServiceImpl();
 

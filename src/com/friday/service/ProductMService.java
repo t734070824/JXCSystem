@@ -2,6 +2,7 @@ package com.friday.service;
 
 import java.util.List;
 
+import com.friday.model.Product;
 import com.friday.model.ProductType;
 
 public interface ProductMService {
@@ -16,5 +17,11 @@ public interface ProductMService {
 	public List<Object> getProduct() throws Exception;
 	
 	public int removeProduct(int pid) throws Exception;
+	
+	public int addProduct(Product product) throws Exception;
+	
+	public int updateProduct(Product product) throws Exception;
+	
+	public Product getProductByid(int id) throws Exception;
 
 }

@@ -55,6 +55,8 @@
 	<bean id="remindbirthdayController" class="com.friday.controller.RemindBirthdayController" />
 	<bean id="queryProductsController" class="com.friday.controller.QueryProductsController" />
 	<bean id="deleteProductController" class="com.friday.controller.DeleteProductController" />
+	<bean id="getAddProductController" class="com.friday.controller.GetAddProductController" />
+	<bean id="addProductController" class="com.friday.controller.AddProductController" />
 	
 	
 	<bean id="urlMapping" class="org.springframework.web.servlet.handler.SimpleUrlHandlerMapping">
@@ -100,6 +102,8 @@
 				<prop key="remindbirthday.do">remindbirthdayController</prop>
 				<prop key="queryproducts.do">queryProductsController</prop>
 				<prop key="deleteproduct.do">deleteProductController</prop>
+				<prop key="getaddproduct.do">getAddProductController</prop>
+				<prop key="addproduct.do">addProductController</prop>
 				
 			</props>
 		</property>
