@@ -18,7 +18,6 @@ public class StockQueryController implements Controller {
 	@Override
 	public ModelAndView handleRequest(HttpServletRequest request,
 			HttpServletResponse response) throws Exception {
-		// TODO Auto-generated method stub
 		Map<String, Object> model = new HashMap<String, Object>();
 		
 		try {

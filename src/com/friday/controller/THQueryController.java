@@ -53,7 +53,7 @@ public class THQueryController implements Controller {
 			model.put("orderId", orderId);
 			model.put("pagecurrent", pagecurrent);
 			model.put("pagecount", pagecount);
-			return new ModelAndView("storage_record_query", model);
+			return new ModelAndView("Returns_records_query", model);
 		} catch (Exception e) {
 			model.put("error", "操作失败");
 			e.printStackTrace();
