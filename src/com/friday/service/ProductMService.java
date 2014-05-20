@@ -12,5 +12,9 @@ public interface ProductMService {
 	public List<ProductType> getAllType() throws Exception;
 	
 	public int removeType(int id) throws Exception;
+	
+	public List<Object> getProduct() throws Exception;
+	
+	public int removeProduct(int pid) throws Exception;
 
 }

@@ -125,7 +125,7 @@ $(function($) {
                     <ul>
                     <li><a onclick="clickA(this);" alt="staff_management.jsp">员工管理</a></li>
                     <li><a onclick="clickA(this);" alt="add_staff.jsp">添加员工</a></li>
-                    <li><a onclick="clickA(this);" alt="staff_birthday_remind.jsp">员工生日提醒</a></li>
+                    <li><a onclick="clickA(this);" alt="remindbirthday.do">员工生日提醒</a></li>
                     </ul>
                 </div>
                 <a class="menuitem submenuheader" href="">客户管理</a>
@@ -141,8 +141,7 @@ $(function($) {
                     <ul>
                     <li><a onclick="clickA(this);" alt="add_manager.jsp">添加管理员</a></li>
                     <li><a onclick="clickA(this);" alt="modify_password.jsp">修改密码</a></li>
-                    <li><a onclick="clickA(this);" alt="product_management.jsp">产品管理</a></li>
-                    <!-- <li><a onclick="clickA(this);" alt="class_management.jsp">类别管理</a></li> -->
+                    <li><a onclick="clickA(this);" alt="queryproducts.do">产品管理</a></li>
                      <li><a onclick="clickA(this);" alt="queryalltype.do">类别管理</a></li>
                     </ul>
                 </div>

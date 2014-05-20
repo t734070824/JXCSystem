@@ -34,8 +34,20 @@ public class StaffServiceImpl implements StaffService {
 
 	@Override
 	public List<Employee> remindBirthday(Date date) throws Exception {
-		
-		return null;
+		SqlSession sqlSession = null;
+		List<Employee> elist = null;
+		try {
+			sqlSession = SessionUtils.getSession();
+			EmployeeMapper employeeMapper = sqlSession
+					.getMapper(EmployeeMapper.class);
+			elist = employeeMapper.selectByDate(date);
+
+		} catch (Exception e) {
+			throw e;
+		} finally {
+			SessionUtils.closeSession(sqlSession);
+		}
+		return elist;
 	}
 
 }
