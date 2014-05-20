@@ -57,7 +57,19 @@ $(function($) {
     $('.jclock').jclock();
 });
 </script>
-
+<script language="JavaScript">
+	function queryDetail(did) {
+		var xmlHttp=new XMLHttpRequest();
+		xmlHttp.open("GET", "querydetail.do?did="+did+"&table=in", true);				
+		xmlHttp.onreadystatechange=function() {
+		if (xmlHttp.readyState==4)
+			result.innerHTML = xmlHttp.responseText;
+		else
+			result.innerHTML = "正在查询，请稍等";
+		};
+		xmlHttp.send();
+	}
+</script>
 <script language="javascript" type="text/javascript" src="JS/niceforms.js"></script>
 <link rel="stylesheet" type="text/css" media="all" href="CSS/niceforms-default.css" />
 
@@ -125,7 +137,7 @@ $(function($) {
     <tbody>
     <c:forEach items="${result }" var="order">
     	<tr>
-            <td align="center">${order.oId }</td>
+            <td align="center"><a href="javascript:queryDetail('${order.oId}')">${order.oId }</a></td>
             <td align="center">${order.date }</td>
             <td align="center">${order.user }</td>
             <td align="center">${order.price }</td>
@@ -133,6 +145,6 @@ $(function($) {
      </c:forEach>
     </tbody>
 </table>
-
+<div id="result"></div>
 </body>
 </html>

@@ -1,4 +1,5 @@
 <%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%
 String path = request.getContextPath();
 String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
@@ -7,17 +8,18 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-<base href="<%=basePath%>">
+<base href="<%=basePath%>" />
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<meta http-equiv="pragma" content="no-cache">
-<meta http-equiv="cache-control" content="no-cache">
-<meta http-equiv="expires" content="0">    
-<meta http-equiv="keywords" content="keyword1,keyword2,keyword3">
-<meta http-equiv="description" content="This is my page">
+<meta http-equiv="pragma" content="no-cache" />
+<meta http-equiv="cache-control" content="no-cache" />
+<meta http-equiv="expires" content="0" />    
+<meta http-equiv="keywords" content="keyword1,keyword2,keyword3" />
+<meta http-equiv="description" content="This is my page" />
 <title>IN ADMIN PANEL | Powered by INDEZINER</title>
 <link rel="stylesheet" type="text/css" href="style.css" />
 <script type="text/javascript" src="JS/jquery.min.js"></script>
 <script type="text/javascript" src="JS/ddaccordion.js"></script>
+<script type="text/javascript" src="My97DatePicker/WdatePicker.js"></script>
 <script type="text/javascript">
 ddaccordion.init({
 	headerclass: "submenuheader", //Shared CSS class name of headers group
@@ -38,56 +40,31 @@ ddaccordion.init({
 	onopenclose:function(header, index, state, isuseractivated){ //custom code to run whenever a header is opened or closed
 		//do nothing
 	}
-})
+});
 </script>
-
+<script src="JS/jquery.jclock-1.2.0.js.txt" type="text/javascript"></script>
 <script type="text/javascript" src="JS/jconfirmaction.jquery.js"></script>
-<script type="text/javascript">
-	
-	$(document).ready(function() {
-		$('.ask').jConfirmAction();
-	});
-	
-</script>
 
 <script language="javascript" type="text/javascript" src="JS/niceforms.js"></script>
-<link rel="stylesheet" type="text/css" media="all" href="CSS/niceforms-default.css" />
 
 </head>
-<body>
-<div id="main_container">
-
-	<div class="header_login">
-	  <div class="logo"><a href="#"><img src="images/logo.gif" alt="" title="" border="0" /></a></div>
-    </div>
-    <div class="login_form" align="center">
-    <form name="myform" action="login.do" method="post">
-    <table width="600" border="0" align="center">
-     <tr>
-       <td align="center" colspan="2"><h1>Admin Login</h1></td>
-     </tr>
-     <tr>
-       <td width="200" height="50" align="right" style="font-size:20px"><strong>用户名:</strong></td>
-       <td><input name="account" type="text" size="20" style="font-size:20px"/></td>
-     </tr>
-     <tr>
-       <td height="50" align="right" style="font-size:20px"><strong>密 &nbsp;&nbsp;&nbsp;码:</strong></td>
-       <td><input name="password" type="password" size="20" style="font-size:20px"/></td>
-     </tr>
-     <tr>
-       <td align="center" colspan="2"><input type="submit" value="登陆" style="font-size:20px"  style="height:50px; width:300px;" /></td>
-     </tr>
-    </table>
-    </form>
-    </div>
-    
-    <div class="footer_login">
-    
-    	<div class="left_footer_login">进销存管理系统 | Powered by Friday</div>
-    	<div class="right_footer_login"><a href="http://indeziner.com"><img src="images/indeziner_logo.gif" alt="" title="" border="0" /></a></div>
-    
-    </div>
-
-</div>		
+<body bgcolor="transparent" style='background:transparent'>  
+    <table id="rounded-corner" summary="2007 Major IT Companies' Profit">
+	<tr>
+		<td colspan="3" align="center"><strong>详情:${did }</strong></td>
+	</tr>
+	<tr>
+	    <td align="center">名称</td>
+	    <td align="center">订购数量</td>
+	    <td align="center">订购数量</td>
+	</tr>
+	<c:forEach items="${details }" var="detail">
+	<tr>
+	    <td align="center">${detail.name }</td>
+	    <td align="center">${detail.num }</td>
+	    <td align="center">${detail.price }</td>
+	 </tr>
+	 </c:forEach>
+</table>
 </body>
 </html>

@@ -33,6 +33,8 @@
 	<bean id="stockOutQueryController" class="com.friday.controller.QueryStockOutController"></bean>
 	<bean id="sellQueryLoadController" class="com.friday.controller.SellQueryLoadController"></bean>
 	<bean id="sellQueryController" class="com.friday.controller.SellQueryController"></bean>
+	<bean id="queryDetailController" class="com.friday.controller.QueryDetailController"></bean>
+	
 	<!-- CXW -->
 	<bean id="stockLoadController" class="com.friday.controller.StockLoadController"/>
 	<bean id="stockQueryController" class="com.friday.controller.StockQueryController"/>
@@ -77,6 +79,7 @@
 				<prop key="/querystockout.do">stockOutQueryController</prop>
 				<prop key="/sellqueryload.do">sellQueryLoadController</prop>
 				<prop key="/sellquery.do">sellQueryController</prop>
+				<prop key="/querydetail.do">queryDetailController</prop>
 			<!-- CXW -->
 				<prop key="/stockquery.do">stockQueryController</prop>
 				<prop key="/stockload.do">stockLoadController</prop>
