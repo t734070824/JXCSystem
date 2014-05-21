@@ -1,7 +1,20 @@
+<%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%
+String path = request.getContextPath();
+String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
+%>
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
+<base href="<%=basePath%>">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta http-equiv="pragma" content="no-cache">
+<meta http-equiv="cache-control" content="no-cache">
+<meta http-equiv="expires" content="0">    
+<meta http-equiv="keywords" content="keyword1,keyword2,keyword3">
+<meta http-equiv="description" content="This is my page">
 <title>IN ADMIN PANEL | Powered by INDEZINER</title>
 <link rel="stylesheet" type="text/css" href="style.css" />
 <script type="text/javascript" src="JS/jquery.min.js"></script>
@@ -26,7 +39,7 @@ ddaccordion.init({
 	onopenclose:function(header, index, state, isuseractivated){ //custom code to run whenever a header is opened or closed
 		//do nothing
 	}
-})
+});
 </script>
 <script src="JS/jquery.jclock-1.2.0.js.txt" type="text/javascript"></script>
 <script type="text/javascript" src="JS/jconfirmaction.jquery.js"></script>
@@ -47,46 +60,31 @@ $(function($) {
 
 </head>
 <body bgcolor="transparent" style='background:transparent'>
- <table id="rounded-corner" summary="2007 Major IT Companies' Profit">
-	<tr>
-		<td colspan="6" align="left"><strong>添加产品</strong></td>
+   <table id="rounded-corner" summary="2007 Major IT Companies' Profit">
+   <tr>
+		<td colspan="6" align="left"><strong>客户管理</strong></td>
 	</tr>
   <tr>
-    <td width="112" align="right">产品名称</td>
-    <td><input name="textfield1" type="text" id="textfield1" size="20" /></td>
+    <td colspan="6" align="right"><a href="add_customer.jsp">新增客户</a></td>
   </tr>
-  <tr>
-    <td align="right">产品类别</td>
-    <td><form id="form1" name="form1" method="post" action="">
-      <label for="select"></label>
-      <select name="select" id="select">
-      <option>酒水</option>
-      <option>家具</option>
-      </select>
-    </form></td>
+  <tr align="center">
+    <td align="center">姓名</td>
+    <td align="center">电话</td>
+    <td align="center">地址</td>
+    <td align="center">备注</td>
+    <td align="center">修改</td>
+    <td align="center">删除</td>
   </tr>
+ <c:forEach items="${result}" var="customer">
   <tr>
-    <td align="right">产品规格</td>
-    <td><input name="textfield4" type="text" id="textfield4" size="20" /></td>
-   </tr>
-  <tr>
-    <td align="right">产品价格</td>
-    <td><input name="textfield5" type="text" id="textfield5" size="20" /></td>
+    <td align="center">${customer.cName }</td>
+    <td align="center">${customer.cPhone }</td>
+    <td align="center">${customer.cAddress }</td>
+    <td align="center">${customer.cNote }</td>
+    <td align="center"><a href="modifycustomerload.do?cid=${customer.cId }" ><img src="images/user_edit.png" title="" border="0" /></a></td>
+    <td align="center"><a href="deletecustomer.do?cid=${customer.cId }" class="ask"><img src="images/trash.png" title="" border="0" /></a></td>
   </tr>
-  <tr>
-    <td align="right">产品状态</td>
-    <td><form id="form2" name="form2" method="post" action="">
-      <label for="select2"></label>
-      <select name="select2" id="select2">
-      <option>普通产品</option>
-       <option>新产品</option>
-        <option>促销产品</option>
-      </select>
-    </form></td>
-  </tr>
-  <tr>
-    <td colspan="2" align="left">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="submit" name="button1" id="button1" value="确认添加" />        &nbsp;&nbsp;&nbsp;&nbsp;          <input type="reset" name="button2" id="button2" value="重新填写" ></td>
-    </tr>
+ </c:forEach>
 </table>
 </body>
 </html>

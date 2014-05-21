@@ -17,6 +17,11 @@
     from customerinfo
     where c_id = #{cId,jdbcType=INTEGER}
   </select>
+  <select id="selectAll" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from customerinfo
+  </select>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
     delete from customerinfo
     where c_id = #{cId,jdbcType=INTEGER}

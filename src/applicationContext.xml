@@ -34,6 +34,11 @@
 	<bean id="sellQueryLoadController" class="com.friday.controller.SellQueryLoadController"></bean>
 	<bean id="sellQueryController" class="com.friday.controller.SellQueryController"></bean>
 	<bean id="queryDetailController" class="com.friday.controller.QueryDetailController"></bean>
+	<bean id="queryCustomerController" class="com.friday.controller.QueryCustomerController"></bean>
+	<bean id="modifyCustomerLoadController" class="com.friday.controller.ModifyCustomerLoadController"></bean>
+	<bean id="modifyCustomerController" class="com.friday.controller.ModifuCustomerController"></bean>
+	<bean id="deleteCustomerController" class="com.friday.controller.DeleteCustomerController"></bean>
+	<bean id="addCustomerController" class="com.friday.controller.AddCustomerController"></bean>
 	
 	<!-- CXW -->
 	<bean id="stockLoadController" class="com.friday.controller.StockLoadController"/>
@@ -82,6 +87,12 @@
 				<prop key="/sellqueryload.do">sellQueryLoadController</prop>
 				<prop key="/sellquery.do">sellQueryController</prop>
 				<prop key="/querydetail.do">queryDetailController</prop>
+				<prop key="/customerquery.do">queryCustomerController</prop>
+				<prop key="/modifycustomerload.do">modifyCustomerLoadController</prop>
+				<prop key="/modifycustomer.do">modifyCustomerController</prop>
+				<prop key="/addcustomer.do">addCustomerController</prop>
+				<prop key="/deletecustomer.do">deleteCustomerController</prop>
+				
 			<!-- CXW -->
 				<prop key="/stockquery.do">stockQueryController</prop>
 				<prop key="/stockload.do">stockLoadController</prop>
