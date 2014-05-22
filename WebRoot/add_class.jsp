@@ -68,16 +68,16 @@ $(function($) {
 <form name = "myform" id="myform" action="addproducttype.do" method ="post">
  <table id="rounded-corner" summary="2007 Major IT Companies' Profit">
 	<tr>
-		<td colspan="7" align="left"><strong>添加类别</strong></td>
+		<td colspan="4" align="left"><strong>添加类别</strong></td>
 	</tr>
   <tr>
     <td align="right">类别名称</td>
-    <td colspan="2"><input name="typename" type="text" id="typename" size="20" maxlength="10" /></td>
+    <td><input name="typename" type="text" id="typename" size="20" maxlength="10" /></td>
     <td><label id="showResult"></label></td>
     <td> <input type="button"onclick="JudgeUserName()" value="是否新类别？"></input></td>
   </tr>
   <tr>
-    <td colspan="3" align="left">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="submit" name="button1" id="button1" value="确认添加" />        &nbsp;&nbsp;&nbsp;&nbsp;          <input type="reset" name="button2" id="button2" value="重新填写" ></td>
+    <td colspan="4" align="center"><input type="submit" name="button1" id="button1" value="确认添加" /><input type="reset" name="button2" id="button2" value="重新填写" ></td>
     </tr>
 </table>
 </form>

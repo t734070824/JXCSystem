@@ -67,20 +67,17 @@ $(function($) {
 		<td colspan="7" align="left"><strong>员工管理</strong></td>
 	</tr>
     <tr>
-    <td colspan="2" align="left" valign="top">&nbsp;&nbsp;<a href="add_staff.jsp"><img src="images/action_add.png" width="16" height="16" align="bottom" /></a></td>
-    <td align="right">&nbsp;</td><td align="right">&nbsp;</td>
-    
+    <td colspan="7" align="right"><a href="add_staff.jsp"><img src="images/action_add.png" width="16" height="16" align="bottom" />添加员工</a></td>
     </tr>
-    	<tr>
-        	<td width="85" align="center"><strong>姓名</strong></td>
-            <td width="84" align="center"><strong>性别</strong></td>
-            <td width="66" align="center"><strong>电话</strong></td>
-            <td width="116" align="center"><strong>地址</strong></td>
-            <td width="116" align="center"><strong>出生日期</strong></td>
-            <td width="116" align="center"><strong>工资</strong></td>
-            <td width="66" align="center"><strong>删除</strong></td>
-            <td width="108" align="center">&nbsp;</td>
-            </tr>
+   	<tr>
+       	<td width="85" align="center"><strong>姓名</strong></td>
+           <td width="84" align="center"><strong>性别</strong></td>
+           <td width="66" align="center"><strong>电话</strong></td>
+           <td width="116" align="center"><strong>地址</strong></td>
+           <td width="116" align="center"><strong>出生日期</strong></td>
+           <td width="116" align="center"><strong>工资</strong></td>
+           <td width="66" align="center"><strong>删除</strong></td>
+    </tr>
     </thead>
     <tbody>
     <c:forEach items="${results}" var="staff">
@@ -92,7 +89,6 @@ $(function($) {
             <td align="center">${staff.eDate}</td>
             <td align="center">${staff.ePrice}</td>
             <td align="center"><a href="deletestaff.do?id=${staff.eId }" class="ask"><img src="images/trash.png" width="16" height="16" /></a></td>
-            <!-- <td align="left"><a href="staff_detail_information.html">查看详情</a></td> -->
         </tr>
         </c:forEach>
     </tbody>
