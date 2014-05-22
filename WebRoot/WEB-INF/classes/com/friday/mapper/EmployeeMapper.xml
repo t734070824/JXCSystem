@@ -26,6 +26,11 @@
     from employees
     where e_date = #{eDate,jdbcType=DATE}
   </select>
+  <select id="selectAll" resultMap="BaseResultMap"  >
+    select 
+    <include refid="Base_Column_List" />
+    from employees
+  </select>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
     delete from employees
     where e_id = #{eId,jdbcType=VARCHAR}

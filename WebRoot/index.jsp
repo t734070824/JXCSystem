@@ -123,7 +123,7 @@ $(function($) {
                     <a class="menuitem submenuheader" href="">员工信息</a>
                 <div class="submenu">
                     <ul>
-                    <li><a onclick="clickA(this);" alt="staff_management.jsp">员工管理</a></li>
+                    <li><a onclick="clickA(this);" alt="querystaffs.do">员工管理</a></li>
                     <li><a onclick="clickA(this);" alt="add_staff.jsp">添加员工</a></li>
                     <li><a onclick="clickA(this);" alt="remindbirthday.do">员工生日提醒</a></li>
                     </ul>

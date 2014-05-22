@@ -22,6 +22,12 @@ public interface StaffService {
 	 */
 	public List<Employee> remindBirthday(Date date) throws Exception;
 	
+	//获得员工列表
+	public List<Employee> getAllStaffs() throws Exception;
+	
+	//
+	public int deleteStaff(String id) throws Exception;
+	
 	
 
 }

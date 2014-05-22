@@ -50,4 +50,42 @@ public class StaffServiceImpl implements StaffService {
 		return elist;
 	}
 
+	@Override
+	public List<Employee> getAllStaffs() throws Exception {
+		SqlSession sqlSession = null;
+		List<Employee> elist = null;
+		try {
+			sqlSession = SessionUtils.getSession();
+			EmployeeMapper employeeMapper = sqlSession
+					.getMapper(EmployeeMapper.class);
+			elist = employeeMapper.selectAll();
+
+		} catch (Exception e) {
+			throw e;
+		} finally {
+			SessionUtils.closeSession(sqlSession);
+		}
+		return elist;
+	}
+
+	@Override
+	public int deleteStaff(String id) throws Exception {
+		SqlSession sqlSession = null;
+		int ret = 0;
+		try {
+			sqlSession = SessionUtils.getSession();
+			EmployeeMapper employeeMapper = sqlSession.getMapper(EmployeeMapper.class);
+			
+			employeeMapper.deleteByPrimaryKey(id);
+			sqlSession.commit();
+			ret = 1;
+		} catch (Exception e) {
+			sqlSession.rollback();
+			throw e;
+		} finally {
+			SessionUtils.closeSession(sqlSession);
+		}
+		return ret;
+	}
+
 }

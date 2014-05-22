@@ -19,4 +19,6 @@ public interface EmployeeMapper {
     int updateByPrimaryKey(Employee record);
     
     List<Employee> selectByDate(Date birthday);
+    
+    List<Employee> selectAll();
 }

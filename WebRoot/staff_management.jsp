@@ -1,4 +1,5 @@
 <%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%
 String path = request.getContextPath();
 String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
@@ -66,83 +67,34 @@ $(function($) {
 		<td colspan="7" align="left"><strong>员工管理</strong></td>
 	</tr>
     <tr>
-    <td colspan="2" align="left" valign="top">&nbsp;&nbsp;<a href="add_staff.html"><img src="images/action_add.png" width="16" height="16" align="bottom" /></a>&nbsp;&nbsp;添加员工</td>
+    <td colspan="2" align="left" valign="top">&nbsp;&nbsp;<a href="add_staff.jsp"><img src="images/action_add.png" width="16" height="16" align="bottom" /></a></td>
     <td align="right">&nbsp;</td><td align="right">&nbsp;</td>
-    <td align="right">员工姓名</td>
-    <td><input name="textfield2" type="text" id="textfield2" size="5" />
-&nbsp;&nbsp;<a href="">查找</a></td>
+    
     </tr>
     	<tr>
-        	<td width="85" align="center"><strong>员工编号</strong></td>
-            <td width="84" align="center"><strong>姓名</strong></td>
-            <td width="66" align="center"><strong>性别</strong></td>
+        	<td width="85" align="center"><strong>姓名</strong></td>
+            <td width="84" align="center"><strong>性别</strong></td>
+            <td width="66" align="center"><strong>电话</strong></td>
+            <td width="116" align="center"><strong>地址</strong></td>
             <td width="116" align="center"><strong>出生日期</strong></td>
+            <td width="116" align="center"><strong>工资</strong></td>
             <td width="66" align="center"><strong>删除</strong></td>
             <td width="108" align="center">&nbsp;</td>
             </tr>
     </thead>
     <tbody>
+    <c:forEach items="${results}" var="staff">
     	<tr>
-        	<td align="center">NN</td>
-            <td align="center">XXX</td>
-            <td align="center">&nbsp;</td>
-            <td align="center">XXX-XX-XX</td>
-            <td align="center"><input type="checkbox" name="" /><img src="images/trash.png" width="16" height="16" /></td>
-            <td align="left"><a href="staff_detail_information.html">查看详情</a></td>
+        	<td align="center">${staff.eName}</td>
+            <td align="center">${staff.eSex}</td>
+            <td align="center">${staff.ePhone}</td>
+            <td align="center">${staff.eAddress}</td>
+            <td align="center">${staff.eDate}</td>
+            <td align="center">${staff.ePrice}</td>
+            <td align="center"><a href="deletestaff.do?id=${staff.eId }" class="ask"><img src="images/trash.png" width="16" height="16" /></a></td>
+            <!-- <td align="left"><a href="staff_detail_information.html">查看详情</a></td> -->
         </tr>
-        <tr>
-        	<td align="center">NN</td>
-            <td align="center">XXX</td>
-            <td align="center">&nbsp;</td>
-            <td align="center">XXX-XX-XX</td>
-            <td align="center"><input type="checkbox" name="" /><img src="images/trash.png" width="16" height="16" /></td>
-            <td align="left"><a href="staff_detail_information.html">查看详情</a></td>
-        </tr>
-        <tr>
-        	<td align="center">NN</td>
-            <td align="center">XXX</td>
-            <td align="center">&nbsp;</td>
-            <td align="center">XXX-XX-XX</td>
-            <td align="center"><input type="checkbox" name="" /><img src="images/trash.png" width="16" height="16" /></td>
-            <td align="left"><a href="staff_detail_information.html">查看详情</a></td>
-        </tr>
-        <tr>
-        	<td align="center">NN</td>
-            <td align="center">XXX</td>
-            <td align="center">&nbsp;</td>
-            <td align="center">XXX-XX-XX</td>
-            <td align="center"><input type="checkbox" name="" /><img src="images/trash.png" width="16" height="16" /></td>
-            <td align="left"><a href="staff_detail_information.html">查看详情</a></td>
-        </tr>
-        <tr>
-        	<td align="center">NN</td>
-            <td align="center">XXX</td>
-            <td align="center">&nbsp;</td>
-            <td align="center">XXX-XX-XX</td>
-            <td align="center"><input type="checkbox" name="" /><img src="images/trash.png" width="16" height="16" /></td>
-            <td align="left"><a href="staff_detail_information.html">查看详情</a></td>
-        </tr>
-        <tr>
-        	<td align="center">NN</td>
-            <td align="center">XXX</td>
-            <td align="center">&nbsp;</td>
-            <td align="center">XXX-XX-XX</td>
-            <td align="center"><input type="checkbox" name="" /><img src="images/trash.png" width="16" height="16" /></td>
-            <td align="left"><a href="staff_detail_information.html">查看详情</a></td>
-        </tr>
-        <tr>
-    <td align="right">&nbsp;</td>
-     <td colspan="2">&nbsp;</td>
-     <td align="center">&nbsp;</td>
-            <td align="center">&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" name="input" />
-              <strong>全选</strong></td>
-            <td align="left"><input type="submit" name="button" id="button" value="删除" /></td>
-    </tr>
-	<tr>
-    <td colspan="8" align="right"><div class="pagination">
-        <span class="disabled"><< prev</span><span class="current">1</span><a href="">2</a><a href="">3</a><a href="">4</a><a href="">5</a>…<a href="">10</a><a href="">11</a><a href="">12</a>...<a href="">100</a><a href="">101</a><a href="">next >></a>
-        </div></td>
-    </tr>
+        </c:forEach>
     </tbody>
 </table>
 </body>
