@@ -78,6 +78,7 @@ $(function($) {
 			<li><a onclick="clickA(this);" alt="sellload.do">产品销售</a></li>
 			<li><a onclick="clickA(this);" alt="stockwarn.do">库存报警</a></li>
 			<li><a onclick="clickA(this);" alt="staff_management.jsp">员工管理</a></li>
+			<li><a onclick="clickA(this);" alt="customerquery.do">客户管理</a></li>
 			<li><a onclick="clickA(this);" alt="modify_password.jsp">修改密码</a></li>
 		</ul>
 		</div> 
@@ -131,9 +132,7 @@ $(function($) {
                 <a class="menuitem submenuheader" href="">客户管理</a>
                 <div class="submenu">
                     <ul>
-                    <li><a onclick="clickA(this);" alt="#">客户管理</a></li>
-                    <li><a onclick="clickA(this);" alt="#">待定</a></li>
-                    <li><a onclick="clickA(this);" alt="#">待定</a></li>
+                    <li><a onclick="clickA(this);" alt="customerquery.do">客户管理</a></li>
                     </ul>
                 </div>
                 <a class="menuitem submenuheader" href="">系统设置</a>
