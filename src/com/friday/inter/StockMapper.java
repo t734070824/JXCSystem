@@ -8,6 +8,11 @@ public interface StockMapper {
 
 	int deleteByPrimaryKey(Integer sId);
 
+	/**
+	 * 如数据库中没有相同产品，设置默认值
+	 * @param record
+	 * @return
+	 */
     int insert(Stock record);
 
     int insertSelective(Stock record);
@@ -16,6 +21,11 @@ public interface StockMapper {
 
     int updateByPrimaryKeySelective(Stock record);
 
+    /**
+     * 如数据库中有相同产品，则在原来基础上添加数量
+     * @param record
+     * @return
+     */
     int updateByPrimaryKey(Stock record);
     
     /**

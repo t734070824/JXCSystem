@@ -34,12 +34,16 @@ public class StockInController implements Controller {
 			String inId = "RK" + new SimpleDateFormat("yyyyMMddHHmmssSSS").format(new Date(System.currentTimeMillis()));
 			Date date = timeString.isEmpty() ? new Date(System.currentTimeMillis()) : Date.valueOf(timeString);
 			
-			stockInService.stockIn(oid, inId, date, bz, uId);
-			
-			model.put("msg", "成功入库");
-			return new ModelAndView("product_storage", model);
+			int flag = stockInService.stockIn(oid, inId, date, bz, uId);
+			if(flag == 1) {
+				model.put("msg", "成功入库");
+				return new ModelAndView("product_storage", model);
+			} else {
+				model.put("msg", "失败,请检查订单编号是否有效或者是否已经入库");
+				return new ModelAndView("product_storage", model);
+				
+			}
 		} catch (Exception e) {
-			
 			model.put("msg", "失败,请检查订单编号是否有效或者是否已经入库");
 			e.printStackTrace();
 			return new ModelAndView("product_storage", model);

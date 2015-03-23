@@ -1,19 +1,19 @@
 package com.friday.model;
 
 public class Stock {
-    private Integer sId;
+    private Integer sId;//库存编号
 
-    private Integer shopId;
+    private Integer shopId;//网点编号
 
-    private Integer pId;
+    private Integer pId;//产品编号
 
-    private Integer sNum;
+    private Integer sNum;//库存数量
 
     private Integer sMaxnum;
 
     private Integer sMinnum;
 
-    private Float sPrice;
+    private Float sPrice;//库存金额
 
     public Integer getsId() {
         return sId;

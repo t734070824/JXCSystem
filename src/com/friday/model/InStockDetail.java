@@ -3,11 +3,11 @@ package com.friday.model;
 public class InStockDetail {
     private Integer iId;
 
-    private String instockId;
+    private String instockId;//入库表中的入库id
 
-    private Integer pId;
+    private Integer pId;//产品id
 
-    private Integer iNum;
+    private Integer iNum;//产品数量
 
     public Integer getiId() {
         return iId;

@@ -7,6 +7,11 @@ import com.friday.model.InStockDetail;
 public interface InStockDetailMapper {
     int deleteByPrimaryKey(Integer iId);
 
+    /**
+     * 添加入库详情
+     * @param record
+     * @return
+     */
     int insert(InStockDetail record);
 
     int insertSelective(InStockDetail record);
