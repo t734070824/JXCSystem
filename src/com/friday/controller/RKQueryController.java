@@ -4,20 +4,18 @@ import java.sql.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.Controller;
-
-import com.friday.service.OrderProductService;
 import com.friday.service.StockInService;
-import com.friday.service.impl.OrderProductServiceImpl;
 import com.friday.service.impl.StockInServiceImpl;
 
 public class RKQueryController implements Controller {
 
+	/**
+	 * 查询入库列表
+	 */
 	@Override
 	public ModelAndView handleRequest(HttpServletRequest request,
 			HttpServletResponse response) throws Exception {
