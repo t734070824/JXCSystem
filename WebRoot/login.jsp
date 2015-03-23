@@ -84,8 +84,6 @@ ddaccordion.init({
     <div class="footer_login">
     
     	<div class="left_footer_login">进销存管理系统 | Powered by Friday</div>
-    	<div class="right_footer_login"><a href="http://indeziner.com"><img src="images/indeziner_logo.gif" alt="" title="" border="0" /></a></div>
-    
     </div>
 
 </div>		

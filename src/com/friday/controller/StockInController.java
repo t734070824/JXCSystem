@@ -36,13 +36,13 @@ public class StockInController implements Controller {
 			
 			stockInService.stockIn(oid, inId, date, bz, uId);
 			
-			model.put("success", "成功");
-			return new ModelAndView("success", model);
+			model.put("msg", "成功入库");
+			return new ModelAndView("product_storage", model);
 		} catch (Exception e) {
 			
-			model.put("error", "失败");
+			model.put("msg", "失败,请检查订单编号是否有效或者是否已经入库");
 			e.printStackTrace();
-			return new ModelAndView("error", model);
+			return new ModelAndView("product_storage", model);
 		}
 	}
 
