@@ -7,6 +7,11 @@ import com.friday.model.OrderDetail;
 public interface OrderDetailMapper {
     int deleteByPrimaryKey(Integer oId);
 
+    /**
+     * 添加订单详情
+     * @param record
+     * @return
+     */
     int insert(OrderDetail record);
 
     int insertSelective(OrderDetail record);
@@ -17,5 +22,10 @@ public interface OrderDetailMapper {
 
     int updateByPrimaryKey(OrderDetail record);
     
+    /**
+     * 根据订单id获取订单详情
+     * @param orderId 订单id
+     * @return
+     */
     List<OrderDetail> selectByOrderId(String orderId);
 }

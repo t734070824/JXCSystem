@@ -17,6 +17,10 @@ public interface ProductTypeMapper {
 
     int updateByPrimaryKey(ProductType record);
     
+    /**
+     * 可订购商品类型
+     * @return
+     */
     List<ProductType> selectAllTypes();
     
     ProductType selectByTypeName(String tname);

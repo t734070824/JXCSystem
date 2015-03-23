@@ -16,6 +16,9 @@ import com.friday.service.impl.UserServiceImpl;
 
 public class LoginController implements Controller {
 
+	/**
+	 * 登陆
+	 */
 	@Override
 	public ModelAndView handleRequest(HttpServletRequest request,
 			HttpServletResponse response) throws Exception {

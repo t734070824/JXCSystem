@@ -13,6 +13,9 @@ import com.friday.service.impl.OrderProductServiceImpl;
 
 public class GetProductController implements Controller {
 
+	/**
+	 * 可订购商品列表
+	 */
 	@Override
 	public ModelAndView handleRequest(HttpServletRequest request,
 			HttpServletResponse response) throws Exception {

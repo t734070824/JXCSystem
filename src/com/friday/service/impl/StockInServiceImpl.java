@@ -3,12 +3,9 @@ package com.friday.service.impl;
 import java.sql.Date;
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
-
 import org.apache.ibatis.session.SqlSession;
-
 import com.friday.inter.GoodsBackDetailMapper;
 import com.friday.inter.GoodsBackMapper;
 import com.friday.inter.InStockDetailMapper;
@@ -16,7 +13,6 @@ import com.friday.inter.InStockMapper;
 import com.friday.inter.OrderDetailMapper;
 import com.friday.inter.OrderMapper;
 import com.friday.inter.ProductMapper;
-import com.friday.inter.ProductTypeMapper;
 import com.friday.inter.StockMapper;
 import com.friday.inter.UserMapper;
 import com.friday.model.GoodsBack;
@@ -26,7 +22,6 @@ import com.friday.model.InStockDetail;
 import com.friday.model.Order;
 import com.friday.model.OrderDetail;
 import com.friday.model.Product;
-import com.friday.model.ProductType;
 import com.friday.model.Stock;
 import com.friday.model.User;
 import com.friday.service.StockInService;
@@ -47,7 +42,7 @@ public class StockInServiceImpl implements StockInService {
 			InStockMapper inStockMapper = sqlSession.getMapper(InStockMapper.class);
 			InStockDetailMapper inStockDetailMapper = sqlSession.getMapper(InStockDetailMapper.class);
 			StockMapper stockMapper = sqlSession.getMapper(StockMapper.class);
-			
+			//此订单应该未处理
 			if (orderMapper.selectByPrimaryKey(orderId).getoStyle() != 0) {
 				throw new Exception();
 			}

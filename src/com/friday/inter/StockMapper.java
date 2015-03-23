@@ -18,6 +18,10 @@ public interface StockMapper {
 
     int updateByPrimaryKey(Stock record);
     
+    /**
+     * 库存列表
+     * @return
+     */
     List<Stock> selectAll();
 
 	List<Stock> selectByshopId(Integer sId);

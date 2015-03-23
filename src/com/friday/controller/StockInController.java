@@ -4,22 +4,19 @@ import java.sql.Date;
 import java.text.SimpleDateFormat;
 import java.util.HashMap;
 import java.util.Map;
-
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.Controller;
-
-import com.friday.model.User;
 import com.friday.service.StockInService;
-import com.friday.service.UserService;
 import com.friday.service.impl.StockInServiceImpl;
-import com.friday.service.impl.UserServiceImpl;
 
 public class StockInController implements Controller {
 
+	/**
+	 * 产品入库
+	 */
 	@Override
 	public ModelAndView handleRequest(HttpServletRequest request,
 			HttpServletResponse response) throws Exception {

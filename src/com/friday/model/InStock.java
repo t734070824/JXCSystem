@@ -2,14 +2,19 @@ package com.friday.model;
 
 import java.util.Date;
 
+/**
+ * 订单入库
+ * @author HelloMoTo
+ *
+ */
 public class InStock {
-    private String iId;
+    private String iId;//id
 
     private String uId;
 
-    private String oId;
+    private String oId;//订单id
 
-    private Date iDate;
+    private Date iDate;//入库时间
 
     public String getiId() {
         return iId;

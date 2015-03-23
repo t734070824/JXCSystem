@@ -1,25 +1,21 @@
 package com.friday.controller;
 
 import java.sql.Date;
-import java.text.SimpleDateFormat;
 import java.util.HashMap;
-import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
-import java.util.regex.Pattern;
-
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
-
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.Controller;
-
 import com.friday.service.OrderProductService;
 import com.friday.service.impl.OrderProductServiceImpl;
 
 public class QueryOrderController implements Controller {
 
+	/**
+	 * 查询订单列表
+	 */
 	@Override
 	public ModelAndView handleRequest(HttpServletRequest request,
 			HttpServletResponse response) throws Exception {
@@ -33,15 +29,10 @@ public class QueryOrderController implements Controller {
 			String orderId = request.getParameter("orderid");
 			String state = request.getParameter("orderstate");
 			int style = Integer.parseInt(state);
-			
 			OrderProductService orderProductService = new OrderProductServiceImpl();
-			
 			List<Object> list = orderProductService.queryOrder(start, end, style, orderId);
-			
 			int pagecurrent = 0, pagecount = (list.size()-1) / 10 + 1;
-			
 			String page = request.getParameter("page");
-			
 			if (page!=null) {
 				pagecurrent = Integer.parseInt(page);
 			}

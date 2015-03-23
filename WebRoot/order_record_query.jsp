@@ -58,6 +58,7 @@ $(function($) {
 });
 </script>
 <script language="JavaScript">
+	/* 根据订单id获取订单详情 */
 	function queryDetail(did) {
 		var xmlHttp=new XMLHttpRequest();
 		xmlHttp.open("GET", "querydetail.do?did="+did+"&table=order", true);				
@@ -132,13 +133,6 @@ $(function($) {
 		      		if (pagecurrent == pagecount-1) out.print("<span class=\"disabled\">next</span>");
 		      		else out.print("<a href=\"javascript:hideform.action='queryorder.do?page=" + String.format("%d", pagecurrent+1) +"';hideform.submit()\">next</a>");
 		      	%>
-				<!-- <span class="disabled">prev</span>
-				<span class="current">1</span>
-				<a href="">2</a>
-				<a href="">3</a>
-				<a href="">4</a>
-				<a href="">5</a>
-				<a href="">next</a> -->
 			</div>
 			</td>
 		 </tr>

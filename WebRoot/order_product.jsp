@@ -61,6 +61,9 @@ $(function($) {
 
 </head>
 <body bgcolor="transparent" style='background:transparent'>
+<div align="center" style="color:  red">
+	${success}
+</div>
 <form action="orderproduct.do" method="post">      
     <table id="rounded-corner" summary="2007 Major IT Companies' Profit">
 	<tr>

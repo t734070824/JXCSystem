@@ -9,11 +9,13 @@ import org.springframework.web.servlet.mvc.Controller;
 
 public class LogoutController implements Controller {
 
+	/**
+	 * 注销
+	 */
 	@Override
 	public ModelAndView handleRequest(HttpServletRequest request,
 			HttpServletResponse response) throws Exception {
 		HttpSession session = request.getSession();
-		
 		session.removeAttribute("account");
 		session.removeAttribute("name");
 		session.removeAttribute("password");

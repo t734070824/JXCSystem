@@ -22,6 +22,9 @@ import com.friday.utils.SessionUtils;
 
 public class OrderProductServiceImpl implements OrderProductService {
 
+	/**
+	 * 可订购商品列表
+	 */
 	@Override
 	public Map<String, Object> getTypeAndProduct() throws Exception{
 		Map<String, Object> map = new HashMap<String, Object>();
@@ -96,18 +99,14 @@ public class OrderProductServiceImpl implements OrderProductService {
 			String orderId) throws Exception {
 		List<Object> list = new ArrayList<Object>();
 		SqlSession sqlSession = null;
-		
 		try {
 			sqlSession = SessionUtils.getSession();
-			
 			ProductMapper productMapper = sqlSession.getMapper(ProductMapper.class);
 			OrderMapper orderMapper = sqlSession.getMapper(OrderMapper.class);
 			OrderDetailMapper orderDetailMapper = sqlSession.getMapper(OrderDetailMapper.class);
 			UserMapper userMapper	= sqlSession.getMapper(UserMapper.class);
-			
 			if (!orderId.isEmpty()) {
 				Order order = orderMapper.selectByPrimaryKey(orderId);
-				
 				if (order != null) {
 					Map<String, Object> map = new HashMap<String, Object>();
 					map.put("oId", order.getoId());
@@ -118,7 +117,7 @@ public class OrderProductServiceImpl implements OrderProductService {
 					int price = 0;
 					for (OrderDetail orderDetail : orderDetails) {
 						Product product = productMapper.selectByPrimaryKey(orderDetail.getpId());
-						price += orderDetail.getoNum() * product.getpPrice();
+						price += orderDetail.getoNum() * product.getpPrice();//总价
 					}
 					map.put("price", price);
 					map.put("style", order.getoStyle());

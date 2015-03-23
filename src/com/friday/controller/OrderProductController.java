@@ -2,7 +2,6 @@ package com.friday.controller;
 
 import java.sql.Date;
 import java.text.SimpleDateFormat;
-import java.util.Enumeration;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
@@ -35,7 +34,7 @@ public class OrderProductController implements Controller {
 			Map<Integer, Integer> order = new HashMap<Integer, Integer>();
 			String dateString = request.getParameter("orderTime");
 			
-			Date date = dateString.isEmpty() ? new Date(System.currentTimeMillis()) : Date.valueOf(dateString);
+			Date date = dateString.isEmpty() ? new Date(System.currentTimeMillis()) : Date.valueOf(dateString);//如果时间没有填写就使用当前时间
 			String bz = request.getParameter("remark");
 			String oId = "DD" + new SimpleDateFormat("yyyyMMddHHmmssSSS").format(new Date(System.currentTimeMillis()));
 			
@@ -51,9 +50,15 @@ public class OrderProductController implements Controller {
 				}
 			}
 			
-			orderProductService.orderProduct(order, date, bz, uId, oId);
-			model.put("success", "添加订单成功");
-			return new ModelAndView("success", model);
+			int flag = orderProductService.orderProduct(order, date, bz, uId, oId);
+			if(flag == 1) {
+				model.put("products", orderProductService.getTypeAndProduct());
+				model.put("success", "添加订单成功");
+				return new ModelAndView("order_product", model);
+			} else {
+				model.put("error", "操作失败");
+				return new ModelAndView("error", model);
+			}
 		} catch (Exception e) {
 			model.put("error", "操作失败");
 			e.printStackTrace();

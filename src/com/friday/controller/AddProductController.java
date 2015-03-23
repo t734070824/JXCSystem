@@ -3,15 +3,11 @@ package com.friday.controller;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.Controller;
-
 import com.friday.model.Product;
-import com.friday.model.ProductType;
 import com.friday.service.ProductMService;
 import com.friday.service.impl.ProductMServiceImpl;
 
