@@ -13,7 +13,6 @@ import org.springframework.web.servlet.mvc.Controller;
 import com.friday.model.Customer;
 import com.friday.service.CustomerService;
 import com.friday.service.impl.CustomerServiceImpl;
-import com.sun.org.apache.regexp.internal.recompile;
 
 public class DeleteCustomerController implements Controller {
 

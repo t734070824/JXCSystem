@@ -12,11 +12,11 @@ public class LogoutController implements Controller {
 	@Override
 	public ModelAndView handleRequest(HttpServletRequest request,
 			HttpServletResponse response) throws Exception {
-		HttpSession sesssion = request.getSession();
+		HttpSession session = request.getSession();
 		
-		sesssion.removeAttribute("account");
-		sesssion.removeAttribute("name");
-		
+		session.removeAttribute("account");
+		session.removeAttribute("name");
+		session.removeAttribute("password");
 		return new ModelAndView("login");
 	}
 

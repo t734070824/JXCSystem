@@ -6,13 +6,7 @@ import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
-
-import javax.xml.crypto.Data;
-
 import org.apache.ibatis.session.SqlSession;
-
-import sun.print.resources.serviceui;
-
 import com.friday.inter.OrderDetailMapper;
 import com.friday.inter.OrderMapper;
 import com.friday.inter.ProductMapper;

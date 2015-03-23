@@ -21,18 +21,22 @@ public class LoginController implements Controller {
 			HttpServletResponse response) throws Exception {
 		
 		Map<String, Object> model = new HashMap<String, Object>();
-		HttpSession sesssion = request.getSession();
+		HttpSession session = request.getSession();
 		try {
 			UserService userService = new UserServiceImpl();
 			
 			String uid = request.getParameter("account");
 			String upwd = request.getParameter("password");
-			
+			if(null == uid || uid.equals("") || null == upwd || upwd.equals("")) {
+				uid = (String) session.getAttribute("account");
+				upwd = (String) session.getAttribute("password");
+			}
 			User user = userService.getUser(uid);
 			
 			if (user != null && user.getuPwd().equalsIgnoreCase(upwd)) {
-				sesssion.setAttribute("account", user.getuId());
-				sesssion.setAttribute("name", user.getuName());
+				session.setAttribute("account", user.getuId());
+				session.setAttribute("name", user.getuName());
+				session.setAttribute("password", upwd);
 				return new ModelAndView("index");
 			}
 			else {

@@ -72,7 +72,7 @@
 			<!-- DYH -->
 				<prop key="/adduser.do">addUserController</prop>
 				<prop key="/login.do">loginController</prop>
-				<prop key="/logout.do">loginController</prop>
+				<prop key="/logout.do">logoutController</prop>
 				<prop key="/getproduct.do">getProductController</prop>
 				<prop key="/orderproduct.do">orderProductController</prop>
 				<prop key="/queryorder.do">queryOrderController</prop>
