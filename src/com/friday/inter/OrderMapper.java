@@ -24,7 +24,7 @@ public interface OrderMapper {
     Order selectByPrimaryKey(String oId);
 
     /**
-     * 更新订单为已处理
+     * 更新订单状态
      * @param record
      * @return
      */

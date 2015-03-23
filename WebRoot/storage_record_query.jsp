@@ -107,7 +107,7 @@ $(function($) {
 				<form action="rkquery.do" method="post" style="display:none" name="hideform">
 		       	  <input name="starttime" type="text" id="textfield" size="8" onclick="WdatePicker()" value="${starttime }"/>
 		       	  <input name="endtime" type="text" id="textfield2" size="8" onclick="WdatePicker()" value="${endtime }"/>
-		       	  <input name="orderid" type="text" id="textfield3" size="8" value="${orderid }"/>
+		       	  <input name="orderid" type="text" id="textfield3" size="8" value="${orderId }"/>
 		       	  <input type="submit" value="查询" />
 		      	</form>
 		      	<% 
@@ -123,13 +123,6 @@ $(function($) {
 		      		if (pagecurrent == pagecount-1) out.print("<span class=\"disabled\">next</span>");
 		      		else out.print("<a href=\"javascript:hideform.action='queryorder.do?page=" + String.format("%d", pagecurrent+1) +"';hideform.submit()\">next</a>");
 		      	%>
-				<!-- <span class="disabled">prev</span>
-				<span class="current">1</span>
-				<a href="">2</a>
-				<a href="">3</a>
-				<a href="">4</a>
-				<a href="">5</a>
-				<a href="">next</a> -->
 			</div>
 			</td>
 		 </tr>

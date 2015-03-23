@@ -2,6 +2,7 @@ package com.friday.model;
 
 import java.util.Date;
 
+
 /**
  * 订单入库
  * @author HelloMoTo
@@ -40,11 +41,14 @@ public class InStock {
         this.oId = oId == null ? null : oId.trim();
     }
 
-    public Date getiDate() {
-        return iDate;
-    }
+	public Date getiDate() {
+		return iDate;
+	}
 
-    public void setiDate(Date iDate) {
-        this.iDate = iDate;
-    }
+	public void setiDate(Date iDate) {
+		this.iDate = iDate;
+	}
+
+
+
 }

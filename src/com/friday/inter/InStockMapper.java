@@ -16,6 +16,11 @@ public interface InStockMapper {
 
     int insertSelective(InStock record);
 
+    /**
+     * 根据入库id获取入库信息
+     * @param iId
+     * @return
+     */
     InStock selectByPrimaryKey(String iId);
 
     int updateByPrimaryKeySelective(InStock record);

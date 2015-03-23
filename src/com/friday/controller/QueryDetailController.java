@@ -8,12 +8,8 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.Controller;
-
-import com.friday.model.User;
 import com.friday.service.DetailQueryService;
-import com.friday.service.UserService;
 import com.friday.service.impl.DetailQueryServiceImpl;
-import com.friday.service.impl.UserServiceImpl;
 
 public class QueryDetailController implements Controller {
 
@@ -23,10 +19,8 @@ public class QueryDetailController implements Controller {
 		Map<String, Object> model = new HashMap<String, Object>();
 		try {
 			DetailQueryService detailQueryService = new DetailQueryServiceImpl();
-			
 			String did = request.getParameter("did");
 			String table = request.getParameter("table");
-			
 			model.put("details", detailQueryService.queryDetail(did, table));
 			model.put("did", did);
 			return new ModelAndView("detail", model);

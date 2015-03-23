@@ -1,7 +1,6 @@
 package com.friday.controller;
 
 import java.sql.Date;
-import java.text.SimpleDateFormat;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -17,6 +16,9 @@ import com.friday.service.impl.StockInServiceImpl;
 
 public class GoodsBackController implements Controller {
 
+	/**
+	 * 商品退回
+	 */
 	@Override
 	public ModelAndView handleRequest(HttpServletRequest request,
 			HttpServletResponse response) throws Exception {
@@ -32,15 +34,19 @@ public class GoodsBackController implements Controller {
 			String bz = request.getParameter("remark");
 			Date date = timeString.isEmpty() ? new Date(System.currentTimeMillis()) : Date.valueOf(timeString);
 			
-			stockInService.goodsBack(oid, date, bz, uId);
-			
-			model.put("success", "成功");
-			return new ModelAndView("success", model);
+			int flag = stockInService.goodsBack(oid, date, bz, uId);
+			if(flag == 1) {
+				model.put("msg", "成功");
+				return new ModelAndView("product_return", model);
+			} else {
+				model.put("msg", "失败");
+				return new ModelAndView("product_return", model);
+				
+			}
 		} catch (Exception e) {
-			
-			model.put("error", "失败");
+			model.put("msg", "失败");
 			e.printStackTrace();
-			return new ModelAndView("error", model);
+			return new ModelAndView("product_return", model);
 		}
 	}
 

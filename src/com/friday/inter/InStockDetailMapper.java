@@ -22,5 +22,10 @@ public interface InStockDetailMapper {
 
     int updateByPrimaryKey(InStockDetail record);
     
+    /**
+     * 根据入库id获取入库详情
+     * @param inId
+     * @return
+     */
     List<InStockDetail> selectByInStockId(String inId);
 }

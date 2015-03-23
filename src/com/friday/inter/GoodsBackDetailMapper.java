@@ -7,6 +7,11 @@ import com.friday.model.GoodsBackDetail;
 public interface GoodsBackDetailMapper {
     int deleteByPrimaryKey(Integer gId);
 
+    /**
+     * 添加退回订单的详细信息
+     * @param record
+     * @return
+     */
     int insert(GoodsBackDetail record);
 
     int insertSelective(GoodsBackDetail record);

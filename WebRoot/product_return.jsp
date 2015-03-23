@@ -66,6 +66,9 @@ $(function($) {
 
 </head>
 <body bgcolor="transparent" style='background:transparent'>
+		<div align="center" style="color:  red">
+			${msg}
+		</div>
 				<form action="goodsback.do" method="post">
                   <table id="rounded-corner" summary="2007 Major IT Companies' Profit">
 				  <tr>
